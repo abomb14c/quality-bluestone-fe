@@ -6,6 +6,9 @@ import { connect } from 'react-redux';
 import SignInModal from '../SignInModal/SignInModal';
 import Home from '../../containers/Home/Home';
 import { mapDispatchToProps } from '../../containers/SignIn/SignIn';
+import NewHire from '../../containers/newHire/NewHire';
+
+
 
 class App extends Component {
   render() {
@@ -29,6 +32,10 @@ class App extends Component {
                 <Home/>
             )}
           />  
+          <Route
+            exact path= "/newEmployee"
+            component={NewHire} 
+          />
           </div>
         </Switch>
       </div>
