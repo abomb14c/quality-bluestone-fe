@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './new-hire.css';
 
 import ComponentHeader from '../../components/componentHeader/ComponentHeader';
+import QuarryApp from '../QuarryApp/QuarryApp';
+import {Footer} from '../../components/Footer/Footer';
 
 class NewHire extends Component {
   constructor(props){
@@ -22,6 +24,7 @@ class NewHire extends Component {
 
   render(){ 
     return (
+      // <div className='app-container'>
       <div className='new-hire-container'>
         <div className='header'>
           <ComponentHeader />
@@ -50,7 +53,12 @@ class NewHire extends Component {
             </div>
           </div>
         </div>
+
+          <div className='quarry-app-section'>
+          <QuarryApp />
+          </div>
       </div>
+   
     )
   }
 }

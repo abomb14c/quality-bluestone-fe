@@ -7,7 +7,7 @@ import SignInModal from '../SignInModal/SignInModal';
 import Home from '../../containers/Home/Home';
 import { mapDispatchToProps } from '../../containers/SignIn/SignIn';
 import NewHire from '../../containers/newHire/NewHire';
-
+import {Footer} from '../Footer/Footer';
 
 
 class App extends Component {
