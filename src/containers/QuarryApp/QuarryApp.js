@@ -13,7 +13,9 @@ class QuarryApp extends Component {
       presentAddress: '',
       presentCity: '',
       presentState:'', 
-      presentZip: ''
+      presentZip: '',
+      positionDesired: '',
+  
     }
   }
 
@@ -22,8 +24,14 @@ class QuarryApp extends Component {
     this.setState({
       [name]: value
     });
+
   };
 
+
+
+componentDidMount() {
+  console.log(this.state.employedChecked)
+}
   render() {
     return (
       <div className="quarry-app-container">
@@ -61,7 +69,7 @@ class QuarryApp extends Component {
             <input
               className='quarry-present-address'
               type='text'
-              name='present-address'
+              name='presentAddress'
               value={this.state.presentAddress}
               placeholder='Present Address'
               onChange={this.handleChange}
@@ -71,7 +79,7 @@ class QuarryApp extends Component {
             <input
               className='quarry-present-city'
               type='text'
-              name='present-city'
+              name='presentCity'
               value={this.state.presentCity}
               placeholder='City'
               onChange={this.handleChange}
@@ -79,7 +87,7 @@ class QuarryApp extends Component {
             <input
               className='quarry-present-state'
               type='text'
-              name='present-state'
+              name='presentState'
               value={this.state.presentState}
               placeholder='State'
               onChange={this.handleChange}
@@ -87,13 +95,78 @@ class QuarryApp extends Component {
             <input
               className='quarry-present-zip'
               type='text'
-              name='present-zip'
+              name='presentZip'
               value={this.state.presentZip}
               placeholder='Zip Code'
               onChange={this.handleChange}
             />
           </div>
         </form>
+        <form className='employment-desired-quarry'>
+        <legend className="quarry-legend">Employment Desired</legend>
+          <div className='quarry-position-desired-container'>
+            <input
+              className='quarry-position-desired'
+              type='text'
+              name='positionDesired'
+              value={this.state.positionDesired}
+              placeholder='Position Desired'
+              onChange={this.handleChange}
+            />
+            <input
+              className='quarry-start-date'
+              type='text'
+              name='startDate'
+              value={this.state.startDate}
+              placeholder='Date You Can Start'
+              onChange={this.handleChange}
+            />
+            <input
+              className='quarry-salary'
+              type='text'
+              name='salary'
+              value={this.state.startDate}
+              placeholder='Desired Salary'
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className='quarry-employed-container'>
+            <input
+              className='quarry-employed'
+              type='text'
+              name='employed'
+              value={this.state.employed}
+              placeholder='Are you currently employed?'
+              onChange={this.handleChange}
+            />
+            <input
+              className='quarry-employed-contact'
+              type='text'
+              name='employedContact'
+              value={this.state.employedContact}
+              placeholder='If yes, may we contact employer?'
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className='quarry-previous-container'>
+            <input
+              className='quarry-employed-previous'
+              type='text'
+              name='employedPrevious'
+              value={this.state.employedPrevious}
+              placeholder='Have you applied to this company before?'
+              onChange={this.handleChange}
+            />
+            <input
+              className='quarry-employed-previous-when'
+              type='text'
+              name='employedWhen'
+              value={this.state.employedWhen}
+              placeholder='When?'
+              onChange={this.handleChange}
+            />
+          </div>
+        </form> 
       </div>
     )
   }

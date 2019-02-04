@@ -101,6 +101,94 @@
 .quarry-present-zip{
   height: 50px;
   width: 17%;
+  padding-left: 2%;
+}
 
+.employment-desired-quarry {
+  background-color: #ffff;
+  width: 60%;
+  height: 450px;
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.3);
+  /* margin-top: 5%; */
+  padding: 3%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5%;
+}
+
+.quarry-position-desired-container {
+  display: flex;
+  flex-direction: row;
+  width:100%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3%;
+}
+
+.quarry-position-desired {
+  height: 50px;
+  width: 30%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-start-date {
+  height: 50px;
+  width: 20%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-salary {
+  height: 50px;
+  width: 15%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-employed-container {
+  display: flex;
+  flex-direction: column;
+  width:100%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3%;
+}
+
+.quarry-employed {
+  height: 50px;
+  width: 71%;
+  margin-right: 3%;
+  margin-bottom: 3%;
+  padding-left: 2%;
+}
+
+.quarry-employed-contact {
+  height: 50px;
+  width: 71%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.employed-previous-container {
+  display: flex;
+  flex-direction: row;
+  width:100%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3%;
+}
+
+.quarry-employed-previous {
+  height: 50px;
+  width: 55%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-employed-previous-when {
+  height: 50px;
+  width: 13%;
+  margin-right: 3%;
   padding-left: 2%;
 }
