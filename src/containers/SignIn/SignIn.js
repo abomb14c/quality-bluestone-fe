@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updateUser } from '../../actions/updateUser/updateUser';
+import GoogleLogin from 'react-google-login';
 // import { fetchUser } from '../../apiCalls/apiCalls';
 // import './login-user.css';
 // import PropTypes from 'prop-types';
@@ -22,6 +23,10 @@ export class SignIn extends Component {
       [name]: value
     });
   };
+
+  responseGoogle = (response) => {
+    console.log(response);
+  }
   
   handleSubmit = async event => {
     event.preventDefault();
