@@ -1,7 +1,7 @@
 .personal-info-quarry {
   background-color: #ffff;
   width: 60%;
-  height: 450px;
+  height: 575px;
   box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.3);
   /* margin-top: 5%; */
   padding: 3%;
@@ -107,7 +107,7 @@
 .employment-desired-quarry {
   background-color: #ffff;
   width: 60%;
-  height: 450px;
+  height: 425px;
   box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.3);
   /* margin-top: 5%; */
   padding: 3%;
@@ -191,4 +191,224 @@
   width: 13%;
   margin-right: 3%;
   padding-left: 2%;
+}
+
+.quarry-phone-container {
+  display: flex;
+  flex-direction: column;
+  width:100%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3%;
+}
+
+.quarry-phone {
+  width: 73%;
+  height: 50px;
+  padding-left: 2%;
+  margin-bottom: 3%;
+}
+
+.quarry-reffered {
+  width: 73%;
+  height: 50px;
+  padding-left: 2%;
+  margin-bottom: 3%;
+}
+
+.employment-education-quarry {
+  background-color: #ffff;
+  width: 60%;
+  height: 350px;
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.3);
+  padding: 3%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5%;
+}
+
+.quarry-high-container {
+  display: flex;
+  flex-direction: row;
+  width:100%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3%;
+}
+
+.quarry-education-high-school {
+  height: 50px;
+  width: 25%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-education-high-attended {
+  height: 50px;
+  width: 25%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-education-high-graduate {
+  height: 50px;
+  width: 17%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-college-container {
+  display: flex;
+  flex-direction: row;
+  width:100%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3%;
+}
+
+.quarry-education-college {
+  height: 50px;
+  width: 25%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-education-college-attended {
+  height: 50px;
+  width: 25%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-education-college-graduate {
+  height: 50px;
+  width: 17%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-other-container {
+  display: flex;
+  flex-direction: row;
+  width:100%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3%;
+}
+
+.quarry-education-other {
+  height: 50px;
+  width: 25%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-education-other-attended {
+  height: 50px;
+  width: 25%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-education-other-graduate {
+  height: 50px;
+  width: 17%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.employment-employer-quarry {
+  background-color: #ffff;
+  width: 60%;
+  height: 1250px;
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.3);
+  padding: 3%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5%;
+}
+
+.quarry-legend-sub {
+  color: #eb3045;
+  margin-bottom: 5%;
+}
+
+.quarry-employer-name-container {
+  display: flex;
+  flex-direction: row;
+  width:100%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3%;
+}
+
+.quarry-employer-name {
+  height: 50px;
+  width: 35%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-employer-address {
+  height: 50px;
+  width: 35%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-employer-dates-container {
+  display: flex;
+  flex-direction: row;
+  width:100%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3%;
+}
+
+.quarry-employer-dates {
+  height: 50px;
+  width: 35%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-employer-salary {
+  height: 50px;
+  width: 14.8%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-employer-position {
+  height: 50px;
+  width: 17.5%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-employer-leaving {
+  height: 50px;
+  width: 73%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-employer-leaving-container {
+  display: flex;
+  flex-direction: row;
+  width:100%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3%;
+}
+
+hr {
+  width: 80%;
+  background-color:#c5c5c5;
+  border: none;
+  height: 1px;
+  padding-right: 3%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  /* margin-right: 3%; */
 }

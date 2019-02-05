@@ -101,9 +101,27 @@ componentDidMount() {
               onChange={this.handleChange}
             />
           </div>
+          <div  className='quarry-phone-container'>
+            <input
+              className='quarry-phone'
+              type='text'
+              name='phone'
+              value={this.state.phone}
+              placeholder='Phone Number'
+              onChange={this.handleChange}
+            />
+            <input
+              className='quarry-reffered'
+              type='text'
+              name='reffered'
+              value={this.state.reffered}
+              placeholder='Were you referred by someone? Who?'
+              onChange={this.handleChange}
+            />
+          </div>
         </form>
         <form className='employment-desired-quarry'>
-        <legend className="quarry-legend">Employment Desired</legend>
+          <legend className="quarry-legend">Employment Desired</legend>
           <div className='quarry-position-desired-container'>
             <input
               className='quarry-position-desired'
@@ -166,7 +184,307 @@ componentDidMount() {
               onChange={this.handleChange}
             />
           </div>
-        </form> 
+        </form>
+        <form className='employment-education-quarry'>
+          <legend className="quarry-legend">Education History</legend>
+          <div className='quarry-high-container'>
+            <input
+                className='quarry-education-high-school'
+                type='text'
+                name='highSchool'
+                value={this.state.highSchool}
+                placeholder='High School'
+                onChange={this.handleChange}
+              />
+              <input
+                className='quarry-education-high-attended'
+                type='text'
+                name='highSchoolAttended'
+                value={this.state.highSchoolAttended}
+                placeholder='Dates Attended'
+                onChange={this.handleChange}
+              />
+              <input
+                className='quarry-education-high-graduate'
+                type='text'
+                name='highSchoolGrad'
+                value={this.state.highSchoolGrad}
+                placeholder='Did You Graduate?'
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className='quarry-college-container'>
+              <input
+                className='quarry-education-college'
+                type='text'
+                name='college'
+                value={this.state.college}
+                placeholder='College'
+                onChange={this.handleChange}
+              />
+              <input
+                className='quarry-education-college-attended'
+                type='text'
+                name='collegeAttended'
+                value={this.state.collegeAttended}
+                placeholder='Dates Attended'
+                onChange={this.handleChange}
+              />
+              <input
+                className='quarry-education-college-graduate'
+                type='text'
+                name='collegeGrad'
+                value={this.state.collegeGrad}
+                placeholder='Did You Graduate?'
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className='quarry-other-container'>
+              <input
+                className='quarry-education-other'
+                type='text'
+                name='other'
+                value={this.state.other}
+                placeholder='Other'
+                onChange={this.handleChange}
+              />
+              <input
+                className='quarry-education-other-attended'
+                type='text'
+                name='otherAttended'
+                value={this.state.otherAttended}
+                placeholder='Dates Attended'
+                onChange={this.handleChange}
+              />
+              <input
+                className='quarry-education-other-graduate'
+                type='text'
+                name='otherGrad'
+                value={this.state.otherGrad}
+                placeholder='Did You Graduate?'
+                onChange={this.handleChange}
+              />
+          </div>
+        </form>
+        <form className='employment-employer-quarry'>
+          <legend className="quarry-legend">Former Employers</legend>
+          <p className='quarry-legend-sub'>List Below Last Four Employers, Starting With Last One First</p>
+          <div className='quarry-employer-name-container'>
+            <input
+              className='quarry-employer-name'
+              type='text'
+              name='employerName1'
+              value={this.state.employerName1}
+              placeholder='Employer Name'
+              onChange={this.handleChange}
+            />
+            <input
+              className='quarry-employer-address'
+              type='text'
+              name='employerAddress1'
+              value={this.state.employerAddress1}
+              placeholder='Address'
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className='quarry-employer-dates-container'>
+            <input
+              className='quarry-employer-dates'
+              type='text'
+              name='employerDates1'
+              value={this.state.employerDates1}
+              placeholder='Dates Employed'
+              onChange={this.handleChange}
+            />
+            <input
+              className='quarry-employer-salary'
+              type='text'
+              name='employerSalary1'
+              value={this.state.employerSalary1}
+              placeholder='Salary'
+              onChange={this.handleChange}
+            />
+            <input
+              className='quarry-employer-position'
+              type='text'
+              name='employerPosition1'
+              value={this.state.employerPosition1}
+              placeholder='Position'
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className='quarry-employer-leaving-container'>
+            <input
+              className='quarry-employer-leaving'
+              placeholder='Reason For Leaving'
+              name='employerLeaving1'
+              value={this.state.employerLeaving1}
+              onChange={this.handleChange}
+            />
+          </div>
+          <hr></hr>
+          <div className='quarry-employer-name-container'>
+            <input
+              className='quarry-employer-name'
+              type='text'
+              name='employerName1'
+              value={this.state.employerName1}
+              placeholder='Employer Name'
+              onChange={this.handleChange}
+            />
+            <input
+              className='quarry-employer-address'
+              type='text'
+              name='employerAddress1'
+              value={this.state.employerAddress1}
+              placeholder='Address'
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className='quarry-employer-dates-container'>
+            <input
+              className='quarry-employer-dates'
+              type='text'
+              name='employerDates1'
+              value={this.state.employerDates1}
+              placeholder='Dates Employed'
+              onChange={this.handleChange}
+            />
+            <input
+              className='quarry-employer-salary'
+              type='text'
+              name='employerSalary1'
+              value={this.state.employerSalary1}
+              placeholder='Salary'
+              onChange={this.handleChange}
+            />
+            <input
+              className='quarry-employer-position'
+              type='text'
+              name='employerPosition1'
+              value={this.state.employerPosition1}
+              placeholder='Position'
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className='quarry-employer-leaving-container'>
+            <input
+              className='quarry-employer-leaving'
+              placeholder='Reason For Leaving'
+              name='employerLeaving1'
+              value={this.state.employerLeaving1}
+              onChange={this.handleChange}
+            />
+          </div>
+          <hr></hr>
+          <div className='quarry-employer-name-container'>
+            <input
+              className='quarry-employer-name'
+              type='text'
+              name='employerName1'
+              value={this.state.employerName1}
+              placeholder='Employer Name'
+              onChange={this.handleChange}
+            />
+            <input
+              className='quarry-employer-address'
+              type='text'
+              name='employerAddress1'
+              value={this.state.employerAddress1}
+              placeholder='Address'
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className='quarry-employer-dates-container'>
+            <input
+              className='quarry-employer-dates'
+              type='text'
+              name='employerDates1'
+              value={this.state.employerDates1}
+              placeholder='Dates Employed'
+              onChange={this.handleChange}
+            />
+            <input
+              className='quarry-employer-salary'
+              type='text'
+              name='employerSalary1'
+              value={this.state.employerSalary1}
+              placeholder='Salary'
+              onChange={this.handleChange}
+            />
+            <input
+              className='quarry-employer-position'
+              type='text'
+              name='employerPosition1'
+              value={this.state.employerPosition1}
+              placeholder='Position'
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className='quarry-employer-leaving-container'>
+            <input
+              className='quarry-employer-leaving'
+              placeholder='Reason For Leaving'
+              name='employerLeaving1'
+              value={this.state.employerLeaving1}
+              onChange={this.handleChange}
+            />
+          </div>
+          <hr></hr>
+          <div className='quarry-employer-name-container'>
+            <input
+              className='quarry-employer-name'
+              type='text'
+              name='employerName1'
+              value={this.state.employerName1}
+              placeholder='Employer Name'
+              onChange={this.handleChange}
+            />
+            <input
+              className='quarry-employer-address'
+              type='text'
+              name='employerAddress1'
+              value={this.state.employerAddress1}
+              placeholder='Address'
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className='quarry-employer-dates-container'>
+            <input
+              className='quarry-employer-dates'
+              type='text'
+              name='employerDates1'
+              value={this.state.employerDates1}
+              placeholder='Dates Employed'
+              onChange={this.handleChange}
+            />
+            <input
+              className='quarry-employer-salary'
+              type='text'
+              name='employerSalary1'
+              value={this.state.employerSalary1}
+              placeholder='Salary'
+              onChange={this.handleChange}
+            />
+            <input
+              className='quarry-employer-position'
+              type='text'
+              name='employerPosition1'
+              value={this.state.employerPosition1}
+              placeholder='Position'
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className='quarry-employer-leaving-container'>
+            <input
+              className='quarry-employer-leaving'
+              placeholder='Reason For Leaving'
+              name='employerLeaving1'
+              value={this.state.employerLeaving1}
+              onChange={this.handleChange}
+            />
+          </div>
+        </form>
       </div>
     )
   }
