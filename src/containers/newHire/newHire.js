@@ -53,10 +53,11 @@ class NewHire extends Component {
             </div>
           </div>
         </div>
-
-          <div className='quarry-app-section'>
+        {this.state.type === 'quarry' &&
+        <div className='quarry-app-section'>
           <QuarryApp />
-          </div>
+       </div>
+        }
       </div>
    
     )

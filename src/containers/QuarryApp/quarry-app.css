@@ -412,3 +412,142 @@ hr {
   margin-bottom: 5%;
   /* margin-right: 3%; */
 }
+
+.employment-references-quarry {
+  background-color: #ffff;
+  width: 60%;
+  height: 750px;
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.3);
+  padding: 3%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5%;
+}
+
+.quarry-reference-name-container {
+  display: flex;
+  flex-direction: row;
+  width:100%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3%;
+  margin-top: 3%;
+}
+
+.quarry-reference-name {
+  height: 50px;
+  width: 35%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-reference-business {
+  height: 50px;
+  width: 35%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-reference-address-container {
+  display: flex;
+  flex-direction: row;
+  width:100%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3%;
+}
+
+.quarry-reference-address {
+  height: 50px;
+  width: 55%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-reference-known {
+  height: 50px;
+  width: 15%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.employment-military-quarry {
+  background-color: #ffff;
+  width: 60%;
+  height: 275px;
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.3);
+  padding: 3%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5%;
+}
+
+.quarry-military-container {
+  display: flex;
+  flex-direction: column;
+  width:100%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3%;
+}
+
+
+
+.quarry-military {
+  height: 50px;
+  width: 73%;
+  margin-right: 3%;
+  padding-left: 2%;
+  margin-bottom: 3%;
+}
+
+.employment-authorization-quarry {
+  background-color: #ffff;
+  width: 60%;
+  height: 525px;
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.3);
+  padding: 3%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5%;
+}
+
+.quarry-signature {
+  margin-top: 5%;
+  height: 50px;
+  width: 40%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-signature-date {
+  height: 50px;
+  width: 15%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-submit {
+  display: block;
+  margin-top: 5%;
+  width:70%;
+  height: 50px;
+  border: none;
+  font-size: 30px;
+  /* background-color: #eb3045; */
+  border: 1px solid #eb3045;
+  color: #eb3045;
+}
+
+.quarry-submit:hover {
+  background-color: #eb3045;
+  color: #fff;
+}
+
+.submit-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}

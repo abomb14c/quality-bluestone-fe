@@ -485,6 +485,156 @@ componentDidMount() {
             />
           </div>
         </form>
+        <form className='employment-references-quarry'>
+          <legend className="quarry-legend">References</legend>
+          <p className='quarry-legend-sub'>Give Below The Names of Three Persons Not Related To You, Whom You have Known At Least One Year.</p>
+          <div className='quarry-reference-name-container'>
+            <input
+              className='quarry-reference-name'
+              placeholder='Name'
+              name='referenceName1'
+              value={this.state.referenceName1}
+              onChange={this.handleChange}
+            />
+            <input
+              className='quarry-reference-business'
+              placeholder='Business'
+              name='referenceBusiness1'
+              value={this.state.referenceBusiness1}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className='quarry-reference-address-container'>
+            <input
+              className='quarry-reference-address'
+              placeholder='Address'
+              name='referenceAddress1'
+              value={this.state.referenceAddress1}
+              onChange={this.handleChange}
+            />
+            <input
+              className='quarry-reference-known'
+              placeholder='Years Known'
+              name='referenceKnown1'
+              value={this.state.referenceKnown1}
+              onChange={this.handleChange}
+            />
+          </div>
+          <hr></hr>
+          <div className='quarry-reference-name-container'>
+            <input
+              className='quarry-reference-name'
+              placeholder='Name'
+              name='referenceName1'
+              value={this.state.referenceName1}
+              onChange={this.handleChange}
+            />
+            <input
+              className='quarry-reference-business'
+              placeholder='Business'
+              name='referenceBusiness1'
+              value={this.state.referenceBusiness1}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className='quarry-reference-address-container'>
+            <input
+              className='quarry-reference-address'
+              placeholder='Address'
+              name='referenceAddress1'
+              value={this.state.referenceAddress1}
+              onChange={this.handleChange}
+            />
+            <input
+              className='quarry-reference-known'
+              placeholder='Years Known'
+              name='referenceKnown1'
+              value={this.state.referenceKnown1}
+              onChange={this.handleChange}
+            />
+          </div>
+          <hr></hr>
+          <div className='quarry-reference-name-container'>
+            <input
+              className='quarry-reference-name'
+              placeholder='Name'
+              name='referenceName1'
+              value={this.state.referenceName1}
+              onChange={this.handleChange}
+            />
+            <input
+              className='quarry-reference-business'
+              placeholder='Business'
+              name='referenceBusiness1'
+              value={this.state.referenceBusiness1}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className='quarry-reference-address-container'>
+            <input
+              className='quarry-reference-address'
+              placeholder='Address'
+              name='referenceAddress1'
+              value={this.state.referenceAddress1}
+              onChange={this.handleChange}
+            />
+            <input
+              className='quarry-reference-known'
+              placeholder='Years Known'
+              name='referenceKnown1'
+              value={this.state.referenceKnown1}
+              onChange={this.handleChange}
+            />
+          </div>
+        </form>
+        <form className='employment-military-quarry'>
+          <legend className="quarry-legend">Military Service</legend>
+          <div className='quarry-military-container'>
+            <input
+              className='quarry-military'
+              placeholder='U.S. Military Service or Naval Service'
+              name='military'
+              value={this.state.military}
+              onChange={this.handleChange}
+            />
+            <input
+              className='quarry-military'
+              placeholder='Rank'
+              name='militaryRank'
+              value={this.state.militaryRank}
+              onChange={this.handleChange}
+            />
+          </div>
+        </form>
+        <form className='employment-authorization-quarry'>
+          <legend className="quarry-legend">Authorization</legend>
+          <p>"I certify that the facts in this application are true and complete to the best of my knowledge and understand that, if employed, falisified statements on this application shall be grounds for dismissal.
+            I authorize investigation of all statements contained herein and the references and employers listed above to give you any and all information concerning my previous employment and any pertinent information they may habe, person or otherwise, and release the company from all liability for any damage that may result from utilization of such information.
+            I also understand and agree that no representative of the company has any authority to enter into any agreement for employment for any specified period of time, or to make any agreement contrary to the foregoing, unless it is in writing and signed by an authorized company representative.
+            This waiver does not permit release or use of disability-related or medical information in a manner prohibited by the Americans with Disabilities Act (ADA) and other relevant federal and state laws."
+          </p>
+            <input
+              className='quarry-signature'
+              placeholder='Signature'
+              name='signature'
+              value={this.state.signature}
+              onChange={this.handleChange}
+            />
+            <input
+              className='quarry-signature-date'
+              placeholder='Date'
+              name='date'
+              value={this.state.date}
+              onChange={this.handleChange}
+            />
+            <div className='submit-container'>
+            <button 
+              className='quarry-submit'
+            >
+            Submit Application
+            </button>
+            </div>
+        </form>
       </div>
     )
   }
