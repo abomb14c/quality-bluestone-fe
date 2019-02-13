@@ -1,0 +1,15 @@
+.component-header-container {
+  height: 200px;
+  width: 100%;
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.3);
+  background-color: #fff;
+}
+
+.component-header-image {
+  height: 100%;
+  background-image: url('../../assets/qualitybluestone.gif');
+  /* background-size: cover; */
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+}

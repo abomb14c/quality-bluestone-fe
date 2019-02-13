@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
-// import { updateUser } from '../../actions/updateUser/updateUser';
+import { connect } from 'react-redux';
+import { updateUser } from '../../actions/updateUser/updateUser';
+import GoogleLogin from 'react-google-login';
 // import { fetchUser } from '../../apiCalls/apiCalls';
 // import './login-user.css';
 // import PropTypes from 'prop-types';
@@ -22,11 +23,17 @@ export class SignIn extends Component {
       [name]: value
     });
   };
+
+  responseGoogle = (response) => {
+    console.log(response);
+  }
   
   handleSubmit = async event => {
     event.preventDefault();
+    
     // const response = await fetchUser(this.state);
     // this.props.handleLogin({userId: response.id, username: response.username});
+    this.props.handleLogin({userId: Date.now(), username: this.state.username})
   }
 
   render() {
@@ -55,12 +62,12 @@ export class SignIn extends Component {
   }
 }
 
-// export const mapDispatchToProps = dispatch => ({
-//   handleLogin: (user) => dispatch(updateUser(user))
-// });
+export const mapDispatchToProps = dispatch => ({
+  handleLogin: (user) => dispatch(updateUser(user))
+});
 
 
-export default SignIn;
+export default connect(null, mapDispatchToProps)(SignIn);
 
 // LoginUser.propTypes = {
 //   handleLogin: PropTypes.func

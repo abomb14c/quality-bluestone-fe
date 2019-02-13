@@ -1,0 +1,553 @@
+.personal-info-quarry {
+  background-color: #ffff;
+  width: 60%;
+  height: 575px;
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.3);
+  /* margin-top: 5%; */
+  padding: 3%;
+  align-items: center;
+  justify-content: center;
+}
+
+.quarry-app-container {
+  width: 100%;
+  /* margin-top: 10%; */
+  /* margin-bottom: 10%; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.quarry-legend {
+  font-size: 30px;
+  margin-bottom: 3%;
+}
+
+.quarry-first-name {
+  height: 50px;
+  width: 30%;
+  padding-left: 2%;
+}
+
+.quarry-last-name {
+  height: 50px;
+  width: 40%;
+  margin-left: 3%;
+  padding-left: 2%;
+}
+.quarry-name-container {
+  display: flex;
+  flex-direction: row;
+  width:100%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3%;
+}
+
+.quarry-social-container {
+  display: flex;
+  flex-direction: row;
+  width:100%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3%;
+}
+
+.quarry-social {
+  width: 73%;
+  height: 50px;
+  padding-left: 2%;
+}
+
+.quarry-present-address-container {
+  display: flex;
+  flex-direction: row;
+  width:100%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3%;
+}
+
+.quarry-present-address {
+  height: 50px;
+  width: 73%;
+  padding-left: 2%;
+}
+
+.quarry-present-city-container {
+  display: flex;
+  flex-direction: row;
+  width:100%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3%;
+}
+
+.quarry-present-city {
+  height: 50px;
+  width: 40%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-present-state{
+  height: 50px;
+  width: 10%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-present-zip{
+  height: 50px;
+  width: 17%;
+  padding-left: 2%;
+}
+
+.employment-desired-quarry {
+  background-color: #ffff;
+  width: 60%;
+  height: 425px;
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.3);
+  /* margin-top: 5%; */
+  padding: 3%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5%;
+}
+
+.quarry-position-desired-container {
+  display: flex;
+  flex-direction: row;
+  width:100%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3%;
+}
+
+.quarry-position-desired {
+  height: 50px;
+  width: 30%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-start-date {
+  height: 50px;
+  width: 20%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-salary {
+  height: 50px;
+  width: 15%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-employed-container {
+  display: flex;
+  flex-direction: column;
+  width:100%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3%;
+}
+
+.quarry-employed {
+  height: 50px;
+  width: 71%;
+  margin-right: 3%;
+  margin-bottom: 3%;
+  padding-left: 2%;
+}
+
+.quarry-employed-contact {
+  height: 50px;
+  width: 71%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.employed-previous-container {
+  display: flex;
+  flex-direction: row;
+  width:100%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3%;
+}
+
+.quarry-employed-previous {
+  height: 50px;
+  width: 55%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-employed-previous-when {
+  height: 50px;
+  width: 13%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-phone-container {
+  display: flex;
+  flex-direction: column;
+  width:100%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3%;
+}
+
+.quarry-phone {
+  width: 73%;
+  height: 50px;
+  padding-left: 2%;
+  margin-bottom: 3%;
+}
+
+.quarry-reffered {
+  width: 73%;
+  height: 50px;
+  padding-left: 2%;
+  margin-bottom: 3%;
+}
+
+.employment-education-quarry {
+  background-color: #ffff;
+  width: 60%;
+  height: 350px;
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.3);
+  padding: 3%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5%;
+}
+
+.quarry-high-container {
+  display: flex;
+  flex-direction: row;
+  width:100%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3%;
+}
+
+.quarry-education-high-school {
+  height: 50px;
+  width: 25%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-education-high-attended {
+  height: 50px;
+  width: 25%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-education-high-graduate {
+  height: 50px;
+  width: 17%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-college-container {
+  display: flex;
+  flex-direction: row;
+  width:100%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3%;
+}
+
+.quarry-education-college {
+  height: 50px;
+  width: 25%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-education-college-attended {
+  height: 50px;
+  width: 25%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-education-college-graduate {
+  height: 50px;
+  width: 17%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-other-container {
+  display: flex;
+  flex-direction: row;
+  width:100%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3%;
+}
+
+.quarry-education-other {
+  height: 50px;
+  width: 25%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-education-other-attended {
+  height: 50px;
+  width: 25%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-education-other-graduate {
+  height: 50px;
+  width: 17%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.employment-employer-quarry {
+  background-color: #ffff;
+  width: 60%;
+  height: 1250px;
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.3);
+  padding: 3%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5%;
+}
+
+.quarry-legend-sub {
+  color: #eb3045;
+  margin-bottom: 5%;
+}
+
+.quarry-employer-name-container {
+  display: flex;
+  flex-direction: row;
+  width:100%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3%;
+}
+
+.quarry-employer-name {
+  height: 50px;
+  width: 35%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-employer-address {
+  height: 50px;
+  width: 35%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-employer-dates-container {
+  display: flex;
+  flex-direction: row;
+  width:100%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3%;
+}
+
+.quarry-employer-dates {
+  height: 50px;
+  width: 35%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-employer-salary {
+  height: 50px;
+  width: 14.8%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-employer-position {
+  height: 50px;
+  width: 17.5%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-employer-leaving {
+  height: 50px;
+  width: 73%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-employer-leaving-container {
+  display: flex;
+  flex-direction: row;
+  width:100%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3%;
+}
+
+hr {
+  width: 80%;
+  background-color:#c5c5c5;
+  border: none;
+  height: 1px;
+  padding-right: 3%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  /* margin-right: 3%; */
+}
+
+.employment-references-quarry {
+  background-color: #ffff;
+  width: 60%;
+  height: 750px;
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.3);
+  padding: 3%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5%;
+}
+
+.quarry-reference-name-container {
+  display: flex;
+  flex-direction: row;
+  width:100%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3%;
+  margin-top: 3%;
+}
+
+.quarry-reference-name {
+  height: 50px;
+  width: 35%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-reference-business {
+  height: 50px;
+  width: 35%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-reference-address-container {
+  display: flex;
+  flex-direction: row;
+  width:100%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3%;
+}
+
+.quarry-reference-address {
+  height: 50px;
+  width: 55%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-reference-known {
+  height: 50px;
+  width: 15%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.employment-military-quarry {
+  background-color: #ffff;
+  width: 60%;
+  height: 275px;
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.3);
+  padding: 3%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5%;
+}
+
+.quarry-military-container {
+  display: flex;
+  flex-direction: column;
+  width:100%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3%;
+}
+
+
+
+.quarry-military {
+  height: 50px;
+  width: 73%;
+  margin-right: 3%;
+  padding-left: 2%;
+  margin-bottom: 3%;
+}
+
+.employment-authorization-quarry {
+  background-color: #ffff;
+  width: 60%;
+  height: 525px;
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.3);
+  padding: 3%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5%;
+}
+
+.quarry-signature {
+  margin-top: 5%;
+  height: 50px;
+  width: 40%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-signature-date {
+  height: 50px;
+  width: 15%;
+  margin-right: 3%;
+  padding-left: 2%;
+}
+
+.quarry-submit {
+  display: block;
+  margin-top: 5%;
+  width:70%;
+  height: 50px;
+  border: none;
+  font-size: 30px;
+  /* background-color: #eb3045; */
+  border: 1px solid #eb3045;
+  color: #eb3045;
+}
+
+.quarry-submit:hover {
+  background-color: #eb3045;
+  color: #fff;
+}
+
+.submit-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}

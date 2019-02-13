@@ -9,6 +9,10 @@ import { createStore } from 'redux'
 import rootReducer from '../src/reducers';
 
 
+import config from './aws-exports';
+import Amplify from 'aws-amplify';
+Amplify.configure(config)
+
 const devTools = 
 window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 const store = createStore(rootReducer, devTools);
