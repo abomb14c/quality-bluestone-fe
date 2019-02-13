@@ -1,0 +1,14 @@
+{
+    "providers": {
+        "awscloudformation": {
+            "AuthRoleName": "qualitybluestonefe-20190206112644-authRole",
+            "UnauthRoleArn": "arn:aws:iam::213216606848:role/qualitybluestonefe-20190206112644-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::213216606848:role/qualitybluestonefe-20190206112644-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "qualitybluestonefe-20190206112644-deployment",
+            "UnauthRoleName": "qualitybluestonefe-20190206112644-unauthRole",
+            "StackName": "qualitybluestonefe-20190206112644",
+            "StackId": "arn:aws:cloudformation:us-east-1:213216606848:stack/qualitybluestonefe-20190206112644/df4360d0-2a3c-11e9-b222-0e348661d726"
+        }
+    }
+}
