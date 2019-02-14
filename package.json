@@ -5,6 +5,7 @@
   "dependencies": {
     "amplify": "0.0.11",
     "aws": "0.0.3-2",
+    "aws-amplify": "^1.1.19",
     "i": "^0.3.6",
     "npm": "^6.5.0",
     "react": "^16.5.2",
