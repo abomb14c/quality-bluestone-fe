@@ -6,11 +6,25 @@ import { connect } from 'react-redux';
 import SignInModal from '../SignInModal/SignInModal';
 import Home from '../../containers/Home/Home';
 import { mapDispatchToProps } from '../../containers/SignIn/SignIn';
-import NewHire from '../../containers/newHire/NewHire';
+import NewHire from '../../containers/newHire/newHire';
 import {Footer} from '../Footer/Footer';
 
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isAuthenticated: false
+    };
+  }
+
+  userHasAuthenticated = authenticated => {
+    this.setState({ isAuthenticated: authenticated })
+  }
+
+
+
   render() {
     return (
       <div className="App">
