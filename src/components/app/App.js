@@ -11,6 +11,20 @@ import {Footer} from '../Footer/Footer';
 
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isAuthenticated: false
+    };
+  }
+
+  userHasAuthenticated = authenticated => {
+    this.setState({ isAuthenticated: authenticated })
+  }
+
+
+
   render() {
     return (
       <div className="App">

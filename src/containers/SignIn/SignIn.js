@@ -31,9 +31,6 @@ export class SignIn extends Component {
   
   handleSubmit = async event => {
     event.preventDefault();
-    console.log('Sending login')
-    console.log(this.state.username)
-    console.log(this.state.password)
     // const response = await fetchUser(this.state);
     // this.props.handleLogin({userId: response.id, username: response.username});
     // this.props.handleLogin({userId: Date.now(), username: this.state.username})
