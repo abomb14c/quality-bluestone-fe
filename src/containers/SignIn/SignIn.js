@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updateUser } from '../../actions/updateUser/updateUser';
-// import GoogleLogin from 'react-google-login';
-// import { fetchUser } from '../../apiCalls/apiCalls';
 // import './login-user.css';
 // import PropTypes from 'prop-types';
 import { Auth } from 'aws-amplify';
@@ -24,19 +22,14 @@ export class SignIn extends Component {
       [name]: value
     });
   };
-
-  // responseGoogle = (response) => {
-  //   console.log(response);
-  // }
   
   handleSubmit = async event => {
     event.preventDefault();
-    // const response = await fetchUser(this.state);
-    // this.props.handleLogin({userId: response.id, username: response.username});
-    // this.props.handleLogin({userId: Date.now(), username: this.state.username})
     try {
-      await Auth.signIn(this.state.username, this.state.password);
-      alert("Logged in");
+      const response = await Auth.signIn(this.state.username, this.state.password);
+
+      this.props.handleLogin({userId: response.username})
+      // alert("Logged in");
 
     } catch (e) {
       alert(e.message)

@@ -3,7 +3,7 @@ const intitialState = {};
 const userReducer = (state = intitialState, action) => {
   switch (action.type) {
     case "ADD_USER":
-      return { user_id: action.userId, username: action.username };
+      return { userId: action.userId };
     case "LOGOUT_USER":
       return {};
     default:

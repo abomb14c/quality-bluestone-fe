@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import SignInModal from '../SignInModal/SignInModal';
 import Home from '../../containers/Home/Home';
 import { mapDispatchToProps } from '../../containers/SignIn/SignIn';
-import NewHire from '../../containers/newHire/newHire';
+import NewHire from '../../containers/newHire/NewHire.js';
 import {Footer} from '../Footer/Footer';
 
 
@@ -19,9 +19,9 @@ class App extends Component {
     };
   }
 
-  userHasAuthenticated = authenticated => {
-    this.setState({ isAuthenticated: authenticated })
-  }
+  // userHasAuthenticated = authenticated => {
+  //   this.setState({ isAuthenticated: authenticated })
+  // }
 
 
 
@@ -33,7 +33,7 @@ class App extends Component {
           <Route
             exact path= "/login"
             render={() => (
-              this.props.user.user_id ?
+              this.props.user.userId ?
                 <Redirect to="/" /> :
                 <SignInModal />
             )}
@@ -41,7 +41,7 @@ class App extends Component {
           <Route
             exact path= "/"
             render={() => (
-              !this.props.user.user_id ?
+              !this.props.user.userId ?
                 <Redirect to="/login" /> :
                 <Home/>
             )}
@@ -59,6 +59,7 @@ class App extends Component {
 
 export const mapStateToProps = state => ({
   user: state.user,
+  brithday: state.brithday
 
 });
 
