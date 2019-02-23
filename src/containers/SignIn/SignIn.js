@@ -31,12 +31,9 @@ export class SignIn extends Component {
   
   handleSubmit = async event => {
     event.preventDefault();
-    // const response = await fetchUser(this.state);
-    // this.props.handleLogin({userId: response.id, username: response.username});
-    // this.props.handleLogin({userId: Date.now(), username: this.state.username})
     try {
       await Auth.signIn(this.state.username, this.state.password);
-      alert("Logged in");
+      handleLogin();
 
     } catch (e) {
       alert(e.message)
