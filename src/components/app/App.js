@@ -19,11 +19,6 @@ class App extends Component {
     };
   }
 
-  // userHasAuthenticated = authenticated => {
-  //   this.setState({ isAuthenticated: authenticated })
-  // }
-
-
 
   render() {
     return (

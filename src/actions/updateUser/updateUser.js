@@ -2,7 +2,7 @@ export const updateUser = user => {
   return {
     type: "ADD_USER",
     userId: user.userId,
-    // username: user.username
+
   };
 };
 
@@ -11,3 +11,11 @@ export const logOutUser = () => {
     type: "LOGOUT_USER"
   }
 }
+
+export const updateAdmin = admin => {
+  return {
+    type: "ADD_ADMIN",
+    admin: admin.userId,
+ 
+  };
+};
