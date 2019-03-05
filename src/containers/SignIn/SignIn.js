@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updateUser } from '../../actions/updateUser/updateUser';
-// import GoogleLogin from 'react-google-login';
-// import { fetchUser } from '../../apiCalls/apiCalls';
-// import './login-user.css';
-// import PropTypes from 'prop-types';
+import { updateUser, updateAdmin } from '../../actions/updateUser/updateUser';
 import { Auth } from 'aws-amplify';
 import './signin.css';
 
@@ -24,17 +20,24 @@ export class SignIn extends Component {
       [name]: value
     });
   };
-
-  // responseGoogle = (response) => {
-  //   console.log(response);
-  // }
   
   handleSubmit = async event => {
     event.preventDefault();
     try {
+<<<<<<< HEAD
       await Auth.signIn(this.state.username, this.state.password);
       handleLogin();
 
+=======
+      const response = await Auth.signIn(this.state.username, this.state.password);
+      const admin = '92e6ddba-adb9-4059-be64-034e10af8e79'
+      if(response.username === admin) {
+      this.props.handleAdmin({userId: response.username})
+      } else {
+      this.props.handleLogin({userId: response.username})
+  
+      }
+>>>>>>> 629ff2af96d280e0da31fa69854de2cf933160df
     } catch (e) {
       alert(e.message)
     }
@@ -67,7 +70,8 @@ export class SignIn extends Component {
 }
 
 export const mapDispatchToProps = dispatch => ({
-  handleLogin: (user) => dispatch(updateUser(user))
+  handleLogin: (user) => dispatch(updateUser(user)),
+  handleAdmin: (admin) => dispatch(updateAdmin(admin))
 });
 
 
