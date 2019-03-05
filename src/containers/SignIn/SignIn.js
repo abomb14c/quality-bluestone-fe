@@ -24,11 +24,6 @@ export class SignIn extends Component {
   handleSubmit = async event => {
     event.preventDefault();
     try {
-<<<<<<< HEAD
-      await Auth.signIn(this.state.username, this.state.password);
-      handleLogin();
-
-=======
       const response = await Auth.signIn(this.state.username, this.state.password);
       const admin = '92e6ddba-adb9-4059-be64-034e10af8e79'
       if(response.username === admin) {
@@ -37,7 +32,6 @@ export class SignIn extends Component {
       this.props.handleLogin({userId: response.username})
   
       }
->>>>>>> 629ff2af96d280e0da31fa69854de2cf933160df
     } catch (e) {
       alert(e.message)
     }
