@@ -37,7 +37,7 @@ export class SignIn extends Component {
       'email': this.state.username,
       'password': this.state.password
     };
-    axios.post('http://localhost:3001/authenticate', {headers: headers}).then((response) => {
+    axios.post('https://protected-everglades-28715.herokuapp.com/authenticate', {headers: headers}).then((response) => {
         console.log(response)
         console.log(response.data.auth_token)
       });
