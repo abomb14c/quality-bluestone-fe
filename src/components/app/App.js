@@ -6,8 +6,7 @@ import { connect } from 'react-redux';
 import { mapDispatchToProps } from '../../containers/SignIn/SignIn';
 import SignInModal from '../SignInModal/SignInModal';
 import Home from '../../containers/Home/Home';
-import { mapDispatchToProps } from '../../containers/SignIn/SignIn';
-import NewHire from '../../containers/newHire/NewHire.js';
+import newHire from '../../containers/newHire/newHire.js';
 import {Footer} from '../Footer/Footer';
 
 
@@ -44,7 +43,7 @@ class App extends Component {
             />  
             <Route
                 exact path= "/newEmployee"
-                component={NewHire} 
+                component={newHire} 
             />
             {/* Need to add in a route to catch all routes not caught by the switch and display 404 */}
           </div>
@@ -56,7 +55,7 @@ class App extends Component {
 
 export const mapStateToProps = state => ({
   user: state.user,
-  brithday: state.brithday
+  birthday: state.birthday
 
 });
 
