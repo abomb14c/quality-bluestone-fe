@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updateUser, updateAdmin } from '../../actions/updateUser/updateUser';
-import { Auth } from 'aws-amplify';
 import './signin.css';
 import axios from 'axios'
 
@@ -31,13 +30,14 @@ export class SignIn extends Component {
       // this.props.handleAdmin({userId: response.username})
       // } else {
       // this.props.handleLogin({userId: response.username})
+      // https://protected-everglades-28715.herokuapp.com/authenticate
     const headers = {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
       'email': this.state.username,
       'password': this.state.password
     };
-    axios.post('https://protected-everglades-28715.herokuapp.com/authenticate', {headers: headers}).then((response) => {
+    axios.post('http://localhost:3001/authenticate', {headers: headers}).then((response) => {
         console.log(response)
         console.log(response.data.auth_token)
       });
