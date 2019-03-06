@@ -37,11 +37,12 @@ export class SignIn extends Component {
       'email': this.state.username,
       'password': this.state.password
     };
-    axios.post('https://protected-everglades-28715.herokuapp.com/authenticate', {headers: headers}).then((response) => {
+    await axios.post('https://protected-everglades-28715.herokuapp.com/authenticate', {headers: headers}).then((response) => {
         console.log(response)
         console.log(response.data.auth_token)
+        this.props.handleLogin({userId: response.data.auth_token, role:response.data.role})
       });
-
+   
     }
     // } catch (e) {
     //   alert(e.message)
