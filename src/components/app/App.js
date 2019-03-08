@@ -40,6 +40,14 @@ class App extends Component {
                 <Redirect to="/login" /> :
                 <Home />
               )}
+            /> 
+            <Route
+              exact path= "/admin"
+              render={() => (
+                this.props.user.role === 'admin' ?
+                  <Redirect to="/home" /> :
+                  <Home />
+              )}
             />  
             {/* <Route
                 exact path= "/newEmployee"
