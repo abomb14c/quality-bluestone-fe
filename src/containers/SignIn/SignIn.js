@@ -31,8 +31,8 @@ export class SignIn extends Component {
       'password': this.state.password
     };
     await axios.post('https://protected-everglades-28715.herokuapp.com/authenticate', {headers: headers}).then((response) => {
-        console.log(response)
-        console.log(response.data.auth_token)
+        // console.log(response)
+        // console.log(response.data.auth_token)
         this.props.handleLogin({userId: response.data.auth_token, role:response.data.role})
       });
    

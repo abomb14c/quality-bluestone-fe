@@ -1,9 +1,12 @@
-import weatherKey from './../keys';
+import {weatherKey} from './../keys';
 
-export const fetchWeather = async() => {
-    const url = `i.openweathermap.org/data/2.5/weather?lat=41.9434&lon=-75.5997&APPID=${weatherKey}`;
+
+export const fetchWeather = async () => {
+    const url = `api.openweathermap.org/data/2.5/weather?zip=18847&APPID=${weatherKey}`;
+ 
     const response = await fetch(url);
+    console.log(response)
     const weatherData = await response.json();
     console.log(weatherData)
-    return weatherData;
+ 
 }
