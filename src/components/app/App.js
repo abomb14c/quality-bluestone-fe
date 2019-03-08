@@ -8,6 +8,7 @@ import SignInModal from '../SignInModal/SignInModal';
 import Home from '../../containers/Home/Home';
 // import newHire from '../../containers/newHire/newHire.js';
 import {Footer} from '../Footer/Footer';
+import Admin from '../Admin/Admin';
 
 
 class App extends Component {
@@ -38,7 +39,17 @@ class App extends Component {
             render={() => (
               !this.props.user.userId ?
                 <Redirect to="/login" /> :
-                <Home />
+                <Admin />
+              )}
+            /> 
+            <Route
+              exact path= "/admin"
+              render={() => (
+                !this.props.user.role === 'admin' ?
+                // <Redirect to = 'Admin /> :
+                  <Redirect to="/home" />:
+                  <Admin /> 
+        
               )}
             />  
             {/* <Route
