@@ -3,7 +3,9 @@ import React from 'react';
 import AdminWidget from './../../containers/AdminWidget/AdminWidget';
 import EmployeeWidget from './../../containers/EmployeeWidget/EmployeeWidget';
 import EmployeeFolders from '../../containers/EmployeeFolders/EmployeeFolders';
-import {connect} from 'react-redux'
+import BusinessWidget from '../../containers/BusinessWidget/BusinessWidget';
+import BusinessFolders from '../../containers/BusinessFolders/BusinessFolders';
+import {connect} from 'react-redux';
 import './admin.css';
 
 const Admin = (props) => {
@@ -14,18 +16,20 @@ const Admin = (props) => {
       <div className='header-container'>
         <div className='header-container-2'></div>
       </div>
-      {props.employees === false &&
+      {props.active === '' &&
       <div className='body-container'>
         <AdminWidget />
         <div className='folder-container'>
           <EmployeeWidget />
+          <BusinessWidget />
         </div>
       </div>
       }
-      {props.employees === true &&
-      
+      {props.active === 'employees' &&
           <EmployeeFolders />
-        
+      }
+      {props.active === 'files' &&
+          <BusinessFolders />
       }
     </div>
   )
@@ -33,7 +37,7 @@ const Admin = (props) => {
 
 
 export const mapStateToProps = state => ({
-  employees: state.employees
+  active: state.active
 })
 
 export default connect(mapStateToProps, null)(Admin); 
