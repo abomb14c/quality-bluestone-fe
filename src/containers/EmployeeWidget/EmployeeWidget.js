@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {fetchWeather} from '../../apiCalls/apiCalls';
-// import './admin-widget.css';
+// import {fetchWeather} from '../../apiCalls/apiCalls';
+import './employee-widget.css';
 
 class EmployeeWidget extends Component {
   constructor(props){
@@ -14,10 +14,16 @@ class EmployeeWidget extends Component {
   componentDidMount = async() => {
    
   }
+
+  
   render() {
     return (
-      <div className='widget-container'>
-      <p>admin widget with simple apis goes here</p>
+      <div className='employee-widget-container'>
+        <h5>Employees</h5>
+        <div 
+        className='employee-button'
+
+        ></div>
       </div>
     )
   }

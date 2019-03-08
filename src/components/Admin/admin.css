@@ -27,3 +27,9 @@
   /* margin-top: 5%; */
   padding: 3%;
 }
+
+.folder-container {
+  width: 50%;
+  padding-left: 5%;
+  display: flex;
+}
