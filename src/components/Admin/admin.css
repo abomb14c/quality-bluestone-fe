@@ -33,3 +33,7 @@
   padding-left: 5%;
   display: flex;
 }
+
+.admin-container-inactive {
+  display: none;
+}

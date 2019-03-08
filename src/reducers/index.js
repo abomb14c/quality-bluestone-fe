@@ -4,7 +4,7 @@ import AdminReducer from './adminReducer/AdminReducer';
 
 const rootReducer = combineReducers({
   user: userReducer,
-  employee: AdminReducer
+  employees: AdminReducer
 })
 
 export default rootReducer;
