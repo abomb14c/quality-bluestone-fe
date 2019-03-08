@@ -24,13 +24,6 @@ export class SignIn extends Component {
   
   handleSubmit = async event => {
     event.preventDefault();
-    // try {
-      // const response = await Auth.signIn(this.state.username, this.state.password);
-      // const admin = '92e6ddba-adb9-4059-be64-034e10af8e79'
-      // if(response.username === admin) {
-      // this.props.handleAdmin({userId: response.username})
-      // } else {
-      // this.props.handleLogin({userId: response.username})
     const headers = {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
