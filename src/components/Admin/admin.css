@@ -37,3 +37,13 @@
 .admin-container-inactive {
   display: none;
 }
+
+.employee-container {
+
+    display: flex;
+    height:100%;
+    width: 100%;
+    /* margin-top: 5%; */
+    padding: 3%;
+
+}

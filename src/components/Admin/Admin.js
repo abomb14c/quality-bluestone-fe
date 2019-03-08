@@ -2,15 +2,12 @@ import React from 'react';
 // import Header from '../Header/Header';
 import AdminWidget from './../../containers/AdminWidget/AdminWidget';
 import EmployeeWidget from './../../containers/EmployeeWidget/EmployeeWidget';
+import EmployeeFolders from '../../containers/EmployeeFolders/EmployeeFolders';
 import {connect} from 'react-redux'
 import './admin.css';
 
 const Admin = (props) => {
-  let adminContainer = 'body-container';
-  if (props.employees === true) {
-    adminContainer += 'admin-container-inactive';
-  }
- 
+
   return (
 
     <div className='admin-container'>
@@ -18,16 +15,18 @@ const Admin = (props) => {
         <div className='header-container-2'></div>
       </div>
       {props.employees === false &&
-      <div className={adminContainer}>
+      <div className='body-container'>
         <AdminWidget />
         <div className='folder-container'>
           <EmployeeWidget />
         </div>
       </div>
       }
-      {/* {props.employees === true &&
+      {props.employees === true &&
       
-      } */}
+          <EmployeeFolders />
+        
+      }
     </div>
   )
 }
