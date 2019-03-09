@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updateUser, updateAdmin } from '../../actions/updateUser/updateUser';
-import { Auth } from 'aws-amplify';
 import './signin.css';
 import axios from 'axios'
 
