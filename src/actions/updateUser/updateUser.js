@@ -2,6 +2,7 @@ export const updateUser = user => {
   return {
     type: "ADD_USER",
     userId: user.userId,
+    role: user.role
 
   };
 };
@@ -16,6 +17,6 @@ export const updateAdmin = admin => {
   return {
     type: "ADD_ADMIN",
     admin: admin.userId,
- 
+    role: admin.role
   };
 };

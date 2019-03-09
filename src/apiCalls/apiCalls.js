@@ -1,14 +1,12 @@
-var GoogleAuth; // Google Auth object.
-function initClient() {
-  gapi.client.init({
-      'apiKey': 'YOUR_API_KEY',
-      'clientId': 'YOUR_CLIENT_ID',
-      'scope': 'https://www.googleapis.com/auth/drive.metadata.readonly',
-      'discoveryDocs': ['https://www.googleapis.com/discovery/v1/apis/drive/v3/rest']
-  }).then(function () {
-      GoogleAuth = gapi.auth2.getAuthInstance();
+import {weatherKey} from './../keys';
 
-      // Listen for sign-in state changes.
-      GoogleAuth.isSignedIn.listen(updateSigninStatus);
-  });
+
+export const fetchWeather = async () => {
+    const url = `api.openweathermap.org/data/2.5/weather?zip=18847&APPID=${weatherKey}`;
+ 
+    const response = await fetch(url);
+    console.log(response)
+    const weatherData = await response.json();
+    console.log(weatherData)
+ 
 }

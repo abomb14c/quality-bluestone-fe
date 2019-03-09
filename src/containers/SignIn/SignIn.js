@@ -23,25 +23,18 @@ export class SignIn extends Component {
   
   handleSubmit = async event => {
     event.preventDefault();
-    // try {
-      // const response = await Auth.signIn(this.state.username, this.state.password);
-      // const admin = '92e6ddba-adb9-4059-be64-034e10af8e79'
-      // if(response.username === admin) {
-      // this.props.handleAdmin({userId: response.username})
-      // } else {
-      // this.props.handleLogin({userId: response.username})
-      // https://protected-everglades-28715.herokuapp.com/authenticate
     const headers = {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
       'email': this.state.username,
       'password': this.state.password
     };
-    axios.post('http://localhost:3001/authenticate', {headers: headers}).then((response) => {
-        console.log(response)
-        console.log(response.data.auth_token)
+    await axios.post('https://protected-everglades-28715.herokuapp.com/authenticate', {headers: headers}).then((response) => {
+        // console.log(response)
+        // console.log(response.data.auth_token)
+        this.props.handleLogin({userId: response.data.auth_token, role:response.data.role})
       });
-
+   
     }
     // } catch (e) {
     //   alert(e.message)

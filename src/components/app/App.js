@@ -6,9 +6,9 @@ import { connect } from 'react-redux';
 import { mapDispatchToProps } from '../../containers/SignIn/SignIn';
 import SignInModal from '../SignInModal/SignInModal';
 import Home from '../../containers/Home/Home';
-import newHire from '../../containers/newHire/newHire.js';
-import uploadFiles from '../../containers/uploadFiles/uploadFiles'
-// import {Footer} from '../Footer/Footer';
+// import newHire from '../../containers/newHire/newHire.js';
+import {Footer} from '../Footer/Footer';
+import Admin from '../Admin/Admin';
 
 
 class App extends Component {
@@ -39,17 +39,23 @@ class App extends Component {
             render={() => (
               !this.props.user.userId ?
                 <Redirect to="/login" /> :
-                <Home />
+                <Admin />
+              )}
+            /> 
+            <Route
+              exact path= "/admin"
+              render={() => (
+                !this.props.user.role === 'admin' ?
+                // <Redirect to = 'Admin /> :
+                  <Redirect to="/home" />:
+                  <Admin /> 
+        
               )}
             />  
-            <Route
+            {/* <Route
                 exact path= "/newEmployee"
                 component={newHire} 
-            />
-            <Route
-              exact path= "/uploadFiles"
-              component={uploadFiles}
-            />
+            /> */}
             {/* Need to add in a route to catch all routes not caught by the switch and display 404 */}
           </div>
         </Switch>
