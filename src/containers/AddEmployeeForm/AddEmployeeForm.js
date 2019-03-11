@@ -25,12 +25,18 @@ class AddEmployeeForm extends Component {
       [name]: value
     });
   };
-  
+
+  handleSubmit = () => {
+    // api call goes here
+  }
 
   render() {
     return (
       <div className='add-employee-form-container'>
-        <form className='add-employee-form'>
+        <form 
+          className='add-employee-form'
+          onSubmit={this.handleSubmit}
+        >
           <label>Add A New User</label>
           <div className='add-user-name-container'>
             <input
