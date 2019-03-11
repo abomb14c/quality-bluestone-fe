@@ -9,6 +9,7 @@ import Home from '../../containers/Home/Home';
 // import newHire from '../../containers/newHire/newHire.js';
 import {Footer} from '../Footer/Footer';
 import Admin from '../Admin/Admin';
+import UploadFiles from '../../containers/uploadFiles/uploadFiles'
 
 
 class App extends Component {
@@ -52,10 +53,10 @@ class App extends Component {
         
               )}
             />  
-            {/* <Route
-                exact path= "/newEmployee"
-                component={newHire} 
-            /> */}
+            <Route
+                exact path= "/upload_files"
+                component={UploadFiles} 
+            />
             {/* Need to add in a route to catch all routes not caught by the switch and display 404 */}
           </div>
         </Switch>
