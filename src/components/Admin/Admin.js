@@ -18,7 +18,7 @@ const Admin = (props) => {
       </div>
       {props.active === '' &&
       <div className='body-container'>
-        <AdminWidget />
+        {/* <AdminWidget /> */}
         <div className='folder-container'>
           <EmployeeWidget />
           <BusinessWidget />
