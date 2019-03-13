@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import { connect } from 'http2';
 
 import {connect} from 'react-redux';
+import './add-folders.css';
 
 class AddFolders extends Component {
   constructor(props){
@@ -31,11 +32,12 @@ class AddFolders extends Component {
 
   render() {
     return (
-      <div>
+      <div className='add-folder-container'>
         <form 
           onSubmit={this.handleSubmit}
           className='add-folder-form'
         >
+        <label>Add New Folder</label>
           <input
             className="folder-name"
             type="text"
