@@ -21,12 +21,20 @@ class AddFolders extends Component {
   };
 
   handleSubmit = async(event) => {
-    let fileInfo = {
-      fileName: this.state.FileName,
-      role: this.state.role 
-    }
-
-    // api call here with fileInfo as an arg for body
+    // let fileInfo = {
+    //   folderName: this.state.folderName,
+    //   role: this.state.role 
+    // }
+    const headers = {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Authorization': this.props.apiKey,
+      'folderName': this.state.folderName,
+      'role': this.props.role
+    };
+    await axios.post(`${apiUrl}` + `add_folder`, {headers: headers}).then((response) => {
+        console.log(response)
+      });
   }
   
 
@@ -54,7 +62,8 @@ class AddFolders extends Component {
 }
 
 export const mapStateToProps = state => ({
-  role: state.user.role
+  role: state.user.role,
+  apiKey: state.user.apiKey
 })
 
 export default connect(mapStateToProps,null)(AddFolders);

@@ -10,3 +10,5 @@
 //     console.log(weatherData)
  
 // }
+// https://protected-everglades-28715.herokuapp.com/
+export const apiUrl = 'http://localhost:3001/'
