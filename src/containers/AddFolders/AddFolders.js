@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 
 import {connect} from 'react-redux';
 import './add-folders.css';
+import axios from 'axios'
+import { apiUrl } from '../../apiCalls/apiCalls';
 
 class AddFolders extends Component {
   constructor(props){
