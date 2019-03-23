@@ -31,12 +31,24 @@ export class SignIn extends Component {
       'password': this.state.password
     };
     await axios.post(`${apiUrl}` + `authenticate`, {headers: headers}).then((response) => {
-        // console.log(response)
-        console.log(response.data.auth_token)
-        this.props.handleLogin({userId: this.state.username, apiKey: response.data.auth_token, role: response.data.role})
+        // this.props.handleLogin({userId: this.state.username, apiKey: response.data.auth_token, role: response.data.role})
+        this.handleSuccess(response)
+      }).catch((error) => {
+        this.handleFailure()
       });
-   
-    }
+
+   }
+
+  handleSuccess = (response) => {
+    sessionStorage.setItem('role', response.role)
+    sessionStorage.setItem('auth-token',  response.data.auth_token)
+    sessionStorage.setItem('userID', this.state.username)
+    console.log(sessionStorage.getItem('auth-token'))
+  }
+
+   handleFailure = () => {
+     console.log('User login failed.')
+   }
     // } catch (e) {
     //   alert(e.message)
     // }
@@ -75,6 +87,11 @@ export const mapDispatchToProps = dispatch => ({
 
 export default connect(null, mapDispatchToProps)(SignIn);
 
+// export const mapStateToProps = state => ({
+//   role: state.user.role,
+//   userId: state.user.userId,
+//   apiKey: state.user.apiKey
+// })
 // LoginUser.propTypes = {
 //   handleLogin: PropTypes.func
 // };

@@ -29,22 +29,19 @@ class AddEmployeeForm extends Component {
 
   handleSubmit = async event => {
     event.preventDefault();
-    console.log(this.props.apiKey)
-    console.log(this.props.username)
-    console.log(this.props.role)
     const headers = {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
-      'Authorization': this.props.apiKey,
-      'email': this.state.username,
-      'password': this.state.password,
-      'first_name': this.state.firstName,
-      'last_name': this.state.lastName,
-      'street': this.state.address,
-      'state': this.state.state,
-      'zip': this.state.zip,
-      'phone_number': this.state.phone,
-      'role': this.state.role
+      'Authorization':  this.props.apiKey,
+      'email':          this.state.username,
+      'password':       this.state.password,
+      'first_name':     this.state.firstName,
+      'last_name':      this.state.lastName,
+      'street':         this.state.address,
+      'state':          this.state.state,
+      'zip':            this.state.zip,
+      'phone_number':   this.state.phone,
+      'role':           this.state.role
     };
     await axios.post(`${apiUrl}` + `create_user`, {headers: headers}).then((response) => {
         console.log(response)

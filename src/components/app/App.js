@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import { mapDispatchToProps } from '../../containers/SignIn/SignIn';
 import SignInModal from '../SignInModal/SignInModal';
-import Home from '../../containers/Home/Home';
+// import Home from '../../containers/Home/Home';
 // import newHire from '../../containers/newHire/newHire.js';
 import {Footer} from '../Footer/Footer';
 import Admin from '../Admin/Admin';
