@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { updateUser, updateAdmin } from '../../actions/updateUser/updateUser';
 import './signin.css';
@@ -11,7 +12,8 @@ export class SignIn extends Component {
 
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      loggedIn: false
     };
   }
 
@@ -34,26 +36,30 @@ export class SignIn extends Component {
         // this.props.handleLogin({userId: this.state.username, apiKey: response.data.auth_token, role: response.data.role})
         this.handleSuccess(response)
       }).catch((error) => {
-        this.handleFailure()
+        this.handleFailure(error)
       });
 
    }
 
   handleSuccess = (response) => {
-    sessionStorage.setItem('role', response.role)
-    sessionStorage.setItem('auth-token',  response.data.auth_token)
-    sessionStorage.setItem('userID', this.state.username)
-    console.log(sessionStorage.getItem('auth-token'))
+    sessionStorage.setItem('role', response.data.role);
+    sessionStorage.setItem('auth-token',  response.data.auth_token);
+    sessionStorage.setItem('userID', this.state.username);
+    this.setState({'loggedIn': true});
   }
 
-   handleFailure = () => {
-     console.log('User login failed.')
+   handleFailure = (error) => {
+     console.log('User login failed.');
+     console.log(error);
    }
     // } catch (e) {
     //   alert(e.message)
     // }
 
   render() {
+    if (this.state.loggedIn === true) {
+      return <Redirect to='/admin' />
+    }
     return (
       <form className="login-form" onSubmit={this.handleSubmit}>
         <h3 className="login-title">Login</h3>
@@ -75,6 +81,7 @@ export class SignIn extends Component {
         />
         <button className="login-button">Login</button>
       </form>
+      
     );
   }
 }

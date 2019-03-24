@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import { mapDispatchToProps } from '../../containers/SignIn/SignIn';
 import SignInModal from '../SignInModal/SignInModal';
-// import Home from '../../containers/Home/Home';
+import Home from '../../containers/Home/Home';
 // import newHire from '../../containers/newHire/newHire.js';
 import {Footer} from '../Footer/Footer';
 import Admin from '../Admin/Admin';
@@ -27,36 +27,43 @@ class App extends Component {
       <div className="App">
         <Switch>
           <div className="body">
-          <Route
-            exact path= "/login"
-            render={() => (
-              this.props.user.userId ?
-                <Redirect to="/" /> :
-                <SignInModal />
-            )}
-          />
-          <Route
-            exact path= "/"
-            render={() => (
-              !this.props.user.userId ?
-                <Redirect to="/login" /> :
-                <Admin />
-              )}
-            /> 
             <Route
-              exact path= "/admin"
+              exact path= "/login"
               render={() => (
-                !this.props.user.role === 'admin' ?
-                // <Redirect to = 'Admin /> :
-                  <Redirect to="/home" />:
-                  <Admin /> 
-        
+                sessionStorage.getItem('userID') ?
+                  <Redirect to="/" /> :
+                  <SignInModal />
               )}
-            />  
-            <Route
-                exact path= "/upload_files"
-                component={UploadFiles} 
             />
+              <Route
+                exact path= "/admin"
+                render={() => (
+                  !sessionStorage.getItem('role') === 'admin' ?
+                  // <Redirect to = 'Admin /> :
+                    <Redirect to="/home" /> :
+                    <Admin /> 
+                  )}
+              />  
+              <Route
+                  exact path= "/upload_files"
+                  component={UploadFiles} 
+              />
+              <Route
+                exact path='/home'
+                render={() => (
+                  <Home />
+                )}
+              />
+              <Route
+                exact path= "/"
+                render={() => (
+                  sessionStorage.getItem('userID') === null ?
+                    <Redirect to="/login" /> :
+                    <Redirect to="/home" />
+                  )}
+              /> 
+              {/* { sessionStorage.getItem('userID') === null ? <SignInModal /> : <Redirect to='/home' /> }
+              { sessionStorage.getItem('role') === 'admin' || sessionStorage.getItem('role') === 'accountant' ? <Redirect to='/admin'/> : <Redirect to='/home'/>} */}
             {/* Need to add in a route to catch all routes not caught by the switch and display 404 */}
           </div>
         </Switch>
@@ -65,10 +72,10 @@ class App extends Component {
   }
 }
 
-export const mapStateToProps = state => ({
-  user: state.user,
-  birthday: state.birthday
+// export const mapStateToProps = state => ({
+//   user: state.user,
+//   birthday: state.birthday
 
-});
+// });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
+export default withRouter(App);

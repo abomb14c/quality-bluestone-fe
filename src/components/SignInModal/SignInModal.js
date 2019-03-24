@@ -2,7 +2,8 @@ import React from 'react';
 import Header from '../Header/Header';
 import SignIn from '../../containers/SignIn/SignIn';
 import './signinmodal.css';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+
 
 const SignInModal = () => {
   return (
@@ -24,4 +25,4 @@ const SignInModal = () => {
   )
 }
 
-export default SignInModal;
+export default withRouter(SignInModal);
