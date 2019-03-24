@@ -29,24 +29,29 @@ class AddEmployeeForm extends Component {
 
   handleSubmit = async event => {
     event.preventDefault();
-    const headers = {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Authorization':  this.props.apiKey,
-      'email':          this.state.username,
+    const formData = {
+      'email':          this.state.email,
       'password':       this.state.password,
       'first_name':     this.state.firstName,
       'last_name':      this.state.lastName,
+      'city':           this.state.city,
       'street':         this.state.address,
       'state':          this.state.state,
-      'zip':            this.state.zip,
+      'zip_code':       this.state.zip,
       'phone_number':   this.state.phone,
-      'role':           this.state.role
+      'role':           this.state.role.toLowerCase()
+    }
+    const header_info = {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': '*',
+      'Access-Token': sessionStorage.getItem('authToken')
     };
-    await axios.post(`${apiUrl}` + `create_user`, {headers: headers}).then((response) => {
+    await axios.post(`${apiUrl}create_user`, formData, {headers: header_info}).then((response) => {
         console.log(response)
-      })
-      // .catch((error) => { console.log(error)});
+      }).catch((error) => { 
+        console.log(error)
+      });
 
   }
 
@@ -145,8 +150,8 @@ class AddEmployeeForm extends Component {
 
 export default AddEmployeeForm;
 
-export const mapStateToProps = state => ({
-  role: state.user.role,
-  userId: state.user.userId,
-  apiKey: state.user.apiKey
-})
+// export const mapStateToProps = state => ({
+//   role: state.user.role,
+//   userId: state.user.userId,
+//   apiKey: state.user.apiKey
+// })

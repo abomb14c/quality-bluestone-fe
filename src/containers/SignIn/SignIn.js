@@ -26,13 +26,15 @@ export class SignIn extends Component {
   
   handleSubmit = async event => {
     event.preventDefault();
-    const headers = {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
+    const formData = {
       'email': this.state.username,
       'password': this.state.password
+    }
+    const header_info = {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
     };
-    await axios.post(`${apiUrl}` + `authenticate`, {headers: headers}).then((response) => {
+    await axios.post(`${apiUrl}authenticate`, formData, {headers: header_info}).then((response) => {
         // this.props.handleLogin({userId: this.state.username, apiKey: response.data.auth_token, role: response.data.role})
         this.handleSuccess(response)
       }).catch((error) => {
@@ -43,7 +45,7 @@ export class SignIn extends Component {
 
   handleSuccess = (response) => {
     sessionStorage.setItem('role', response.data.role);
-    sessionStorage.setItem('auth-token',  response.data.auth_token);
+    sessionStorage.setItem('authToken',  response.data.auth_token);
     sessionStorage.setItem('userID', this.state.username);
     this.setState({'loggedIn': true});
   }

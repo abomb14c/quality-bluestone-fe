@@ -23,23 +23,22 @@ class AddFolders extends Component {
   };
 
   handleSubmit = async(event) => {
-    // let fileInfo = {
-    //   folderName: this.state.folderName,
-    //   role: this.state.role 
-    // }
-    const headers = {
+    const formData = {
+      'folderName': this.state.folderName,
+      'role':       sessionStorage.getItem('role')
+    }
+    const header_info = {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
-      'Authorization': this.props.apiKey,
-      'folderName': this.state.folderName,
-      'role': this.props.role
+      'Access-Token': sessionStorage.getItem('authToken')
     };
-    await axios.post(`${apiUrl}` + `add_folder`, {headers: headers}).then((response) => {
-        console.log(response)
+    await axios.post(`${apiUrl}add_folder`, formData, {headers: header_info}).then((response) => {
+        console.log(response);
+      }).catch((error) => {
+        console.log(error);
       });
   }
   
-
   render() {
     return (
       <div className='add-folder-container'>

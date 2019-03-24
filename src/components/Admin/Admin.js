@@ -1,6 +1,6 @@
 import React from 'react';
 // import Header from '../Header/Header';
-import AdminWidget from './../../containers/AdminWidget/AdminWidget';
+// import AdminWidget from './../../containers/AdminWidget/AdminWidget';
 import EmployeeWidget from './../../containers/EmployeeWidget/EmployeeWidget';
 import EmployeeFolders from '../../containers/EmployeeFolders/EmployeeFolders';
 import BusinessWidget from '../../containers/BusinessWidget/BusinessWidget';
@@ -9,6 +9,7 @@ import {connect} from 'react-redux';
 import './admin.css';
 
 const Admin = (props) => {
+
 
   return (
 

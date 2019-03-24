@@ -31,22 +31,24 @@ class App extends Component {
               exact path= "/login"
               render={() => (
                 sessionStorage.getItem('userID') ?
-                  <Redirect to="/" /> :
+                  <Redirect to="/home" /> :
                   <SignInModal />
               )}
             />
               <Route
                 exact path= "/admin"
                 render={() => (
-                  !sessionStorage.getItem('role') === 'admin' ?
+                  (!sessionStorage.getItem('role') === 'admin' && !sessionStorage.getItem('role') === 'accountant') ?
                   // <Redirect to = 'Admin /> :
                     <Redirect to="/home" /> :
                     <Admin /> 
-                  )}
+                )}
               />  
               <Route
-                  exact path= "/upload_files"
-                  component={UploadFiles} 
+                exact path= "/upload_files"
+                render={() => (
+                  <UploadFiles />
+                )}
               />
               <Route
                 exact path='/home'
