@@ -1,17 +1,17 @@
 import React from 'react';
 import { FolderWidget } from '../../components/FolderWidget/FolderWidget';
-
+import './folder-container.css';
 
 export const FolderContainer = (props) => {
   const {folders} = props;
-  console.log(folders)
+  // console.log(folders)
 
   const displayFolders = folders.map(folder => {
-    return(<FolderWidget {...folder}/>)
+    return(<FolderWidget folder={folder}/>)
   })
 
   return (
-    <div>
+    <div className='business-folder-container'>
       {displayFolders}
     </div>
   )

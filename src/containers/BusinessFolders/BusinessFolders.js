@@ -40,16 +40,18 @@ class BusinessFolders extends Component {
       console.log(data[0])
       let folderNames = data.map((folder)=> {
         return(
-          <li key={folder.name}> {folder.name} </li>
+          folder.name
         )
       })
-      this.setState({folders: folderNames})
+      this.setState({folders: [...folderNames]})
+      console.log(this.state)
     }).catch((error) => {
       console.log(error)
     })
   }
 
   render() {
+    let folders = this.state.folders
     return(
       <div className='business-container'>
         {!this.state.active &&
@@ -65,9 +67,8 @@ class BusinessFolders extends Component {
         {this.state.active === true && 
           <AddFolders />
         }
-        <div>
-        {this.state.folders}
-          <FolderContainer  folders={this.state.folders}/>
+        <div className='existing-folders'>
+        <FolderContainer  folders={folders}/>
         </div>
       </div>
     )

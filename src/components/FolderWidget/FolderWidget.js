@@ -1,9 +1,23 @@
-import React from 'react';
+import React, {Component} from 'react';
+import './folder-widget.css';
+// import './business-folders.css';
 
-export const FolderWidget = (folder) => {
-  console.log(folder)
-  return (
-    <div>
-    </div>
-  )
+export class FolderWidget extends Component {
+  constructor(props){
+  super(props)
+
+  this.state = {
+
+  }
+  }
+
+  render(){
+    return (
+      <div className='folder'>
+        <p className='folder-title'>{this.props.folder}</p>
+        <div className='open-button'>
+        </div>
+      </div>
+    )
+  }
 }
