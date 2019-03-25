@@ -6,6 +6,8 @@ import './business-folders.css';
 import AddFolders from '../AddFolders/AddFolders';
 import Axios from 'axios';
 import { apiUrl } from '../../apiCalls/apiCalls';
+import {FolderContainer}from '../FolderContainer/FolderContainer';
+
 
 class BusinessFolders extends Component {
   constructor(props){
@@ -65,6 +67,7 @@ class BusinessFolders extends Component {
         }
         <div>
         {this.state.folders}
+          <FolderContainer  folders={this.state.folders}/>
         </div>
       </div>
     )
