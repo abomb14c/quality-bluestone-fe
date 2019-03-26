@@ -101,6 +101,6 @@ export default connect(null, mapDispatchToProps)(SignIn);
 //   userId: state.user.userId,
 //   apiKey: state.user.apiKey
 // })
-// LoginUser.propTypes = {
+  // LoginUser.propTypes = {
 //   handleLogin: PropTypes.func
 // };

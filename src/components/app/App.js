@@ -3,14 +3,14 @@ import './App.css';
 import { Route, Redirect, Switch, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { mapDispatchToProps } from '../../containers/SignIn/SignIn';
+// import { mapDispatchToProps } from '../../containers/SignIn/SignIn';
 import SignInModal from '../SignInModal/SignInModal';
 import Home from '../../containers/Home/Home';
 // import newHire from '../../containers/newHire/newHire.js';
-import {Footer} from '../Footer/Footer';
+// import {Footer} from '../Footer/Footer';
 import Admin from '../Admin/Admin';
 import UploadFiles from '../../containers/uploadFiles/uploadFiles'
-
+import OpenFolder from '../../containers/OpenFolder/OpenFolder';
 
 class App extends Component {
   constructor(props) {
@@ -67,6 +67,18 @@ class App extends Component {
               {/* { sessionStorage.getItem('userID') === null ? <SignInModal /> : <Redirect to='/home' /> }
               { sessionStorage.getItem('role') === 'admin' || sessionStorage.getItem('role') === 'accountant' ? <Redirect to='/admin'/> : <Redirect to='/home'/>} */}
             {/* Need to add in a route to catch all routes not caught by the switch and display 404 */}
+            <Route
+            exact path= "/open-folder"
+            component={OpenFolder} 
+            />
+            <Route
+            exact path= "/open-folder"
+            render={() => (
+              this.props.folder.length ?
+                <Redirect to="/admin" /> :
+                <OpenFolder />
+            )}
+          />
           </div>
         </Switch>
       </div>
@@ -74,10 +86,8 @@ class App extends Component {
   }
 }
 
-// export const mapStateToProps = state => ({
-//   user: state.user,
-//   birthday: state.birthday
+export const mapStateToProps = state => ({
+  folder: state.folder
+});
 
-// });
-
-export default withRouter(App);
+export default withRouter(connect(mapStateToProps,null)(App));
