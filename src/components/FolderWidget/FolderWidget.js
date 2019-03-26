@@ -24,7 +24,7 @@ class FolderWidget extends Component {
         <p className='folder-title'>{this.props.folder}</p>
         <div 
           className='open-button'
-          onClick={this.onClick}
+          onClick={this.handleClick}
         ></div>
       </div>
     )
