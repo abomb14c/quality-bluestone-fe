@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { mapStateToProps } from '../../components/Admin/Admin';
+
 import { withRouter } from 'react-router-dom';
+import './open-folder.css'; 
+import '../../components/componentHeader/ComponentHeader';
+import ComponentHeader from '../../components/componentHeader/ComponentHeader';
+
 
 class OpenFolder extends Component {
   constructor(props){
@@ -14,8 +18,9 @@ class OpenFolder extends Component {
 
   render(){
     return (
-      <div>
-        <p>{this.props.folder.name}</p>
+      <div className='open-folder-container'>
+        <ComponentHeader />
+        <p className='open-folder-title'>{this.props.folder.name}</p>
       </div>
     )
   }

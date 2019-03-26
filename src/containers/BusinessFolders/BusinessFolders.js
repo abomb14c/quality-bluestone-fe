@@ -57,7 +57,7 @@ class BusinessFolders extends Component {
     let folders = this.state.folders
     return(
       <div className='business-container'>
-        {this.props.folder.active === true && <Redirect to='/open-folders' />}
+        {this.props.folder.active === true && <Redirect to='/open-folder' />}
         <div className='add-employee'>
           <h5>Add Folder</h5>
           <div 
