@@ -12,7 +12,7 @@
 // }
 // https://protected-everglades-28715.herokuapp.com/
 import Axios from 'axios';
-export const apiUrl = 'https://protected-everglades-28715.herokuapp.com/'
+export const apiUrl = 'http://localhost:3001/'
 
 export const headerInfoWithAuth = {
   'Content-Type': 'application/json',
@@ -76,5 +76,4 @@ export const fetchFile = async(formData) => {
     console.log(error)
   })
 }
-
-export const 
+ 

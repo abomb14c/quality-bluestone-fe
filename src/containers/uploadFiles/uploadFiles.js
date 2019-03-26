@@ -19,13 +19,13 @@ class UploadFiles extends Component {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Headers': '*',
-      'Authorization': sessionStorage.getItem('authToken')
+      'Access-Token': sessionStorage.getItem('authToken')
     };
     const data = new FormData();
     data.append('file', this.uploadInput.files[0]);
     data.append('filename', this.fileName.value);
 
-    await axios.post(`${apiUrl}/upload_files`, data, {headers: headers})
+    await axios.post(`${apiUrl}upload_files`, data, {headers: headers})
       .then((response) => {console.log(response)});
   }
   // This function does the uploading to cloudinary
