@@ -1,9 +1,9 @@
-const intitialState =  '';
+const intitialState =  {};
 
 const folderReducer = (state = intitialState, action) => {
   switch (action.type) {
     case "OPEN_FOLDER":
-      return action.name;
+      return {name: action.name, active: action.active};
     default:
       return state;
   }

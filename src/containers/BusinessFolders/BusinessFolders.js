@@ -7,7 +7,9 @@ import AddFolders from '../AddFolders/AddFolders';
 import Axios from 'axios';
 import { apiUrl } from '../../apiCalls/apiCalls';
 import {FolderContainer}from '../FolderContainer/FolderContainer';
-
+import {Redirect, withRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
+// import { mapStateToProps } from '../../components/app/App';
 
 class BusinessFolders extends Component {
   constructor(props){
@@ -51,10 +53,11 @@ class BusinessFolders extends Component {
   }
 
   render() {
+    console.log(this.state.folder)
     let folders = this.state.folders
     return(
       <div className='business-container'>
-        {!this.state.active &&
+        {this.props.folder.active === true && <Redirect to='/open-folders' />}
         <div className='add-employee'>
           <h5>Add Folder</h5>
           <div 
@@ -63,7 +66,6 @@ class BusinessFolders extends Component {
           >
           </div>
         </div>
-        }
         {this.state.active === true && 
           <AddFolders />
         }
@@ -75,4 +77,8 @@ class BusinessFolders extends Component {
   }
 }
 
-export default BusinessFolders;
+export const mapStateToProps = state => ({
+  folder: state.folder
+});
+
+export default withRouter(connect(mapStateToProps,null)(BusinessFolders));

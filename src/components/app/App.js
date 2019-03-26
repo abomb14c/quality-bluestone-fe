@@ -71,14 +71,14 @@ class App extends Component {
             exact path= "/open-folder"
             component={OpenFolder} 
             />
-            <Route
+            {/* <Route
             exact path= "/open-folder"
             render={() => (
               this.props.folder.length ?
-                <Redirect to="/admin" /> :
-                <OpenFolder />
-            )}
-          />
+              <Redirect to="/admin" /> :
+              <OpenFolder /> 
+            )} */}
+          {/* /> */}
           </div>
         </Switch>
       </div>
