@@ -71,6 +71,7 @@ class BusinessFolders extends Component {
         <div className='existing-folders'>
         <FolderContainer  folders={folders}/>
         </div>
+        
       </div>
     )
   }

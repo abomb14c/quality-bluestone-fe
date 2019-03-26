@@ -5,3 +5,10 @@ export const updateFolder = (folder) => {
     active:true
   }
 }
+
+export const clearFolder = () => {
+  return {
+    type: 'CLOSE_FOLDER',
+    active: false
+  }
+}
