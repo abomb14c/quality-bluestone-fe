@@ -67,6 +67,7 @@ class App extends Component {
               {/* { sessionStorage.getItem('userID') === null ? <SignInModal /> : <Redirect to='/home' /> }
               { sessionStorage.getItem('role') === 'admin' || sessionStorage.getItem('role') === 'accountant' ? <Redirect to='/admin'/> : <Redirect to='/home'/>} */}
             {/* Need to add in a route to catch all routes not caught by the switch and display 404 */}
+          
           </div>
         </Switch>
       </div>
@@ -74,10 +75,8 @@ class App extends Component {
   }
 }
 
-// export const mapStateToProps = state => ({
-//   user: state.user,
-//   birthday: state.birthday
+export const mapStateToProps = state => ({
+  folder: state.folder
+});
 
-// });
-
-export default withRouter(App);
+export default withRouter(connect(mapStateToProps,null)(App));

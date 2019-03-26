@@ -1,5 +1,5 @@
 import React from 'react';
-import { FolderWidget } from '../../components/FolderWidget/FolderWidget';
+import FolderWidget from '../../components/FolderWidget/FolderWidget';
 import './folder-container.css';
 
 export const FolderContainer = (props) => {
