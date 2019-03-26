@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import './open-folder.css'; 
 import '../../components/componentHeader/ComponentHeader';
 import ComponentHeader from '../../components/componentHeader/ComponentHeader';
-
+import UploadFiles from '../uploadFiles/uploadFiles';
 
 class OpenFolder extends Component {
   constructor(props){
@@ -21,6 +21,7 @@ class OpenFolder extends Component {
       <div className='open-folder-container'>
         <ComponentHeader />
         <p className='open-folder-title'>{this.props.folder.name}</p>
+        <UploadFiles />
       </div>
     )
   }

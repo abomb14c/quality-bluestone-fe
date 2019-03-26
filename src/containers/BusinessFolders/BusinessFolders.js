@@ -63,8 +63,7 @@ class BusinessFolders extends Component {
           <div 
             className='business-button'
             onClick={this.handleClick}
-          >
-          </div>
+          ></div>
         </div>
         {this.state.active === true && 
           <AddFolders />
