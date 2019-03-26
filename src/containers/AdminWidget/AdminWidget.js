@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {fetchWeather} from '../../apiCalls/apiCalls';
+// import {fetchWeather} from '../../apiCalls/apiCalls';
 import './admin-widget.css';
 
 class AdminWidget extends Component {
@@ -12,8 +12,8 @@ class AdminWidget extends Component {
   }
 
   componentDidMount = async() => {
-    const weather = await fetchWeather()
-    console.log(weather)
+    // const weather = await fetchWeather()
+    // console.log(weather)
   }
   render() {
     return (

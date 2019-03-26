@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 
 import {connect} from 'react-redux';
 import './add-folders.css';
+import axios from 'axios'
+import { apiUrl } from '../../apiCalls/apiCalls';
 
 class AddFolders extends Component {
   constructor(props){
@@ -21,15 +23,22 @@ class AddFolders extends Component {
   };
 
   handleSubmit = async(event) => {
-    let fileInfo = {
-      fileName: this.state.FileName,
-      role: this.state.role 
+    const formData = {
+      'folderName': this.state.folderName,
+      'role':       sessionStorage.getItem('role')
     }
-
-    // api call here with fileInfo as an arg for body
+    const header_info = {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Token': sessionStorage.getItem('authToken')
+    };
+    await axios.post(`${apiUrl}add_folder`, formData, {headers: header_info}).then((response) => {
+        console.log(response);
+      }).catch((error) => {
+        console.log(error);
+      });
   }
   
-
   render() {
     return (
       <div className='add-folder-container'>
@@ -54,7 +63,8 @@ class AddFolders extends Component {
 }
 
 export const mapStateToProps = state => ({
-  role: state.user.role
+  role: state.user.role,
+  apiKey: state.user.apiKey
 })
 
 export default connect(mapStateToProps,null)(AddFolders);

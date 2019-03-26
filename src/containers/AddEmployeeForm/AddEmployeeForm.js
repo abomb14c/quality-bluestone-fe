@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import './add-employee-form.css';
-
+import { apiUrl } from '../../apiCalls/apiCalls';
+import axios from 'axios';
 
 class AddEmployeeForm extends Component {
   constructor(props){
-    super(props)
+    super(props);
   
-    this.state= {
+    this.state = {
       firstName: '',
       lastName: '',
       address: '',
@@ -16,7 +17,7 @@ class AddEmployeeForm extends Component {
       phone: '',
       email: '',
       role: 'Worker'
-    }
+    };
   }
 
   handleChange = event => {
@@ -26,8 +27,32 @@ class AddEmployeeForm extends Component {
     });
   };
 
-  handleSubmit = () => {
-    // api call goes here
+  handleSubmit = async event => {
+    event.preventDefault();
+    const formData = {
+      'email':          this.state.email,
+      'password':       this.state.password,
+      'first_name':     this.state.firstName,
+      'last_name':      this.state.lastName,
+      'city':           this.state.city,
+      'street':         this.state.address,
+      'state':          this.state.state,
+      'zip_code':       this.state.zip,
+      'phone_number':   this.state.phone,
+      'role':           this.state.role.toLowerCase()
+    }
+    const header_info = {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': '*',
+      'Access-Token': sessionStorage.getItem('authToken')
+    };
+    await axios.post(`${apiUrl}create_user`, formData, {headers: header_info}).then((response) => {
+        console.log(response)
+      }).catch((error) => { 
+        console.log(error)
+      });
+
   }
 
   render() {
@@ -107,7 +132,7 @@ class AddEmployeeForm extends Component {
             onChange={this.handleChange}
           />
           <select className='select-role'>
-            <option selected value={this.state.role}>Worker</option>
+            <option defaultValue={this.state.role}>Worker</option>
             <option value={this.state.role}>Driver</option>
             <option value={this.state.role}>Accountant</option>
             <option value={this.state.role}>Admin</option>
@@ -124,3 +149,9 @@ class AddEmployeeForm extends Component {
 }
 
 export default AddEmployeeForm;
+
+// export const mapStateToProps = state => ({
+//   role: state.user.role,
+//   userId: state.user.userId,
+//   apiKey: state.user.apiKey
+// })

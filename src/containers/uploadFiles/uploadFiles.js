@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import { Render } from 'react-dom';
 import axios from 'axios';
 import './uploadFiles.css';
+import { apiUrl } from '../../apiCalls/apiCalls';
 // import {FilePond} from 'react-filepond';
 // import 'filepond/dist/filepond.min.css';
 
@@ -14,12 +15,17 @@ class UploadFiles extends Component {
 
   handleUploadFile = async ev => {
     ev.preventDefault();
-
+    const headers = {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': '*',
+      'Authorization': sessionStorage.getItem('authToken')
+    };
     const data = new FormData();
     data.append('file', this.uploadInput.files[0]);
     data.append('filename', this.fileName.value);
 
-    await axios.post('http://localhost:3001/upload_files', data)
+    await axios.post(`${apiUrl}/upload_files`, data, {headers: headers})
       .then((response) => {console.log(response)});
   }
   // This function does the uploading to cloudinary

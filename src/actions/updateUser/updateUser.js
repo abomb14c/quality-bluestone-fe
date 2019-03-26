@@ -2,7 +2,8 @@ export const updateUser = user => {
   return {
     type: "ADD_USER",
     userId: user.userId,
-    role: user.role
+    role: user.role,
+    apiKey: user.apiKey
 
   };
 };

@@ -1,0 +1,9 @@
+.business-folder-container {
+  display: flex;
+  /* flex-direction: column; */
+  height: 100%;
+  width: 100%;
+  /* justify-content: space-between; */
+  /* margin: none; */
+  padding-left: 5%;
+}

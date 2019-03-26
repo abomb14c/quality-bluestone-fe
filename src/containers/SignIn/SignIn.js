@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { updateUser, updateAdmin } from '../../actions/updateUser/updateUser';
 import './signin.css';
 import axios from 'axios'
+import { apiUrl } from '../../apiCalls/apiCalls';
 
 export class SignIn extends Component {
   constructor(props){
@@ -10,7 +12,8 @@ export class SignIn extends Component {
 
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      loggedIn: false
     };
   }
 
@@ -23,24 +26,42 @@ export class SignIn extends Component {
   
   handleSubmit = async event => {
     event.preventDefault();
-    const headers = {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
+    const formData = {
       'email': this.state.username,
       'password': this.state.password
-    };
-    await axios.post('https://protected-everglades-28715.herokuapp.com/authenticate', {headers: headers}).then((response) => {
-        // console.log(response)
-        // console.log(response.data.auth_token)
-        this.props.handleLogin({userId: response.data.auth_token, role:response.data.role})
-      });
-   
     }
+    const header_info = {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
+    };
+    await axios.post(`${apiUrl}authenticate`, formData, {headers: header_info}).then((response) => {
+        // this.props.handleLogin({userId: this.state.username, apiKey: response.data.auth_token, role: response.data.role})
+        this.handleSuccess(response)
+      }).catch((error) => {
+        this.handleFailure(error)
+      });
+
+   }
+
+  handleSuccess = (response) => {
+    sessionStorage.setItem('role', response.data.role);
+    sessionStorage.setItem('authToken',  response.data.auth_token);
+    sessionStorage.setItem('userID', this.state.username);
+    this.setState({'loggedIn': true});
+  }
+
+   handleFailure = (error) => {
+     console.log('User login failed.');
+     console.log(error);
+   }
     // } catch (e) {
     //   alert(e.message)
     // }
 
   render() {
+    if (this.state.loggedIn === true) {
+      return <Redirect to='/admin' />
+    }
     return (
       <form className="login-form" onSubmit={this.handleSubmit}>
         <h3 className="login-title">Login</h3>
@@ -62,6 +83,7 @@ export class SignIn extends Component {
         />
         <button className="login-button">Login</button>
       </form>
+      
     );
   }
 }
@@ -74,6 +96,11 @@ export const mapDispatchToProps = dispatch => ({
 
 export default connect(null, mapDispatchToProps)(SignIn);
 
-// LoginUser.propTypes = {
+// export const mapStateToProps = state => ({
+//   role: state.user.role,
+//   userId: state.user.userId,
+//   apiKey: state.user.apiKey
+// })
+  // LoginUser.propTypes = {
 //   handleLogin: PropTypes.func
 // };
