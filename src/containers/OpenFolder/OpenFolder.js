@@ -20,8 +20,14 @@ class OpenFolder extends Component {
     return (
       <div className='open-folder-container'>
         <ComponentHeader />
-        <p className='open-folder-title'>{this.props.folder.name}</p>
-        <UploadFiles />
+        <div className='open-folder-body'>
+          <div className='open-folder-title-container'>
+            <p className='open-folder-title'>{this.props.folder.name}</p>
+          </div>
+          <div className='upload-files-in-folder'>
+            <UploadFiles />
+          </div>
+        </div>
       </div>
     )
   }

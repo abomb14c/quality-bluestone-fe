@@ -3,4 +3,33 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  /* padding: 5%; */
+}
+
+.open-folder-body {
+  height: 100%;
+  width: 100%;
+  padding-left: 5%;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.open-folder-title-container {
+  height: 100px;
+  width: 25%; 
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.3);
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3%;
+}
+
+.upload-files-in-folder {
+  width: 100%;
+  height: 100%;
+  margin-top: 3%;
 }
