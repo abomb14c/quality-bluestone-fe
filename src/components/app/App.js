@@ -3,11 +3,9 @@ import './App.css';
 import { Route, Redirect, Switch, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-// import { mapDispatchToProps } from '../../containers/SignIn/SignIn';
 import SignInModal from '../SignInModal/SignInModal';
 import Home from '../../containers/Home/Home';
-// import newHire from '../../containers/newHire/newHire.js';
-// import {Footer} from '../Footer/Footer';
+
 import Admin from '../Admin/Admin';
 import UploadFiles from '../../containers/uploadFiles/uploadFiles'
 import OpenFolder from '../../containers/OpenFolder/OpenFolder';
@@ -71,14 +69,14 @@ class App extends Component {
             exact path= "/open-folder"
             component={OpenFolder} 
             />
-            <Route
+            {/* <Route
             exact path= "/open-folder"
             render={() => (
               this.props.folder.length ?
-                <Redirect to="/admin" /> :
-                <OpenFolder />
-            )}
-          />
+              <Redirect to="/admin" /> :
+              <OpenFolder /> 
+            )} */}
+          {/* /> */}
           </div>
         </Switch>
       </div>
