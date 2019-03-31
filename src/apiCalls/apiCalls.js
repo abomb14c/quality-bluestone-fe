@@ -1,16 +1,4 @@
-// import {weatherKey} from './../keys';
-
-
-// export const fetchWeather = async () => {
-//     const url = `api.openweathermap.org/data/2.5/weather?zip=18847&APPID=${weatherKey}`;
- 
-//     const response = await fetch(url);
-//     console.log(response)
-//     const weatherData = await response.json();
-//     console.log(weatherData)
- 
-// }
-// https://protected-everglades-28715.herokuapp.com/
+//protected-everglades-28715.herokuapp.com/
 import Axios from 'axios';
 import Admin from '../components/Admin/Admin';
 export const apiUrl = 'http://localhost:3001/'
@@ -27,6 +15,9 @@ export const headerInfoWithoutAuth = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': '*'
 }
+
+// FOR ALL CALLS BELOW 
+// formData should be either an empty string or a hash - i.e. formData = { folder_name: 'Name of Folder', file_name: 'Name of File'}
 
 // This call will retrieve the folders. Pass in an empty string in for formData and it should return all folders available for
 // that user.
@@ -102,7 +93,8 @@ export const fetchAllUsers = async(formData) => {
 }
  
 // This call will return one user. The formData MUST have the user's email in it - formData = { email: "User's Email"}.
-// The response will be identical to the one above, just with one user. If you would like to return the users
+// The response will be identical to the one above, just with one user. If you would like to return the users files, refer to the API
+// call to return a file and include the user's email as a parameter. 
 
 export const fetchUser = async(formData) => {
   await Axios.get(`${apiUrl}get_user`, formData, headerInfoWithAuth).then((response) => {
@@ -130,6 +122,20 @@ export const fetchUser = async(formData) => {
 
 export const updateUser = async(formData) => {
   await Axios.patch(`${apiUrl}update_user`, formData, headerInfoWithAuth).then((response) => {
+    console.log(response);
+    response.json();
+  }).catch((error) => {
+    console.log(error)
+  })
+}
+
+// This call will delete a user's record. If you would like to inactivate a user
+// use the update API call with { status: 'inactive' } in the formData. If you would like
+// to delete the user, include the user's email in the formData. Ex- formData = { email: 'Email of User to Delete' }
+// Only an admin will be able to delete a user.
+
+export const deleteUser = async(formData) => {
+  await Axios.patch(`${apiUrl}delete_user`, formData, headerInfoWithAuth).then((response) => {
     console.log(response);
     response.json();
   }).catch((error) => {
