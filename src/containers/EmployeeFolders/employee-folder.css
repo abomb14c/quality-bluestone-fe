@@ -20,8 +20,34 @@
 }
 
 .employee-container {
-  width: 100%;
+  width: 30%;
   height: 100vh;
   display: flex;
   padding: 5%;
+}
+
+.add-employee-form-container-1 {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.employee-form-cancel-button {
+  width: 3%;
+  height: 30px;
+  background: transparent;
+  border-top: 3px solid  rgb(235, 48, 69);
+  border-left: 3px solid  rgb(235, 48, 69);
+  border-right: 3px solid  rgb(235, 48, 69);
+  border-bottom: none;
+  font-size: 16px;
+  color:  rgb(235, 48, 69);
+  font-weight: 600;
+}
+
+.employee-form-cancel-button:hover {
+  background:  rgb(235, 48, 69);
+  color: #fff;
 }
