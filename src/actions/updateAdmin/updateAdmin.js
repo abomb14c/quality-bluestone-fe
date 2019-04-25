@@ -11,3 +11,10 @@ export const updateFiles = () => {
     active: 'files'
   };
 };
+
+export const closeEmployees = () => {
+  return {
+    type: "CLOSE_EMPLOYEES",
+    active: 'none'
+  }
+}

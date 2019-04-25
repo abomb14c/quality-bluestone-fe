@@ -25,3 +25,13 @@
   display: flex;
   padding: 5%;
 }
+  
+  .back-button {
+    width: 45%;
+    margin-top: 5%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
