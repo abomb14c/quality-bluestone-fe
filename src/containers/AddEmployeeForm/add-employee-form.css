@@ -1,11 +1,11 @@
 .add-employee-form-container {
-  width: 30%;
+  width: 25%;
   height: 450px;
   box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.3);
   background-color: #fff;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
+  justify-content: center;
   align-items: center;
 }
 
@@ -14,7 +14,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 15%;
   width: 100%;
 }
 
