@@ -4,6 +4,7 @@ import './employee-widget.css';
 // import { connect } from 'http2';
 import {connect} from 'react-redux';
 import {updateEmployees} from '../../actions/updateAdmin/updateAdmin';
+import { fetchAllUsers } from '../../apiCalls/apiCalls';
 
 class EmployeeWidget extends Component {
   constructor(props){
@@ -15,7 +16,9 @@ class EmployeeWidget extends Component {
   }
 
   componentDidMount = async() => {
-   
+    // send to redux when server is running
+    const employees= fetchAllUsers('');
+    console.log(employees)
   }
 
   openEmployees = () => {
