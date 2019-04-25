@@ -28,7 +28,7 @@ class EmployeeWidget extends Component {
   render() {
     return (
       <div className='employee-widget-container'>
-        <h5>Employees</h5>
+        <h5 className='employees-title'>Employees</h5>
         <div 
         className='employee-button'
         onClick= {this.openEmployees}

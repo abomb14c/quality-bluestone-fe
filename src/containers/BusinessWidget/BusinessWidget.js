@@ -28,7 +28,7 @@ class BusinessWidget extends Component {
   render() {
     return (
       <div className='business-widget-container'>
-        <h5>Folders</h5>
+        <h5 className='folder-title'>Folders</h5>
         <div 
         className='business-button'
         onClick= {this.openFiles}

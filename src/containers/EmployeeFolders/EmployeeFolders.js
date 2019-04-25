@@ -23,7 +23,7 @@ class EmployeeFolders extends Component {
       <div className='employee-container'>
       {this.state.active === false &&
         <div className='add-employee'>
-          <h5>Add Employee</h5>
+          <h5 className='add-employee-title'>Add Employee</h5>
           <div 
             className='employee-button'
             onClick= {this.handleClick}
