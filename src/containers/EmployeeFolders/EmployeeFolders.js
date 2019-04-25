@@ -29,12 +29,6 @@ class EmployeeFolders extends Component {
     return(
       <div className='employee-container'>
       <div className='back-nav'>
-      <button
-        onClick={this.handleBack}
-        className='back-button'
-        >
-          back
-      </button>
       </div>
       {this.state.active === false &&
         <div className='add-employee'>
