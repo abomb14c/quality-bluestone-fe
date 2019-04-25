@@ -30,3 +30,27 @@
 .existing-folders {
   width: 85%;
 }
+
+.folder-form-cancel-button {
+  width: 20%;
+  height: 30px;
+  background: transparent;
+  /* border-top: 3px solid  rgb(235, 48, 69);
+  border-left: 3px solid  rgb(235, 48, 69);
+  border-right: 3px solid  rgb(235, 48, 69);
+  border-bottom: 3px solid  rgb(235, 48, 69); */
+  border: 2px solid rgb(235, 48, 69);
+  font-size: 16px;
+  color:  rgb(235, 48, 69);
+  font-weight: 600;
+}
+
+.folder-form-cancel-button:hover {
+  background:  rgb(235, 48, 69);
+  color: #fff;
+}
+
+.add-folder-title {
+  font-weight: 400;
+  font-size: 16px;
+}
