@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import './employee-folder.css';
-
+import { Link, Redirect, Switch, withRouter } from 'react-router-dom';
 import AddEmployeeForm from '../AddEmployeeForm/AddEmployeeForm';
+import {connect} from 'react-redux';
+import {closeEmployees} from '../../actions/updateAdmin/updateAdmin';
 
 class EmployeeFolders extends Component {
   constructor(props){
@@ -18,9 +20,22 @@ class EmployeeFolders extends Component {
     })
   }
 
+  handleBack = (event) => {
+    event.preventDefault();
+    this.props.handleClose()
+  }
+
   render() {
     return(
       <div className='employee-container'>
+      <div className='back-nav'>
+      <button
+        onClick={this.handleBack}
+        className='back-button'
+        >
+          back
+      </button>
+      </div>
       {this.state.active === false &&
         <div className='add-employee'>
           <h5 className='add-employee-title'>Add Employee</h5>
@@ -46,4 +61,9 @@ class EmployeeFolders extends Component {
   }
 }
 
-export default EmployeeFolders;
+export const mapDispatchToProps = dispatch => ({
+  handleClose: () => dispatch(closeEmployees())
+});
+
+
+export default connect(null, mapDispatchToProps)(EmployeeFolders);
