@@ -23,45 +23,42 @@ class Admin extends Component {
     this.props.handleClose()
   }
 
-render (){
-  return (
-
-    <div className='admin-container'>
-      <div className='header-container'>
-        <div className='header-container-2'></div>
-      </div>
-      <div className='hero-nav'>
-        <div className='greeting-container'>
-          <h5 className='greeting-text'>Joe's Dashboard</h5>
+  render (){
+    return (
+      <div className='admin-container'>
+        <div className='header-container'>
+          <div className='header-container-2'></div>
+        </div>
+        <div className='hero-nav'>
+          <div className='greeting-container'>
+            <h5 className='greeting-text'>Joe's Dashboard</h5>
             <button
-          onClick={this.handleBack}
-          className='back-button'
-          >
-            back
-        </button>
+              onClick={this.handleBack}
+              className='back-button'
+            >
+              back
+            </button>
+          </div>
         </div>
-      </div>
-      {this.props.active === '' &&
-      <div className='body-container'>
-        {/* <AdminWidget /> */}
-        <div className='folder-container'>
-          <EmployeeWidget />
-          <BusinessWidget />
+        {this.props.active === '' &&
+        <div className='body-container'>
+          {/* <AdminWidget /> */}
+          <div className='folder-container'>
+            <EmployeeWidget />
+            <BusinessWidget />
+          </div>
         </div>
+        }
+        {this.props.active === 'employees' &&
+            <EmployeeFolders />
+        }
+        {this.props.active === 'files' &&
+            <BusinessFolders />
+        }
       </div>
-      }
-      {this.props.active === 'employees' &&
-          <EmployeeFolders />
-      }
-      {this.props.active === 'files' &&
-          <BusinessFolders />
-      }
-    </div>
-  )
+    )
+  }
 }
-}
-
-
 
 export const mapStateToProps = state => ({
   active: state.active

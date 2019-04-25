@@ -28,7 +28,7 @@ class EmployeeFolders extends Component {
   render() {
     return(
       <div className='employee-container'>
-      <div className='back-nav'>
+        <div className='back-nav'>
       </div>
       {this.state.active === false &&
         <div className='add-employee'>
@@ -40,14 +40,14 @@ class EmployeeFolders extends Component {
           </div>
         </div>}
         {this.state.active === true &&
-        <div className='add-employee-form-container-1'>
-         <button
-         className='employee-form-cancel-button'
-          onClick={this.handleClick}
-         >
-         X
-         </button>
-          <AddEmployeeForm />
+          <div className='add-employee-form-container-1'>
+            <button
+              className='employee-form-cancel-button'
+              onClick={this.handleClick}
+            >
+            X
+            </button>
+            <AddEmployeeForm />
           </div>
         }
       </div>

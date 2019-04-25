@@ -30,10 +30,10 @@ class EmployeeWidget extends Component {
       <div className='employee-widget-container'>
         <h5 className='employees-title'>Employees</h5>
         <div 
-        className='employee-button'
-        onClick= {this.openEmployees}
-
-        ></div>
+          className='employee-button'
+          onClick= {this.openEmployees}
+        >
+        </div>
       </div>
     )
   }

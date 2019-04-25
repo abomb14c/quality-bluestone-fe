@@ -16,9 +16,8 @@ class BusinessWidget extends Component {
   componentDidMount = async() => {
   //  api call for folders
   // send to redux
-  const folders = await fetchFolders();
-  console.log(folders)
-  
+    const folders = await fetchFolders();
+    console.log(folders)
   }
 
   openFiles = () => {
@@ -30,10 +29,10 @@ class BusinessWidget extends Component {
       <div className='business-widget-container'>
         <h5 className='folder-title'>Folders</h5>
         <div 
-        className='business-button'
-        onClick= {this.openFiles}
-
-        ></div>
+          className='business-button'
+          onClick= {this.openFiles}
+        >
+        </div>
       </div>
     )
   }
