@@ -16,7 +16,7 @@ class EmployeeFolders extends Component {
 
   handleClick = () => {
     this.setState({
-      active: true
+      active: !this.state.active
     })
   }
 
@@ -38,15 +38,23 @@ class EmployeeFolders extends Component {
       </div>
       {this.state.active === false &&
         <div className='add-employee'>
-          <h5>Add Employe</h5>
+          <h5 className='add-employee-title'>Add Employee</h5>
           <div 
             className='employee-button'
             onClick= {this.handleClick}
           >
           </div>
         </div>}
-        {this.state.active === true && 
+        {this.state.active === true &&
+        <div className='add-employee-form-container-1'>
+         <button
+         className='employee-form-cancel-button'
+          onClick={this.handleClick}
+         >
+         X
+         </button>
           <AddEmployeeForm />
+          </div>
         }
       </div>
     )
