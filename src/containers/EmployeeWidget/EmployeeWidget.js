@@ -17,7 +17,7 @@ class EmployeeWidget extends Component {
 
   componentDidMount = async() => {
     // send to redux when server is running
-    const employees= await fetchAllUsers('');
+    const employees= await fetchAllUsers();
     console.log(employees)
   }
 

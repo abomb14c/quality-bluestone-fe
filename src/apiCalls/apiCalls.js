@@ -23,7 +23,7 @@ export const headerInfoWithoutAuth = {
 // that user.
 
 export const fetchFolders = async (formData) => {
-  await Axios.get(`${apiUrl}get_all_folders`, formData, headerInfoWithAuth).then((response) => {
+  await Axios.get(`${apiUrl}get_all_folders`, { params: {data: formData}, headers: headerInfoWithAuth}).then((response) => {
     console.log(response);
     response.json()
   }).catch((error) => {
@@ -34,7 +34,7 @@ export const fetchFolders = async (formData) => {
 // This call will retrieve one folder. You must pass in the name of the folder in the formData. Ex - formData = { folder_name: "Name of Folder"}
 
 export const fetchFolder = async (formData) => {
-  await Axios.get(`${apiUrl}get_all_folders`, formData, headerInfoWithAuth).then((response) => {
+  await Axios.get(`${apiUrl}get_all_folders`, { params: {data: formData}, headers: headerInfoWithAuth}).then((response) => {
     console.log(response);
     response.json()
   }).catch((error) => {
@@ -50,7 +50,7 @@ export const fetchFolder = async (formData) => {
 // If you want to return the folders for another user, use - formData = { email: "Email of User"}
 
 export const fetchAllFiles = async(formData) => {
-  await Axios.get(`${apiUrl}get_all_files`, formData, headerInfoWithAuth).then((response) => {
+  await Axios.get(`${apiUrl}get_all_files`, { params: formData, headers: headerInfoWithAuth}).then((response) => {
     console.log(response);
     response.json();
   }).catch((error) => {
@@ -61,7 +61,7 @@ export const fetchAllFiles = async(formData) => {
 // This call will return one file for that user. The formData should look like formData = { file_name: "Name of File"}
 
 export const fetchFile = async(formData) => {
-  await Axios.get(`${apiUrl}get_file`, formData, headerInfoWithAuth).then((response) => {
+  await Axios.get(`${apiUrl}get_file`, { params: {data: formData}, headers: headerInfoWithAuth}).then((response) => {
     console.log(response);
     response.json();
   }).catch((error) => {
@@ -84,7 +84,7 @@ export const fetchFile = async(formData) => {
 //  }]
 
 export const fetchAllUsers = async(formData) => {
-  await Axios.get(`${apiUrl}get_all_users`, formData, headerInfoWithAuth).then((response) => {
+  await Axios.get(`${apiUrl}get_all_users`, { params: {data: formData}, headers: headerInfoWithAuth}).then((response) => {
     console.log(response);
     response.json();
   }).catch((error) => {
@@ -97,7 +97,7 @@ export const fetchAllUsers = async(formData) => {
 // call to return a file and include the user's email as a parameter. 
 
 export const fetchUser = async(formData) => {
-  await Axios.get(`${apiUrl}get_user`, formData, headerInfoWithAuth).then((response) => {
+  await Axios.get(`${apiUrl}get_user`, { params: {data: formData}, headers: headerInfoWithAuth}).then((response) => {
     console.log(response);
     response.json();
   }).catch((error) => {
