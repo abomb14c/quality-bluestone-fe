@@ -1,7 +1,7 @@
-//protected-everglades-28715.herokuapp.com/
+// protected-everglades-28715.herokuapp.com/
 import Axios from 'axios';
 import Admin from '../components/Admin/Admin';
-export const apiUrl = 'http://localhost:3001/'
+export const apiUrl = 'http://localhost:3001/';
 
 export const headerInfoWithAuth = {
   'Content-Type': 'application/json',
@@ -23,7 +23,9 @@ export const headerInfoWithoutAuth = {
 // that user.
 
 export const fetchFolders = async (formData) => {
+
   await Axios.get(`${apiUrl}get_all_folders`, { params: {data: formData}, headers: headerInfoWithAuth}).then((response) => {
+
     console.log(response);
     response.json()
   }).catch((error) => {
@@ -34,7 +36,9 @@ export const fetchFolders = async (formData) => {
 // This call will retrieve one folder. You must pass in the name of the folder in the formData. Ex - formData = { folder_name: "Name of Folder"}
 
 export const fetchFolder = async (formData) => {
+
   await Axios.get(`${apiUrl}get_all_folders`, { params: {data: formData}, headers: headerInfoWithAuth}).then((response) => {
+
     console.log(response);
     response.json()
   }).catch((error) => {
