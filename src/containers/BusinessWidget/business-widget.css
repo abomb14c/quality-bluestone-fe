@@ -19,3 +19,8 @@
   background-size: 60%;
   background-repeat: no-repeat;
 }
+
+.folder-title {
+  font-weight: 400;
+  font-size: 16px;
+}

@@ -23,7 +23,7 @@ class BusinessFolders extends Component {
 
   handleClick = () => {
     this.setState({
-      active: true
+      active: !this.state.active
     })
   }
 
@@ -57,15 +57,27 @@ class BusinessFolders extends Component {
     return(
       <div className='business-container'>
         {this.props.folder.active === true && <Redirect to='/open-folder' />}
+        {this.state.active === false &&
         <div className='add-employee'>
-          <h5>Add Folder</h5>
+          <h5 className='add-folder-title'>Add Folder</h5>
           <div 
             className='business-button'
             onClick={this.handleClick}
           ></div>
         </div>
+        }
         {this.state.active === true && 
-          <AddFolders />
+          <div className='add-employee'>
+            <div className='folder-cancel-button-container'>
+              <button
+                className='folder-form-cancel-button'
+                onClick={this.handleClick}
+              >
+              X
+              </button>
+            </div>
+            <AddFolders />
+          </div>
         }
         <div className='existing-folders'>
         <FolderContainer  folders={folders}/>

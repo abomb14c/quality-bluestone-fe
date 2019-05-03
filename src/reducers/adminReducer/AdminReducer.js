@@ -4,6 +4,8 @@ const AdminReducer = (state = intitialState, action) => {
   switch (action.type) {
     case "OPEN_EMPLOYEES":
       return action.active;
+    case "CLOSE_EMPLOYEES":
+      return '';
     case "OPEN_FILES":
       return action.active;
     default:

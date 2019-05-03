@@ -55,6 +55,10 @@ class AddEmployeeForm extends Component {
 
   }
 
+  cancelForm = () => {
+    
+  }
+
   render() {
     return (
       <div className='add-employee-form-container'>
