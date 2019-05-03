@@ -39,7 +39,6 @@ class BusinessFolders extends Component {
       console.log(response.data);
       return response.data;
     }).then(data => {
-      console.log(data[0])
       let folderNames = data.map((folder)=> {
         return(
           folder.name
