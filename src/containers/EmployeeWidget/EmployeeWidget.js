@@ -5,6 +5,8 @@ import './employee-widget.css';
 import {connect} from 'react-redux';
 import {updateEmployees} from '../../actions/updateAdmin/updateAdmin';
 import { fetchAllUsers } from '../../apiCalls/apiCalls';
+import { apiUrl, headerInfoWithAuth } from '../../apiCalls/apiCalls'
+import Axios from 'axios';
 
 class EmployeeWidget extends Component {
   constructor(props){
@@ -17,8 +19,13 @@ class EmployeeWidget extends Component {
 
   componentDidMount = async() => {
     // send to redux when server is running
-    const employees= await fetchAllUsers();
-    console.log(employees)
+    const formData = '';
+    await Axios.get(`${apiUrl}get_all_users`, { params: {data: formData}, headers: headerInfoWithAuth}).then((response) => {
+      const employees = response.data;
+      console.log(employees);
+    }).catch((error) => {
+      console.log(error)
+    })
   }
 
   openEmployees = () => {

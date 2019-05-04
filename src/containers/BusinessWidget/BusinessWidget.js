@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import './business-widget.css';
 import { connect } from 'react-redux';
 import { updateFiles } from '../../actions/updateAdmin/updateAdmin';
+import { apiUrl, headerInfoWithAuth } from '../../apiCalls/apiCalls'
+import Axios from 'axios';
 import { fetchFolders } from '../../apiCalls/apiCalls';
 
 class BusinessWidget extends Component {
@@ -9,15 +11,22 @@ class BusinessWidget extends Component {
     super(props)
 
     this.state = {
-      
+
     }
   }
 
   componentDidMount = async() => {
   //  api call for folders
   // send to redux
-    const folders = await fetchFolders();
-    console.log(folders)
+    const formData = ''
+    await Axios.get(`${apiUrl}get_all_folders`, { params: {data: formData}, headers: headerInfoWithAuth}).then((response => {
+      const folders = response.data
+      console.log(folders)
+    })
+      
+    ).catch((error) => {
+      console.log(error)
+    })
   }
 
   openFiles = () => {

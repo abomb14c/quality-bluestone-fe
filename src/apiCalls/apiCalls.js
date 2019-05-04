@@ -2,8 +2,8 @@
 //https://protected-everglades-28715.herokuapp.com/
 import Axios from 'axios';
 import Admin from '../components/Admin/Admin';
-// export const apiUrl = 'http://localhost:3001/'
-export const apiUrl = 'https://protected-everglades-28715.herokuapp.com/'
+export const apiUrl = 'http://localhost:3001/'
+// export const apiUrl = 'https://protected-everglades-28715.herokuapp.com/'
 
 
 export const headerInfoWithAuth = {
@@ -27,11 +27,12 @@ export const headerInfoWithoutAuth = {
 
 export const fetchFolders = async (formData) => {
 
-  await Axios.get(`${apiUrl}get_all_folders`, { params: {data: formData}, headers: headerInfoWithAuth}).then((response) => {
-
-    console.log(response);
-    response.json()
-  }).catch((error) => {
+  await Axios.get(`${apiUrl}get_all_folders`, { params: {data: formData}, headers: headerInfoWithAuth}).then((response => {
+    const folders = response.data
+    return folders
+  })
+    
+  ).catch((error) => {
     console.log(error)
   })
 }
@@ -43,7 +44,6 @@ export const fetchFolder = async (formData) => {
   await Axios.get(`${apiUrl}get_all_folders`, { params: {data: formData}, headers: headerInfoWithAuth}).then((response) => {
 
     console.log(response);
-    response.json()
   }).catch((error) => {
     console.log(error)
   })
@@ -59,8 +59,7 @@ export const fetchFolder = async (formData) => {
 export const fetchAllFiles = async(formData) => {
   await Axios.get(`${apiUrl}get_all_files`, { params: {data: formData}, headers: headerInfoWithAuth}).then((response) => {
 
-    console.log(response);
-    response.json();
+    console.log(response);;
   }).catch((error) => {
     console.log(error)
   })
@@ -70,8 +69,7 @@ export const fetchAllFiles = async(formData) => {
 
 export const fetchFile = async(formData) => {
   await Axios.get(`${apiUrl}get_file`, { params: {data: formData}, headers: headerInfoWithAuth}).then((response) => {
-    console.log(response);
-    response.json();
+    console.log(response);;
   }).catch((error) => {
     console.log(error)
   })
@@ -93,8 +91,7 @@ export const fetchFile = async(formData) => {
 
 export const fetchAllUsers = async(formData) => {
   await Axios.get(`${apiUrl}get_all_users`, { params: {data: formData}, headers: headerInfoWithAuth}).then((response) => {
-    console.log(response);
-    response.json();
+    console.log(response);;
   }).catch((error) => {
     console.log(error)
   })
@@ -106,8 +103,7 @@ export const fetchAllUsers = async(formData) => {
 
 export const fetchUser = async(formData) => {
   await Axios.get(`${apiUrl}get_user`, { params: {data: formData}, headers: headerInfoWithAuth}).then((response) => {
-    console.log(response);
-    response.json();
+    console.log(response);;
   }).catch((error) => {
     console.log(error)
   })
@@ -130,8 +126,7 @@ export const fetchUser = async(formData) => {
 
 export const updateUser = async(formData) => {
   await Axios.patch(`${apiUrl}update_user`, formData, headerInfoWithAuth).then((response) => {
-    console.log(response);
-    response.json();
+    console.log(response);;
   }).catch((error) => {
     console.log(error)
   })
@@ -144,8 +139,7 @@ export const updateUser = async(formData) => {
 
 export const deleteUser = async(formData) => {
   await Axios.patch(`${apiUrl}delete_user`, formData, headerInfoWithAuth).then((response) => {
-    console.log(response);
-    response.json();
+    console.log(response);;
   }).catch((error) => {
     console.log(error)
   })
