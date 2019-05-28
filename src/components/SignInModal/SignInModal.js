@@ -3,26 +3,19 @@ import Header from '../Header/Header';
 import SignIn from '../../containers/SignIn/SignIn';
 import './signinmodal.css';
 import { Link, withRouter } from 'react-router-dom';
-
+import { Button, Card } from '@material-ui/core';
 
 const SignInModal = () => {
   return (
-      <div className="overlay">
-      <div className="sign-in-modal">
-        <Header />
-        <SignIn />
-        <p>
-          <Link 
-            to="/newEmployee"
-            className="new-link"
-          >
-          New Employee Registration
-          </Link>
-        </p>
-        {/* <a  className="new-link"href='google.com'>New Employee Registration</a> */}
-      </div>
-      </div>
-  )
-}
+    <Card className="sign-in-modal">
+      <Header />
+      <SignIn />
+      <Link to="/newEmployee" className="new-link">
+        <Button>new employee registration</Button>
+      </Link>
+      {/* <a  className="new-link"href='google.com'>New Employee Registration</a> */}
+    </Card>
+  );
+};
 
 export default withRouter(SignInModal);
