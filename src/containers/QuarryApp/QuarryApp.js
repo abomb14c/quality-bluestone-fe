@@ -1,26 +1,27 @@
-import React, { Component } from "react";
-import "./quarry-app.css";
+import React, { Component } from 'react';
+import { TextField } from '@material-ui/core';
+import './quarry-app.css';
 
 class QuarryApp extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      first: "",
-      last: "",
-      social: "",
-      presentAddress: "",
-      presentCity: "",
-      presentState: "",
-      presentZip: "",
-      positionDesired: ""
+      first: '',
+      last: '',
+      social: '',
+      presentAddress: '',
+      presentCity: '',
+      presentState: '',
+      presentZip: '',
+      positionDesired: '',
     };
   }
 
   handleChange = event => {
     const { name, value } = event.target;
     this.setState({
-      [name]: value
+      [name]: value,
     });
   };
 
