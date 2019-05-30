@@ -1,6 +1,6 @@
 import React from 'react';
-import Header from '../Header/Header';
-import SignIn from '../../containers/SignIn/SignIn';
+import { Header } from '..';
+import { SignIn } from '../../containers';
 import './signinmodal.css';
 import { Link, withRouter } from 'react-router-dom';
 import { Button, Card } from '@material-ui/core';
