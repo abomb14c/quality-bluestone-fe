@@ -50,11 +50,16 @@ const styles = theme => ({
 class UploadFiles extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      fileName: '',
+      file: null,
+    };
 
     this.handleUploadFile = this.handleUploadFile.bind(this);
   }
 
   handleUploadFile = async ev => {
+    const { file, fileName } = this.state;
     ev.preventDefault();
     const headers = {
       'Content-Type': 'application/json',
@@ -63,18 +68,33 @@ class UploadFiles extends Component {
       'Access-Token': sessionStorage.getItem('authToken'),
     };
     const data = new FormData();
-    data.append('file', this.uploadInput.files[0]);
-    data.append('filename', this.fileName.value);
+    data.append('file', file);
+    data.append('filename', fileName);
 
     await axios
-      .post(`${apiUrl}upload_files`, data, { headers: headers })
+      .post(`${apiUrl}upload_files`, data, { headers })
       .then(response => {
         console.log(response);
       });
   };
 
+  handleFileSelection = event => {
+    this.setState({
+      file: event.target.files[0],
+    });
+  };
+
+  handleChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value,
+    });
+  };
+
   render() {
     const { classes } = this.props;
+    const { file, fileName } = this.state;
+
     return (
       <Card className={classes.root}>
         <form onSubmit={this.handleUploadFile} className={classes.form}>
@@ -82,23 +102,32 @@ class UploadFiles extends Component {
             Upload a New File
           </Typography>
           <TextField
+            name="fileName"
             variant="outlined"
-            ref={ref => {
-              this.fileName = ref;
-            }}
+            value={this.state.fileName}
             type="text"
             label="File Name"
+            onChange={this.handleChange}
             className={classes.textField}
           />
+          <label htmlFor="upload-input">
+            <Button variant="outlined" component="span">
+              Browse...
+            </Button>
+            {this.state.file ? (
+              <Typography>{this.state.file.name}</Typography>
+            ) : null}
+          </label>
           <input
             // variant="outlined"
-            ref={ref => {
-              this.uploadInput = ref;
-            }}
+            onChange={this.handleFileSelection}
+            id="upload-input"
             type="file"
+            hidden
             className={classes.fileInput}
           />
           <Button
+            disabled={!file || !fileName.length}
             type="submit"
             variant="contained"
             className={classes.button}
