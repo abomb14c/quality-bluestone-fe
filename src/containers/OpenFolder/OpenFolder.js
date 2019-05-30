@@ -4,7 +4,7 @@ import { withRouter, Redirect } from 'react-router-dom';
 import './open-folder.css';
 import { ComponentHeader } from '../../components';
 import { UploadFiles } from '..';
-import { clearFolder } from '../../actions/updateFolders/updateFolders';
+import { clearFolder } from '../../actions';
 
 class OpenFolder extends Component {
   constructor(props) {
