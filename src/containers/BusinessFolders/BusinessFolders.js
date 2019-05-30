@@ -1,95 +1,95 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './business-folders.css';
 
 // import uploadFiles from '../uploadFiles/uploadFiles';
 // import UploadFiles from '../uploadFiles/uploadFiles';
-import AddFolders from '../AddFolders/AddFolders';
+import { AddFolders, FolderContainer } from '..';
 import Axios from 'axios';
 import { apiUrl } from '../../apiCalls/apiCalls';
-import {FolderContainer}from '../FolderContainer/FolderContainer';
-import {Redirect, withRouter} from 'react-router-dom';
-import {connect} from 'react-redux';
+import { Redirect, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 // import { mapStateToProps } from '../../components/app/App';
 
 class BusinessFolders extends Component {
-  constructor(props){
-    super(props)
+  constructor(props) {
+    super(props);
 
     this.state = {
-      active:false,
-      folders: []
-    }
+      active: false,
+      folders: [],
+    };
   }
 
   handleClick = () => {
     this.setState({
-      active: !this.state.active
-    })
-  }
+      active: !this.state.active,
+    });
+  };
 
   componentDidMount() {
-  
     const headerInfo = {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Headers': '*',
-      'Access-Token': sessionStorage.getItem('authToken')
-    }
-    Axios.get(`${apiUrl}get_all_folders`, {headers: headerInfo}).then((response) => {
-      console.log(response.data);
-      return response.data;
-    }).then(data => {
-      let folderNames = data.map((folder)=> {
-        return(
-          folder.name
-        )
+      'Access-Token': sessionStorage.getItem('authToken'),
+    };
+    Axios.get(`${apiUrl}get_all_folders`, { headers: headerInfo })
+      .then(response => {
+        console.log(response.data);
+        return response.data;
       })
-      this.setState({folders: [...folderNames]})
-      console.log(this.state)
-    }).catch((error) => {
-      console.log(error)
-    })
+      .then(data => {
+        let folderNames = data.map(folder => {
+          return folder.name;
+        });
+        this.setState({ folders: [...folderNames] });
+        console.log(this.state);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   render() {
-    console.log(this.state.folder)
-    let folders = this.state.folders
-    return(
-      <div className='business-container'>
-        {this.props.folder.active === true && <Redirect to='/open-folder' />}
-        {this.state.active === false &&
-        <div className='add-employee'>
-          <h5 className='add-folder-title'>Add Folder</h5>
-          <div 
-            className='business-button'
-            onClick={this.handleClick}
-          ></div>
-        </div>
-        }
-        {this.state.active === true && 
-          <div className='add-employee'>
-            <div className='folder-cancel-button-container'>
+    console.log(this.state.folder);
+    let folders = this.state.folders;
+    return (
+      <div className="business-container">
+        {this.props.folder.active === true && <Redirect to="/open-folder" />}
+        {this.state.active === false && (
+          <div className="add-employee">
+            <h5 className="add-folder-title">Add Folder</h5>
+            <div className="business-button" onClick={this.handleClick} />
+          </div>
+        )}
+        {this.state.active === true && (
+          <div className="add-employee">
+            <div className="folder-cancel-button-container">
               <button
-                className='folder-form-cancel-button'
+                className="folder-form-cancel-button"
                 onClick={this.handleClick}
               >
-              X
+                X
               </button>
             </div>
             <AddFolders />
           </div>
-        }
-        <div className='existing-folders'>
-        <FolderContainer  folders={folders}/>
+        )}
+        <div className="existing-folders">
+          <FolderContainer folders={folders} />
         </div>
-        
       </div>
-    )
+    );
   }
 }
 
 export const mapStateToProps = state => ({
-  folder: state.folder
+  folder: state.folder,
 });
 
-export default withRouter(connect(mapStateToProps,null)(BusinessFolders));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    null
+  )(BusinessFolders)
+);
