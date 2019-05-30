@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { updateUser, updateAdmin } from '../../actions/updateUser/updateUser';
+import { updateUser, updateAdmin } from '../../actions';
 import './signin.css';
 import axios from 'axios';
 import { apiUrl } from '../../apiCalls/apiCalls';

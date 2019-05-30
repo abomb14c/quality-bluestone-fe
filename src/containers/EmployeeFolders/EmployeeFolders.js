@@ -3,7 +3,7 @@ import './employee-folder.css';
 import { Link, Redirect, Switch, withRouter } from 'react-router-dom';
 import { AddEmployeeForm } from '..';
 import { connect } from 'react-redux';
-import { closeEmployees } from '../../actions/updateAdmin/updateAdmin';
+import { closeEmployees } from '../../actions';
 
 class EmployeeFolders extends Component {
   constructor(props) {

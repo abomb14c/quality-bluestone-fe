@@ -1,45 +1,42 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './business-widget.css';
 import { connect } from 'react-redux';
-import { updateFiles } from '../../actions/updateAdmin/updateAdmin';
+import { updateFiles } from '../../actions';
 import { fetchFolders } from '../../apiCalls/apiCalls';
 
 class BusinessWidget extends Component {
-  constructor(props){
-    super(props)
+  constructor(props) {
+    super(props);
 
-    this.state = {
-      
-    }
+    this.state = {};
   }
 
-  componentDidMount = async() => {
-  //  api call for folders
-  // send to redux
+  componentDidMount = async () => {
+    //  api call for folders
+    // send to redux
     const folders = await fetchFolders();
-    console.log(folders)
-  }
+    console.log(folders);
+  };
 
   openFiles = () => {
-    this.props.handleFiles()
-  }
+    this.props.handleFiles();
+  };
 
   render() {
     return (
-      <div className='business-widget-container'>
-        <h5 className='folder-title'>Folders</h5>
-        <div 
-          className='business-button'
-          onClick= {this.openFiles}
-        >
-        </div>
+      <div className="business-widget-container">
+        <h5 className="folder-title">Folders</h5>
+        <div className="business-button" onClick={this.openFiles} />
       </div>
-    )
+    );
   }
 }
 
 export const mapDispatchToProps = dispatch => ({
-  handleFiles: () => dispatch(updateFiles())
+  handleFiles: () => dispatch(updateFiles()),
 });
 
-export default connect(null, mapDispatchToProps)(BusinessWidget);
+export default connect(
+  null,
+  mapDispatchToProps
+)(BusinessWidget);

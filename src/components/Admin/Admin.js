@@ -8,7 +8,7 @@ import {
   BusinessWidget,
 } from '../../containers';
 import { connect } from 'react-redux';
-import { closeEmployees } from '../../actions/updateAdmin/updateAdmin';
+import { closeEmployees } from '../../actions';
 import './admin.css';
 
 class Admin extends Component {
