@@ -1,5 +1,6 @@
 import Admin from './Admin/Admin';
 import App from './app/App';
+import AppHeader from './AppHeader/AppHeader';
 import ComponentHeader from './componentHeader/ComponentHeader';
 import FolderWidget from './FolderWidget/FolderWidget';
 import Footer from './Footer/Footer';
@@ -9,6 +10,7 @@ import SignInModal from './SignInModal/SignInModal';
 export {
   Admin,
   App,
+  AppHeader,
   ComponentHeader,
   FolderWidget,
   Footer,

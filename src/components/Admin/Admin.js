@@ -7,6 +7,7 @@ import {
   BusinessFolders,
   BusinessWidget,
 } from '../../containers';
+import { AppHeader } from '..';
 import { connect } from 'react-redux';
 import { closeEmployees } from '../../actions';
 import './admin.css';
@@ -26,9 +27,7 @@ class Admin extends Component {
   render() {
     return (
       <div className="admin-container">
-        <div className="header-container">
-          <div className="header-container-2" />
-        </div>
+        <AppHeader />
         <div className="hero-nav">
           <div className="greeting-container">
             <h5 className="greeting-text">Joe's Dashboard</h5>
