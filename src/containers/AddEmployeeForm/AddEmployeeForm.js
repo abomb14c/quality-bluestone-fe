@@ -1,30 +1,30 @@
-import React, { Component } from "react";
-import "./add-employee-form.css";
-import { apiUrl } from "../../apiCalls/apiCalls";
-import axios from "axios";
-import { TextField } from "@material-ui/core";
+import React, { Component } from 'react';
+import './add-employee-form.css';
+import { apiUrl } from '../../apiCalls/apiCalls';
+import axios from 'axios';
+import { TextField } from '@material-ui/core';
 
 class AddEmployeeForm extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      firstName: "",
-      lastName: "",
-      address: "",
-      city: "",
-      state: "",
-      zip: "",
-      phone: "",
-      email: "",
-      role: "Worker"
+      firstName: '',
+      lastName: '',
+      address: '',
+      city: '',
+      state: '',
+      zip: '',
+      phone: '',
+      email: '',
+      role: 'Worker',
     };
   }
 
   handleChange = event => {
     const { name, value } = event.target;
     this.setState({
-      [name]: value
+      [name]: value,
     });
   };
 
@@ -40,13 +40,13 @@ class AddEmployeeForm extends Component {
       state: this.state.state,
       zip_code: this.state.zip,
       phone_number: this.state.phone,
-      role: this.state.role.toLowerCase()
+      role: this.state.role.toLowerCase(),
     };
     const header_info = {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Headers": "*",
-      "Access-Token": sessionStorage.getItem("authToken")
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': '*',
+      'Access-Token': sessionStorage.getItem('authToken'),
     };
     await axios
       .post(`${apiUrl}create_user`, formData, { headers: header_info })
