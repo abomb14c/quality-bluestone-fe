@@ -1,4 +1,6 @@
 import {
+  addEmployee,
+  addFolder,
   updateEmployees,
   updateFiles,
   closeEmployees,
@@ -7,6 +9,8 @@ import { updateFolder, clearFolder } from './updateFolders/updateFolders';
 import { updateUser, logOutUser, updateAdmin } from './updateUser/updateUser';
 
 export {
+  addEmployee,
+  addFolder,
   clearFolder,
   closeEmployees,
   logOutUser,

@@ -16,7 +16,13 @@ import AddFolderIcon from '@material-ui/icons/CreateNewFolder';
 import AddEmployeeIcon from '@material-ui/icons/GroupAdd';
 import EmployeeIcon from '@material-ui/icons/SupervisedUserCircle';
 import { compose } from 'recompose';
-import { updateEmployees, updateFiles, closeEmployees } from '../../actions';
+import {
+  addEmployee,
+  addFolder,
+  updateEmployees,
+  updateFiles,
+  closeEmployees,
+} from '../../actions';
 
 const drawerWidth = 240;
 
@@ -51,7 +57,14 @@ const styles = theme => ({
   },
 });
 
-const LeftDrawer = ({ classes, handleClose, handleEmployees, handleFiles }) => {
+const LeftDrawer = ({
+  classes,
+  handleAddEmployee,
+  handleAddFolder,
+  handleClose,
+  handleEmployees,
+  handleFiles,
+}) => {
   const createNavOptions = () => {
     const navOptions = [
       { text: 'Home', method: handleClose, icon: <HomeIcon key="icon" /> },
@@ -66,14 +79,14 @@ const LeftDrawer = ({ classes, handleClose, handleEmployees, handleFiles }) => {
         icon: <EmployeeIcon key="icon" />,
       },
       {
-        text: 'Add Folder',
-        method: null,
-        icon: <AddFolderIcon key="icon" />,
+        text: 'Add Employee',
+        method: handleAddEmployee,
+        icon: <AddEmployeeIcon key="icon" />,
       },
       {
-        text: 'Add Employee',
-        method: null,
-        icon: <AddEmployeeIcon key="icon" />,
+        text: 'Add Folder',
+        method: handleAddFolder,
+        icon: <AddFolderIcon key="icon" />,
       },
     ];
 
@@ -108,11 +121,15 @@ const LeftDrawer = ({ classes, handleClose, handleEmployees, handleFiles }) => {
 export const mapDispatchToProps = dispatch => ({
   handleClose: () => dispatch(closeEmployees()),
   handleEmployees: () => dispatch(updateEmployees()),
+  handleAddEmployee: () => dispatch(addEmployee()),
+  handleAddFolder: () => dispatch(addFolder()),
   handleFiles: () => dispatch(updateFiles()),
 });
 
 LeftDrawer.propTypes = {
   classes: PropTypes.object.isRequired,
+  handleAddEmployee: PropTypes.func,
+  handleAddFolder: PropTypes.func,
   handleClose: PropTypes.func,
   handleEmployees: PropTypes.func,
   handleFiles: PropTypes.func,
