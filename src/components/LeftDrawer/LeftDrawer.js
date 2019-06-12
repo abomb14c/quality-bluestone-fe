@@ -113,6 +113,7 @@ export const mapDispatchToProps = dispatch => ({
 
 LeftDrawer.propTypes = {
   classes: PropTypes.object.isRequired,
+  handleClose: PropTypes.func,
   handleEmployees: PropTypes.func,
   handleFiles: PropTypes.func,
 };
