@@ -1,21 +1,20 @@
 export const updateEmployees = () => {
   return {
-    type: "OPEN_EMPLOYEES",
-    active: 'employees'
+    type: 'OPEN_EMPLOYEES',
+    active: 'employees',
   };
 };
 
 export const updateFiles = () => {
   return {
-    type: "OPEN_FILES",
-    active: 'files'
+    type: 'OPEN_FILES',
+    active: 'files',
   };
 };
 
-
-export const closeEmployees = () => {	
-  return {	
-    type: "CLOSE_EMPLOYEES",	
-    active: 'none'	
-  }	
-} 
+export const closeEmployees = () => {
+  return {
+    type: 'CLOSE_EMPLOYEES',
+    active: 'none',
+  };
+};
