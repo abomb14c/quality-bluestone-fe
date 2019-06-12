@@ -1,6 +1,7 @@
 import React from 'react';
-import { FolderWidget } from '../../components';
 import { withStyles } from '@material-ui/core';
+import PropTypes from 'prop-types';
+import { FolderWidget } from '../../components';
 
 const styles = () => ({
   root: {
@@ -18,6 +19,11 @@ export const FolderContainer = ({ classes, folders }) => {
   });
 
   return <div className={classes.root}>{displayFolders}</div>;
+};
+
+FolderContainer.proptypes = {
+  classes: PropTypes.object.isRequired,
+  folder: PropTypes.string,
 };
 
 export default withStyles(styles)(FolderContainer);
