@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 // import './business-folders.css';
 import { connect } from 'react-redux';
 // import { mapDispatchToProps } from '../../containers/EmployeeWidget/EmployeeWidget';
+import { EmployeeWidget } from '../../containers';
 import { updateFolder } from '../../actions';
 import { Card, Button, Typography, withStyles } from '@material-ui/core';
 import { compose } from 'recompose';
@@ -35,11 +36,9 @@ class FolderWidget extends Component {
     return (
       <Card className={classes.root}>
         <Typography>{folder}</Typography>
-        {/* <p className="folder-title">{folder}</p> */}
         <Button size="small" color="primary" onClick={() => openFolder(folder)}>
           Open
         </Button>
-        {/* <div className="open-button" onClick={() => openFolder(folder)} /> */}
       </Card>
     );
   }
