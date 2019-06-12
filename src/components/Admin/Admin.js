@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 // import Header from '../Header/Header';
 // import AdminWidget from './../../containers/AdminWidget/AdminWidget';
-import {
-  EmployeeWidget,
-  EmployeeFolders,
-  BusinessFolders,
-  BusinessWidget,
-} from '../../containers';
-import { AppHeader } from '..';
+import { AppHeader, LeftDrawer } from '..';
 import { connect } from 'react-redux';
+import { withStyles } from '@material-ui/core';
+import { compose } from 'recompose';
+import { EmployeeFolders, BusinessFolders } from '../../containers';
 import { closeEmployees } from '../../actions';
-import './admin.css';
+
+const styles = () => ({
+  content: {
+    display: 'flex',
+  },
+});
 
 class Admin extends Component {
   constructor(props) {
@@ -19,34 +21,22 @@ class Admin extends Component {
     this.state = {};
   }
 
-  handleBack = event => {
-    event.preventDefault();
+  componentDidMount() {
     this.props.handleClose();
-  };
+  }
 
   render() {
+    const { active, classes } = this.props;
     return (
       <div className="admin-container">
         <AppHeader />
-        <div className="hero-nav">
-          <div className="greeting-container">
-            <h5 className="greeting-text">Joe's Dashboard</h5>
-            <button onClick={this.handleBack} className="back-button">
-              back
-            </button>
-          </div>
+        <div className={classes.content}>
+          <LeftDrawer />
+          <>
+            {active === 'employees' && <EmployeeFolders />}
+            {active === 'files' && <BusinessFolders />}
+          </>
         </div>
-        {this.props.active === '' && (
-          <div className="body-container">
-            {/* <AdminWidget /> */}
-            <div className="folder-container">
-              <EmployeeWidget />
-              <BusinessWidget />
-            </div>
-          </div>
-        )}
-        {this.props.active === 'employees' && <EmployeeFolders />}
-        {this.props.active === 'files' && <BusinessFolders />}
       </div>
     );
   }
@@ -60,7 +50,10 @@ export const mapDispatchToProps = dispatch => ({
   handleClose: () => dispatch(closeEmployees()),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+export default compose(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  ),
+  withStyles(styles)
 )(Admin);
