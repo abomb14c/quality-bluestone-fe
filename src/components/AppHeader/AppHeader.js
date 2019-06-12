@@ -12,7 +12,7 @@ const styles = theme => ({
   },
   logo: {
     height: '100%',
-    width: '20%',
+    width: '203px',
   },
   toolbar: {
     display: 'flex',
