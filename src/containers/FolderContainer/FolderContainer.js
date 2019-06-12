@@ -21,9 +21,9 @@ export const FolderContainer = ({ classes, folders }) => {
   return <div className={classes.root}>{displayFolders}</div>;
 };
 
-FolderContainer.proptypes = {
+FolderContainer.propTypes = {
   classes: PropTypes.object.isRequired,
-  folder: PropTypes.string,
+  folders: PropTypes.array,
 };
 
 export default withStyles(styles)(FolderContainer);
