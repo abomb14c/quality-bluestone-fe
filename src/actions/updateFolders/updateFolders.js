@@ -1,14 +1,14 @@
-export const updateFolder = (folder) => {
+export const updateFolder = folder => {
   return {
-    type: "OPEN_FOLDER",
+    type: 'OPEN_FOLDER',
     name: folder,
-    active:true
-  }
-}
+    active: true,
+  };
+};
 
 export const clearFolder = () => {
   return {
     type: 'CLOSE_FOLDER',
-    active: false
-  }
-}
+    active: false,
+  };
+};

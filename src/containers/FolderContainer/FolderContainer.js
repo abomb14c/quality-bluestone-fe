@@ -1,16 +1,29 @@
 import React from 'react';
+import { withStyles } from '@material-ui/core';
+import PropTypes from 'prop-types';
 import { FolderWidget } from '../../components';
-import './folder-container.css';
 
-export const FolderContainer = props => {
-  const { folders } = props;
+const styles = () => ({
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    width: '100%',
+  },
+});
+
+export const FolderContainer = ({ classes, folders }) => {
   // console.log(folders)
 
   const displayFolders = folders.map(folder => {
-    return <FolderWidget folder={folder} />;
+    return <FolderWidget folder={folder} key="folder" />;
   });
 
-  return <div className="business-folder-container">{displayFolders}</div>;
+  return <div className={classes.root}>{displayFolders}</div>;
 };
 
-export default FolderContainer;
+FolderContainer.propTypes = {
+  classes: PropTypes.object.isRequired,
+  folders: PropTypes.array,
+};
+
+export default withStyles(styles)(FolderContainer);

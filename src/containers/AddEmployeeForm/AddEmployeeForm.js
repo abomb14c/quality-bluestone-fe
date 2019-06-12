@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './add-employee-form.css';
 import { apiUrl } from '../../apiCalls/apiCalls';
 import axios from 'axios';
 import { TextField } from '@material-ui/core';
