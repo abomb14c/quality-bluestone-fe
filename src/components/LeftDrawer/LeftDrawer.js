@@ -40,9 +40,6 @@ const styles = theme => ({
     flexGrow: 1,
     padding: theme.spacing.unit * 3,
   },
-  filler: {
-    width: drawerWidth,
-  },
   link: {
     textDecoration: 'none',
     color: 'initial',
@@ -95,18 +92,16 @@ const LeftDrawer = ({ classes, handleClose, handleEmployees, handleFiles }) => {
   };
 
   return (
-    <div className={classes.filler}>
-      <Drawer
-        className={classes.drawer}
-        variant="permanent"
-        classes={{
-          paper: classes.drawerPaper,
-        }}
-      >
-        <div className={classes.appBar} />
-        <List>{createNavOptions()}</List>
-      </Drawer>
-    </div>
+    <Drawer
+      className={classes.drawer}
+      variant="permanent"
+      classes={{
+        paper: classes.drawerPaper,
+      }}
+    >
+      <div className={classes.appBar} />
+      <List>{createNavOptions()}</List>
+    </Drawer>
   );
 };
 
