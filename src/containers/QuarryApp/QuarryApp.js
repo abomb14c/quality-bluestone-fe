@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { TextField } from '@material-ui/core';
-import './quarry-app.css';
+// import './quarry-app.css';
 
 class QuarryApp extends Component {
   constructor(props) {
