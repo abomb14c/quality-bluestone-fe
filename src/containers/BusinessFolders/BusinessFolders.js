@@ -6,9 +6,10 @@ import { AddFolders, FolderContainer } from '..';
 import Axios from 'axios';
 import { Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { apiUrl } from '../../apiCalls/apiCalls';
 import { withStyles } from '@material-ui/core';
 import { compose } from 'recompose';
+import { apiUrl } from '../../apiCalls/apiCalls';
+import { retrieveSessionStorage } from '../../util/component-helpers/componentHelpers';
 // import { mapStateToProps } from '../../components/app/App';
 
 const styles = () => ({
@@ -32,10 +33,10 @@ class BusinessFolders extends Component {
     });
   };
 
-  retrieveSessionStorage = () => {
-    const folderNames = sessionStorage.getItem('folders');
-    if (folderNames) this.setState({ folders: folderNames.split(',') });
-  };
+  // retrieveSessionStorage = () => {
+  //   const folderNames = sessionStorage.getItem('folders');
+  //   if (folderNames) this.setState({ folders: folderNames.split(',') });
+  // };
 
   async componentDidMount() {
     const headerInfo = {
@@ -45,7 +46,7 @@ class BusinessFolders extends Component {
       'Access-Token': sessionStorage.getItem('authToken'),
     };
 
-    await this.retrieveSessionStorage();
+    await retrieveSessionStorage('folders', this.setState.bind(this));
 
     if (!this.state.folders.length) {
       Axios.get(`${apiUrl}get_all_folders`, { headers: headerInfo })
@@ -57,7 +58,6 @@ class BusinessFolders extends Component {
             return folder.name;
           });
           this.setState({ folders: folderNames });
-          console.log('im mad', folderNames);
           sessionStorage.setItem('folders', [...folderNames]);
         })
         .catch(error => {
