@@ -6,16 +6,18 @@ import { FolderWidget } from '../../components';
 const styles = () => ({
   root: {
     display: 'flex',
-    flexDirection: 'column',
+    flexWrap: 'wrap',
     width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
 export const FolderContainer = ({ classes, folders }) => {
   // console.log(folders)
 
-  const displayFolders = folders.map(folder => {
-    return <FolderWidget folder={folder} key="folder" />;
+  const displayFolders = folders.map((folder, ind) => {
+    return <FolderWidget folder={folder} key={`folder-${ind}`} />;
   });
 
   return <div className={classes.root}>{displayFolders}</div>;
