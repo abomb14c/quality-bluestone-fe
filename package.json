@@ -15,7 +15,7 @@
     "react-google-login": "^5.0.2",
     "react-redux": "^6.0.1",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "^2.1.5",
+    "react-scripts": "^3.0.1",
     "recompose": "^0.30.0",
     "redux": "^4.0.1",
     "typescript": "^3.3.3333"
@@ -37,7 +37,6 @@
   ],
   "devDependencies": {
     "eslint-plugin-prettier": "^3.0.1",
-    "prettier": "^1.17.0",
-    "eslint": "^5.16.0"
+    "prettier": "^1.17.0"
   }
 }
