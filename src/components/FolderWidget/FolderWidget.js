@@ -3,21 +3,21 @@ import React, { Component } from 'react';
 // import './business-folders.css';
 import { connect } from 'react-redux';
 // import { mapDispatchToProps } from '../../containers/EmployeeWidget/EmployeeWidget';
-import { EmployeeWidget } from '../../containers';
-import { updateFolder } from '../../actions';
+import PropTypes from 'prop-types';
 import { Card, Button, Typography, withStyles } from '@material-ui/core';
 import { compose } from 'recompose';
-import PropTypes from 'prop-types';
+import { updateFolder } from '../../actions';
 
 const styles = theme => ({
   root: {
-    margin: `${theme.spacing.unit * 2}px 0`,
-    width: '100%',
+    margin: theme.spacing(2),
+    width: '22%',
     display: 'flex',
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'space-between',
-    height: 55,
-    padding: `0 ${theme.spacing.unit * 2}px`,
+    height: 148,
+    padding: theme.spacing(2),
   },
 });
 
