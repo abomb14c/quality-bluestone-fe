@@ -32,25 +32,33 @@ class BusinessFolders extends Component {
     });
   };
 
-  componentDidMount() {
+  retrieveSessionStorage = () => {
+    const folderNames = sessionStorage.getItem('folders');
+    if (folderNames) this.setState({ folders: folderNames.split(',') });
+  };
+
+  async componentDidMount() {
     const headerInfo = {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Headers': '*',
       'Access-Token': sessionStorage.getItem('authToken'),
     };
+
+    await this.retrieveSessionStorage();
+
     if (!this.state.folders.length) {
       Axios.get(`${apiUrl}get_all_folders`, { headers: headerInfo })
         .then(response => {
-          console.log(response.data);
           return response.data;
         })
         .then(data => {
           let folderNames = data.map(folder => {
             return folder.name;
           });
-          this.setState({ folders: [...folderNames] });
-          console.log(this.state);
+          this.setState({ folders: folderNames });
+          console.log('im mad', folderNames);
+          sessionStorage.setItem('folders', [...folderNames]);
         })
         .catch(error => {
           console.log(error);
