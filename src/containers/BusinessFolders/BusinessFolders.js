@@ -58,7 +58,7 @@ class BusinessFolders extends Component {
             return folder.name;
           });
           this.setState({ folders: folderNames });
-          sessionStorage.setItem('folders', [...folderNames]);
+          sessionStorage.setItem('folders', JSON.stringify(folderNames));
         })
         .catch(error => {
           console.log(error);
