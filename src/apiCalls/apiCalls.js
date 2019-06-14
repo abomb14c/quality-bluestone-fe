@@ -4,12 +4,12 @@ import Admin from '../components/Admin/Admin';
 // export const apiUrl = 'http://localhost:3001/';
 export const apiUrl = 'https://protected-everglades-28715.herokuapp.com/';
 
-export const headerInfoWithAuth = {
+export const headerInfoWithAuth = () => ({
   'Content-Type': 'application/json',
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': '*',
   'Access-Token': sessionStorage.getItem('authToken'),
-};
+});
 
 export const headerInfoWithoutAuth = {
   'Content-Type': 'application/json',
@@ -105,15 +105,15 @@ export const fetchFile = async formData => {
 //  }]
 
 export const fetchAllUsers = async formData => {
-  await Axios.get(`${apiUrl}get_all_users`, {
+  return await Axios.get(`${apiUrl}get_all_users`, {
     params: { data: formData },
-    headers: headerInfoWithAuth,
+    headers: headerInfoWithAuth(),
   })
     .then(response => {
-      console.log(response);
-      response.json();
+      return response.data;
     })
     .catch(error => {
+      console.log(headerInfoWithAuth);
       console.log(error);
     });
 };

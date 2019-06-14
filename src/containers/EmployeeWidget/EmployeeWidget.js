@@ -1,22 +1,51 @@
 import React, { Component } from 'react';
-// import {fetchWeather} from '../../apiCalls/apiCalls';
-import './employee-widget.css';
-// import { connect } from 'http2';
 import { connect } from 'react-redux';
+import {
+  Card,
+  withStyles,
+  Paper,
+  Typography,
+  Table,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+} from '@material-ui/core';
+import { compose } from 'recompose';
+import PropTypes from 'prop-types';
 import { updateEmployees } from '../../actions';
-import { fetchAllUsers } from '../../apiCalls/apiCalls';
+
+const styles = theme => ({
+  root: {
+    padding: theme.spacing(2),
+    height: '100%',
+    overflow: 'scroll',
+  },
+});
 
 class EmployeeWidget extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      employees: [],
+    };
   }
 
-  componentDidMount = async () => {
-    // send to redux when server is running
-    const employees = await fetchAllUsers();
-    console.log(employees);
+  generateTableRow = () => {
+    return this.props.employees.map((employee, ind) => {
+      const { address, email, first_name, last_name, phone_number } = employee;
+      const fullName = first_name + ' ' + last_name;
+      return (
+        <TableRow key={`row-${ind}`} hover>
+          <TableCell>{fullName || '-'}</TableCell>
+          <TableCell>{email || '-'}</TableCell>
+          <TableCell>{phone_number || '-'}</TableCell>
+          <TableCell>{address || '-'}</TableCell>
+          <TableCell>Status</TableCell>
+        </TableRow>
+      );
+    });
   };
 
   openEmployees = () => {
@@ -24,11 +53,24 @@ class EmployeeWidget extends Component {
   };
 
   render() {
+    const { classes } = this.props;
+
     return (
-      <div className="employee-widget-container">
-        <h5 className="employees-title">Employees</h5>
-        <div className="employee-button" onClick={this.openEmployees} />
-      </div>
+      <Paper className={classes.root}>
+        <Table>
+          <TableHead className={classes.tableHead}>
+            <TableRow>
+              <TableCell>Name</TableCell>
+              <TableCell>Email</TableCell>
+              <TableCell>Phone</TableCell>
+              <TableCell>Address</TableCell>
+              <TableCell>Status</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>{this.generateTableRow()}</TableBody>
+          {/* <div className="employee-button" onClick={this.openEmployees} /> */}
+        </Table>
+      </Paper>
     );
   }
 }
@@ -37,7 +79,15 @@ export const mapDispatchToProps = dispatch => ({
   handleEmployees: () => dispatch(updateEmployees()),
 });
 
-export default connect(
-  null,
-  mapDispatchToProps
+EmployeeWidget.propTypes = {
+  employees: PropTypes.array.isRequired,
+  classes: PropTypes.object.isRequired,
+};
+
+export default compose(
+  connect(
+    null,
+    mapDispatchToProps
+  ),
+  withStyles(styles)
 )(EmployeeWidget);
