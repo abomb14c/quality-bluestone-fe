@@ -6,15 +6,18 @@ import { AddFolders, FolderContainer } from '..';
 import Axios from 'axios';
 import { Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { withStyles } from '@material-ui/core';
+import { Typography, withStyles } from '@material-ui/core';
 import { compose } from 'recompose';
 import { apiUrl } from '../../apiCalls/apiCalls';
 import { retrieveSessionStorage } from '../../util/component-helpers/componentHelpers';
 // import { mapStateToProps } from '../../components/app/App';
 
-const styles = () => ({
+const styles = theme => ({
   root: {
     width: '100%',
+  },
+  label: {
+    margin: `0 0 ${theme.spacing(2)}px 0`,
   },
 });
 
@@ -91,6 +94,9 @@ class BusinessFolders extends Component {
             <AddFolders />
           </div>
         )} */}
+        <Typography variant="h6" className={classes.label}>
+          documents
+        </Typography>
         <div className="existing-folders">
           <FolderContainer folders={folders} />
         </div>
