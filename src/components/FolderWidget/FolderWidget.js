@@ -2,21 +2,32 @@ import React, { Component } from 'react';
 // import './folder-widget.css';
 // import './business-folders.css';
 import { connect } from 'react-redux';
+import ExpandMore from '@material-ui/icons/ExpandMore';
+import ExpandLess from '@material-ui/icons/ExpandLess';
 // import { mapDispatchToProps } from '../../containers/EmployeeWidget/EmployeeWidget';
 import PropTypes from 'prop-types';
-import { Card, Button, Typography, withStyles } from '@material-ui/core';
+import {
+  ExpansionPanel,
+  ExpansionPanelSummary,
+  ExpansionPanelDetails,
+  Button,
+  Typography,
+  withStyles,
+} from '@material-ui/core';
 import { compose } from 'recompose';
+import { OpenFolder } from '../../containers';
 import { updateFolder } from '../../actions';
 
 const styles = theme => ({
   root: {
-    margin: theme.spacing(2),
-    width: '22%',
+    width: '100%',
+  },
+  summary: {
+    // margin: theme.spacing(2),
+    width: '100%',
     display: 'flex',
-    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'space-between',
-    height: 148,
     padding: theme.spacing(2),
   },
 });
@@ -27,19 +38,33 @@ class FolderWidget extends Component {
 
     this.state = {
       active: false,
+      expanded: false,
     };
   }
+
+  toggleExpansion = () => {
+    this.setState(({ expanded }) => ({ expanded: !expanded }));
+  };
 
   render() {
     const { classes, folder, openFolder } = this.props;
 
     return (
-      <Card className={classes.root}>
-        <Typography>{folder}</Typography>
-        <Button size="small" color="primary" onClick={() => openFolder(folder)}>
-          Open
-        </Button>
-      </Card>
+      <ExpansionPanel
+        className={classes.root}
+        expanded={this.state.expanded}
+        onClick={this.toggleExpansion}
+      >
+        <ExpansionPanelSummary>
+          <div className={classes.summary}>
+            <Typography>{folder}</Typography>
+            {this.state.expanded ? <ExpandLess /> : <ExpandMore />}
+          </div>
+        </ExpansionPanelSummary>
+        <ExpansionPanelDetails>
+          <OpenFolder folder={folder} />
+        </ExpansionPanelDetails>
+      </ExpansionPanel>
     );
   }
 }

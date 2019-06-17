@@ -6,7 +6,8 @@ import { FolderWidget } from '../../components';
 const styles = () => ({
   root: {
     display: 'flex',
-    flexWrap: 'wrap',
+    flexDirection: 'column',
+    // flexWrap: 'wrap',
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',

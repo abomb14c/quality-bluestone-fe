@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 // import { Render } from 'react-dom';
 import axios from 'axios';
-import './upload-files.css';
 import { apiUrl } from '../../apiCalls/apiCalls';
 import {
   Card,
@@ -39,6 +38,7 @@ const styles = theme => ({
     padding: theme.spacing.unit * 4,
     width: '100%',
     justifyContent: 'center',
+    alignItems: 'center',
   },
   textField: {
     margin: `${theme.spacing.unit * 2}px 0`,
