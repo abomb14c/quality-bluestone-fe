@@ -3,12 +3,11 @@ import PropTypes from 'prop-types';
 // import uploadFiles from '../uploadFiles/uploadFiles';
 // import UploadFiles from '../uploadFiles/uploadFiles';
 import { AddFolders, FolderContainer } from '..';
-import Axios from 'axios';
 import { Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Typography, withStyles } from '@material-ui/core';
 import { compose } from 'recompose';
-import { apiUrl } from '../../apiCalls/apiCalls';
+import { getData, apiEndpoints } from '../../apiCalls/apiCalls';
 import { retrieveSessionStorage } from '../../util/component-helpers/componentHelpers';
 // import { mapStateToProps } from '../../components/app/App';
 
@@ -36,36 +35,14 @@ class BusinessFolders extends Component {
     });
   };
 
-  // retrieveSessionStorage = () => {
-  //   const folderNames = sessionStorage.getItem('folders');
-  //   if (folderNames) this.setState({ folders: folderNames.split(',') });
-  // };
-
   async componentDidMount() {
-    const headerInfo = {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Headers': '*',
-      'Access-Token': sessionStorage.getItem('authToken'),
-    };
-
     await retrieveSessionStorage('folders', this.setState.bind(this));
 
     if (!this.state.folders.length) {
-      Axios.get(`${apiUrl}get_all_folders`, { headers: headerInfo })
-        .then(response => {
-          return response.data;
-        })
-        .then(data => {
-          let folderNames = data.map(folder => {
-            return folder.name;
-          });
-          this.setState({ folders: folderNames });
-          sessionStorage.setItem('folders', JSON.stringify(folderNames));
-        })
-        .catch(error => {
-          console.log(error);
-        });
+      const folderData = await getData('', apiEndpoints.get.folders);
+      const folders = folderData.map(folder => folder.name);
+      this.setState({ folders });
+      sessionStorage.setItem('folders', JSON.stringify(folders));
     }
   }
 
