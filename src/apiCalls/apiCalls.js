@@ -1,6 +1,5 @@
 //https://protected-everglades-28715.herokuapp.com/
 import Axios from 'axios';
-import Admin from '../components/Admin/Admin';
 // export const apiUrl = 'http://localhost:3001/';
 export const apiUrl = 'https://protected-everglades-28715.herokuapp.com/';
 
@@ -17,25 +16,37 @@ export const headerInfoWithoutAuth = {
   'Access-Control-Allow-Headers': '*',
 };
 
+export const apiEndpoints = {
+  get: {
+    users: 'get_all_users',
+    user: 'get_user',
+    files: 'get_all_files',
+    file: 'get_file',
+    folders: 'get_all_folders',
+    folder: 'get_folder',
+  },
+  post: {
+    authenitcate: 'authenticate',
+    user: 'create_user',
+    file: 'upload_files',
+    folder: 'create_folder',
+  },
+  patch: {
+    user: 'update_user',
+  },
+  delete: {
+    user: 'delete_user',
+    file: 'delete_file',
+    folder: 'delete_folder',
+  },
+};
+
 // FOR ALL CALLS BELOW
 // formData should be either an empty string or a hash - i.e. formData = { folder_name: 'Name of Folder', file_name: 'Name of File'}
 
+// GET ALL FOLDERS
 // This call will retrieve the folders. Pass in an empty string in for formData and it should return all folders available for
 // that user.
-
-export const fetchFolders = async formData => {
-  await Axios.get(`${apiUrl}get_all_folders`, {
-    params: { data: formData },
-    headers: headerInfoWithAuth,
-  })
-    .then(response => {
-      console.log(response);
-      response.json();
-    })
-    .catch(error => {
-      console.log(error);
-    });
-};
 
 // This call will retrieve one folder. You must pass in the name of the folder in the formData. Ex - formData = { folder_name: "Name of Folder"}
 
@@ -53,6 +64,7 @@ export const fetchFolder = async formData => {
     });
 };
 
+// GET ALL FILES
 // This call will retrieve all of the files for a specific folder or user.
 // If you want to return all the files related to the current user, you don't need to include a folderName,
 // just make the API call with an empty string for the formData.
@@ -90,6 +102,7 @@ export const fetchFile = async formData => {
     });
 };
 
+// GET ALL USERS
 // This call will return all users. This should only be called by the admin or accountant. The formData can be an empty string
 // and it will do a permissions check on the backend to make sure the user has permission to request the users.
 // An example returned data is
@@ -103,20 +116,6 @@ export const fetchFile = async formData => {
 //    "status": "inactive",
 //    "role": "worker"
 //  }]
-
-export const fetchAllUsers = async formData => {
-  return await Axios.get(`${apiUrl}get_all_users`, {
-    params: { data: formData },
-    headers: headerInfoWithAuth(),
-  })
-    .then(response => {
-      return response.data;
-    })
-    .catch(error => {
-      console.log(headerInfoWithAuth);
-      console.log(error);
-    });
-};
 
 // This call will return one user. The formData MUST have the user's email in it - formData = { email: "User's Email"}.
 // The response will be identical to the one above, just with one user. If you would like to return the users files, refer to the API
@@ -177,3 +176,22 @@ export const deleteUser = async formData => {
       console.log(error);
     });
 };
+
+// get requests
+
+export const getData = async (formData, endpoint) => {
+  try {
+    const response = await Axios.get(apiUrl + endpoint, {
+      params: { data: formData },
+      headers: headerInfoWithAuth(),
+    });
+    const data = response.data;
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+//post requests
+
+// patch requests

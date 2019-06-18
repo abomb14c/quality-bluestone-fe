@@ -2,7 +2,6 @@ import AddEmployeeForm from './AddEmployeeForm/AddEmployeeForm';
 import AddFolders from './AddFolders/AddFolders';
 import AdminWidget from './AdminWidget/AdminWidget';
 import BusinessFolders from './BusinessFolders/BusinessFolders';
-import BusinessWidget from './BusinessWidget/BusinessWidget';
 import EmployeeFolders from './EmployeeFolders/EmployeeFolders';
 import EmployeeWidget from './EmployeeWidget/EmployeeWidget';
 import FolderContainer from './FolderContainer/FolderContainer';
@@ -18,7 +17,6 @@ export {
   AddFolders,
   AdminWidget,
   BusinessFolders,
-  BusinessWidget,
   EmployeeFolders,
   EmployeeWidget,
   FolderContainer,

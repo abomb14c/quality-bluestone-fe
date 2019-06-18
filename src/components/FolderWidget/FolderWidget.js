@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 // import { mapDispatchToProps } from '../../containers/EmployeeWidget/EmployeeWidget';
+import { compose } from 'recompose';
 import PropTypes from 'prop-types';
 import {
   ExpansionPanel,
@@ -14,7 +15,7 @@ import {
   Typography,
   withStyles,
 } from '@material-ui/core';
-import { compose } from 'recompose';
+import { getData, apiEndpoints } from '../../apiCalls/apiCalls';
 import { OpenFolder } from '../../containers';
 import { updateFolder } from '../../actions';
 
@@ -39,7 +40,18 @@ class FolderWidget extends Component {
     this.state = {
       active: false,
       expanded: false,
+      files: [],
     };
+  }
+
+  async componentDidMount() {
+    if (!this.state.files.length) {
+      const folderData = { folder_name: this.props.folder };
+      console.log(folderData);
+      const files = await getData(folderData, apiEndpoints.get.files);
+      console.log(files);
+      this.setState({ files });
+    }
   }
 
   toggleExpansion = () => {
@@ -48,21 +60,22 @@ class FolderWidget extends Component {
 
   render() {
     const { classes, folder, openFolder } = this.props;
+    const { expanded, files } = this.state;
 
     return (
       <ExpansionPanel
         className={classes.root}
-        expanded={this.state.expanded}
+        expanded={expanded}
         onClick={this.toggleExpansion}
       >
         <ExpansionPanelSummary>
           <div className={classes.summary}>
             <Typography>{folder}</Typography>
-            {this.state.expanded ? <ExpandLess /> : <ExpandMore />}
+            {expanded ? <ExpandLess /> : <ExpandMore />}
           </div>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <OpenFolder folder={folder} />
+          <OpenFolder files={files} />
         </ExpansionPanelDetails>
       </ExpansionPanel>
     );
