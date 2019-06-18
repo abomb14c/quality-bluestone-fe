@@ -3,7 +3,7 @@ import { Link, Redirect, Switch, withRouter } from 'react-router-dom';
 import { AddEmployeeForm, EmployeeWidget } from '..';
 import { connect } from 'react-redux';
 import { closeEmployees } from '../../actions';
-import { fetchAllUsers } from '../../apiCalls/apiCalls';
+import { getData, apiEndpoints } from '../../apiCalls/apiCalls';
 import { retrieveSessionStorage } from '../../util/component-helpers/componentHelpers';
 import { compose } from 'recompose';
 import { Typography, withStyles } from '@material-ui/core';
@@ -31,7 +31,7 @@ class EmployeeFolders extends Component {
     await retrieveSessionStorage('employees', this.setState.bind(this));
 
     if (!this.state.employees.length) {
-      const employees = await fetchAllUsers();
+      const employees = await getData('', apiEndpoints.get.users);
       this.setState({ employees });
       sessionStorage.setItem('employees', JSON.stringify(employees));
     }
