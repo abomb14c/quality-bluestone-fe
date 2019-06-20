@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
   Card,
+  Checkbox,
   withStyles,
   Paper,
   Typography,
@@ -29,6 +30,7 @@ class EmployeeWidget extends Component {
 
     this.state = {
       employees: [],
+      checked: true,
     };
   }
 
@@ -42,7 +44,9 @@ class EmployeeWidget extends Component {
           <TableCell>{email || '-'}</TableCell>
           <TableCell>{phone_number || '-'}</TableCell>
           <TableCell>{address || '-'}</TableCell>
-          <TableCell>Status</TableCell>
+          <TableCell>
+            <Checkbox checked={this.state.checked} color="primary" />
+          </TableCell>
         </TableRow>
       );
     });
