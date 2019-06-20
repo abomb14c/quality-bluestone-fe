@@ -6,7 +6,11 @@ import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core';
 import { compose } from 'recompose';
 import PropTypes from 'prop-types';
-import { EmployeeFolders, BusinessFolders } from '../../containers';
+import {
+  EmployeeFolders,
+  BusinessFolders,
+  AddEmployeeForm,
+} from '../../containers';
 import { closeEmployees } from '../../actions';
 
 const styles = theme => ({
@@ -38,6 +42,7 @@ class Admin extends Component {
           <div className={classes.container}>
             {active === 'employees' && <EmployeeFolders />}
             {active === 'files' && <BusinessFolders />}
+            {active === 'addEmployee' && <AddEmployeeForm />}
           </div>
         </div>
       </div>
