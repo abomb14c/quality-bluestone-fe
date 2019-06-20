@@ -1,19 +1,9 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import './open-folder.css';
-import { ComponentHeader } from '../../components';
 import { UploadFiles } from '..';
-import { clearFolder } from '../../actions';
 import DownloadIcon from '@material-ui/icons/VerticalAlignBottom';
-import {
-  Table,
-  TableBody,
-  TableRow,
-  TableCellTypography,
-  withStyles,
-  TableCell,
-  Typography,
-} from '@material-ui/core';
+import AddIcon from '@material-ui/icons/Add';
+import { withStyles, Fab, Typography } from '@material-ui/core';
 
 const styles = theme => ({
   root: {
@@ -21,12 +11,19 @@ const styles = theme => ({
     // justifyContent: 'space-between',
     width: '100%',
     alignItems: 'center',
+    position: 'relative',
+    minHeight: 100,
   },
   files: {
     height: 280,
     width: '100%',
     overflow: 'scroll',
     marginLeft: theme.spacing(3),
+  },
+  fab: {
+    position: 'absolute',
+    bottom: theme.spacing(2),
+    right: theme.spacing(2),
   },
 });
 
@@ -37,16 +34,35 @@ class OpenFolder extends Component {
     this.state = {};
   }
 
+  displayFiles = () => {
+    const { classes, files } = this.props;
+    let display;
+
+    if (files.length) {
+      display = files.map((file, index) => {
+        return (
+          <Typography className={classes.files} key={`file-${index}`}>
+            {file.name}
+            <DownloadIcon />
+          </Typography>
+        );
+      });
+    } else {
+      display = (
+        <Typography>This Folder currently contains no files</Typography>
+      );
+    }
+    return display;
+  };
+
   render() {
-    const { folder, classes } = this.props;
+    const { classes, folder } = this.props;
 
     return (
       <div className={classes.root}>
-        <UploadFiles />
-        <Typography className={classes.files}>
-          {folder}
-          <DownloadIcon />
-        </Typography>
+        {/* <UploadFiles /> */}
+        <>{this.displayFiles()}</>
+        <UploadFiles folder={folder} />
       </div>
     );
   }
