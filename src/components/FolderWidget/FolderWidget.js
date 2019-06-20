@@ -47,7 +47,6 @@ class FolderWidget extends Component {
   async componentDidMount() {
     if (!this.state.files.length) {
       const folderData = { folder_name: this.props.folder };
-      console.log(folderData);
       const files = await getData(folderData, apiEndpoints.get.files);
       console.log(files);
       this.setState({ files });
@@ -75,7 +74,7 @@ class FolderWidget extends Component {
           </div>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <OpenFolder files={files} />
+          <OpenFolder files={files} folder={folder} />
         </ExpansionPanelDetails>
       </ExpansionPanel>
     );
