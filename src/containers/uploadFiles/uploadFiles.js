@@ -1,21 +1,28 @@
 import React, { Component } from 'react';
 // import { Render } from 'react-dom';
 import axios from 'axios';
-import { apiUrl } from '../../apiCalls/apiCalls';
+import AddIcon from '@material-ui/icons/Add';
 import {
-  Card,
   Button,
+  Fab,
   TextField,
   Typography,
   withStyles,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
 } from '@material-ui/core';
+import { apiUrl } from '../../apiCalls/apiCalls';
+import { relative } from 'path';
 // import classes from '*.module.sass';
 // import {FilePond} from 'react-filepond';
 // import 'filepond/dist/filepond.min.css';
 
 const styles = theme => ({
   root: {
-    width: 400,
+    // width: 400,
+    position: 'relative',
   },
   button: {
     margin: `${theme.spacing.unit * 2}px 0`,
@@ -27,6 +34,16 @@ const styles = theme => ({
     color: theme.palette.primary.contrastText,
     letterSpacing: 0.5,
     fontWeight: 700,
+  },
+  container: {
+    position: 'relative',
+    width: '100%',
+    height: '100%',
+  },
+  fab: {
+    position: 'absolute',
+    bottom: theme.spacing(2),
+    right: theme.spacing(2),
   },
   fileInput: {
     margin: `${theme.spacing.unit * 2}px 0`,
@@ -53,14 +70,20 @@ class UploadFiles extends Component {
     this.state = {
       fileName: '',
       file: null,
+      open: false,
     };
 
     this.handleUploadFile = this.handleUploadFile.bind(this);
   }
 
+  handleDialog = open => e => {
+    e && e.stopPropagation();
+    this.setState({ open });
+  };
+
   handleUploadFile = async ev => {
-    const { file, fileName } = this.state;
     ev.preventDefault();
+    const { file, fileName } = this.state;
     const headers = {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
@@ -69,11 +92,13 @@ class UploadFiles extends Component {
     };
     const data = new FormData();
     data.append('file', file);
-    data.append('filename', fileName);
+    data.append('file_name', fileName);
+    data.append('folder_name', this.props.folder);
 
     await axios
       .post(`${apiUrl}upload_files`, data, { headers })
       .then(response => {
+        this.handleDialog(false)();
         console.log(response);
       });
   };
@@ -82,6 +107,10 @@ class UploadFiles extends Component {
     this.setState({
       file: event.target.files[0],
     });
+  };
+
+  stopPropagation = e => {
+    e.stopPropagation();
   };
 
   handleChange = event => {
@@ -93,52 +122,69 @@ class UploadFiles extends Component {
 
   render() {
     const { classes } = this.props;
-    const { file, fileName } = this.state;
+    const { file, fileName, open } = this.state;
 
     return (
-      <Card className={classes.root}>
-        <form onSubmit={this.handleUploadFile} className={classes.form}>
-          <Typography variant="h5" className={classes.title}>
-            Upload a New File
-          </Typography>
-          <TextField
-            name="fileName"
-            variant="outlined"
-            value={this.state.fileName}
-            type="text"
-            label="File Name"
-            onChange={this.handleChange}
-            className={classes.textField}
-          />
-          <label htmlFor="upload-input">
-            <Button variant="outlined" component="span">
-              Browse...
-            </Button>
-            {this.state.file ? (
-              <Typography>{this.state.file.name}</Typography>
-            ) : null}
-          </label>
-          <input
-            // variant="outlined"
-            onChange={this.handleFileSelection}
-            id="upload-input"
-            type="file"
-            hidden
-            className={classes.fileInput}
-          />
-          <Button
-            disabled={!file || !fileName.length}
-            type="submit"
-            variant="contained"
-            className={classes.button}
-            color="secondary"
-          >
-            <Typography className={classes.buttonText} variant="subtitle1">
-              Upload
-            </Typography>
-          </Button>
-        </form>
-      </Card>
+      <div className={classes.container}>
+        <Fab
+          className={classes.fab}
+          color="primary"
+          onClick={this.handleDialog(true)}
+        >
+          <AddIcon />
+        </Fab>
+        <Dialog
+          className={classes.root}
+          open={open}
+          onClose={this.handleDialog(false)}
+          onClick={this.stopPropagation}
+        >
+          <form onSubmit={this.handleUploadFile} className={classes.form}>
+            <DialogTitle>Upload a New File</DialogTitle>
+            <DialogContent>
+              <TextField
+                name="fileName"
+                variant="outlined"
+                value={this.state.fileName}
+                type="text"
+                label="File Name"
+                onChange={this.handleChange}
+                className={classes.textField}
+                onClick={this.stopPropagation}
+              />
+              <label htmlFor="upload-input">
+                <Button variant="outlined" component="span">
+                  Browse...
+                </Button>
+                {this.state.file ? (
+                  <Typography>{this.state.file.name}</Typography>
+                ) : null}
+              </label>
+              <input
+                // variant="outlined"
+                onChange={this.handleFileSelection}
+                id="upload-input"
+                type="file"
+                hidden
+                className={classes.fileInput}
+              />
+            </DialogContent>
+            <DialogActions>
+              <Button
+                disabled={!file || !fileName.length}
+                type="submit"
+                variant="contained"
+                className={classes.button}
+                color="secondary"
+              >
+                <Typography className={classes.buttonText} variant="subtitle1">
+                  Upload
+                </Typography>
+              </Button>
+            </DialogActions>
+          </form>
+        </Dialog>
+      </div>
     );
   }
 }
