@@ -1,7 +1,45 @@
 import React, { Component } from 'react';
 import { apiUrl } from '../../apiCalls/apiCalls';
 import axios from 'axios';
-import { TextField } from '@material-ui/core';
+import {
+  Button,
+  MenuItem,
+  OutlinedInput,
+  Paper,
+  Select,
+  TextField,
+  Typography,
+  withStyles,
+} from '@material-ui/core';
+
+const styles = theme => ({
+  root: {
+    margin: 'auto',
+    padding: theme.spacing(2),
+  },
+  button: {
+    margin: theme.spacing(),
+  },
+  form: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'cemter',
+  },
+  inputContainer: {
+    margin: `${theme.spacing()}px 0`,
+    display: 'flex',
+    alignItems: 'center',
+  },
+  label: {
+    margin: `0 0 ${theme.spacing(2)}px 0`,
+  },
+  select: {
+    margin: `0 ${theme.spacing()}px`,
+  },
+  textField: {
+    margin: `0 ${theme.spacing()}px`,
+  },
+});
 
 class AddEmployeeForm extends Component {
   constructor(props) {
@@ -16,7 +54,7 @@ class AddEmployeeForm extends Component {
       zip: '',
       phone: '',
       email: '',
-      role: 'Worker',
+      role: 'worker',
     };
   }
 
@@ -60,100 +98,135 @@ class AddEmployeeForm extends Component {
   cancelForm = () => {};
 
   render() {
+    const {
+      firstName,
+      lastName,
+      address,
+      city,
+      state,
+      zip,
+      phone,
+      email,
+      role,
+    } = this.state;
+    const { classes } = this.props;
+
     return (
-      <div className="add-employee-form-container">
-        <form className="add-employee-form" onSubmit={this.handleSubmit}>
-          <label>Add A New User</label>
-          <div className="add-user-name-container">
-            <TextField
-              variant="outlined"
-              className="add-user-name"
-              type="text"
-              name="firstName"
-              value={this.state.firstName}
-              label="First Name"
-              onChange={this.handleChange}
-            />
-            <TextField
-              variant="outlined"
-              className="add-user-name"
-              type="text"
-              name="lastName"
-              value={this.state.lastName}
-              label="Last Name"
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="add-user-address-container">
-            <TextField
-              variant="outlined"
-              className="add-user-address"
-              type="text"
-              name="address"
-              value={this.state.address}
-              label="Address"
-              onChange={this.handleChange}
-            />
-            <TextField
-              variant="outlined"
-              className="add-user-city"
-              type="text"
-              name="city"
-              value={this.state.city}
-              label="City"
-              onChange={this.handleChange}
-            />
-            <TextField
-              variant="outlined"
-              className="add-user-state"
-              type="text"
-              name="state"
-              value={this.state.state}
-              label="State"
-              onChange={this.handleChange}
-            />
-            <TextField
-              variant="outlined"
-              className="add-user-zip"
-              type="text"
-              name="zip"
-              value={this.state.zip}
-              label="Zip Code"
-              onChange={this.handleChange}
-            />
-          </div>
-          <TextField
-            variant="outlined"
-            className="add-user-phone"
-            type="text"
-            name="phone"
-            value={this.state.phone}
-            label="Phone Number"
-            onChange={this.handleChange}
-          />
-          <TextField
-            variant="outlined"
-            className="add-user-email"
-            type="text"
-            name="email"
-            value={this.state.email}
-            label="Email"
-            onChange={this.handleChange}
-          />
-          <select className="select-role">
-            <option defaultValue={this.state.role}>Worker</option>
-            <option value={this.state.role}>Driver</option>
-            <option value={this.state.role}>Accountant</option>
-            <option value={this.state.role}>Admin</option>
-          </select>
-          <button className="submit-new-employee">Add Employee</button>
-        </form>
-      </div>
+      <>
+        <Typography variant="h6" className={classes.label}>
+          add employee
+        </Typography>
+        <Paper className={classes.root}>
+          <form className={classes.form} onSubmit={this.handleSubmit}>
+            <Typography className={classes.subTitle}>Name</Typography>
+            <div className={classes.inputContainer}>
+              <TextField
+                variant="outlined"
+                className={classes.textField}
+                type="text"
+                name="firstName"
+                value={firstName}
+                label="First Name"
+                onChange={this.handleChange}
+              />
+              <TextField
+                variant="outlined"
+                className={classes.textField}
+                type="text"
+                name="lastName"
+                value={lastName}
+                label="Last Name"
+                onChange={this.handleChange}
+              />
+            </div>
+            <Typography className={classes.subTitle}>Address</Typography>
+            <div className={classes.inputContainer}>
+              <TextField
+                variant="outlined"
+                className={classes.textField}
+                type="text"
+                name="address"
+                value={address}
+                label="Address"
+                onChange={this.handleChange}
+              />
+              <TextField
+                variant="outlined"
+                className={classes.textField}
+                type="text"
+                name="city"
+                value={city}
+                label="City"
+                onChange={this.handleChange}
+              />
+              <TextField
+                variant="outlined"
+                className={classes.textField}
+                type="text"
+                name="state"
+                value={state}
+                label="State"
+                onChange={this.handleChange}
+              />
+              <TextField
+                variant="outlined"
+                className={classes.textField}
+                type="text"
+                name="zip"
+                value={zip}
+                label="Zip Code"
+                onChange={this.handleChange}
+              />
+            </div>
+            <Typography className={classes.subTitle}>Contact Info</Typography>
+            <div className={classes.inputContainer}>
+              <TextField
+                variant="outlined"
+                className={classes.textField}
+                type="text"
+                name="phone"
+                value={phone}
+                label="Phone Number"
+                onChange={this.handleChange}
+              />
+              <TextField
+                variant="outlined"
+                className={classes.textField}
+                type="text"
+                name="email"
+                value={email}
+                label="Email"
+                onChange={this.handleChange}
+              />
+              <Select
+                className={classes.select}
+                onChange={this.handleChange}
+                name="role"
+                value={role}
+                input={<OutlinedInput name="role" />}
+              >
+                <MenuItem value="worker">Worker</MenuItem>
+                <MenuItem value="driver">Driver</MenuItem>
+                <MenuItem value="accountant">Accountant</MenuItem>
+                <MenuItem value="admin">Admin</MenuItem>
+              </Select>
+            </div>
+            <Button
+              variant="contained"
+              color="secondary"
+              type="submit"
+              className={classes.button}
+            >
+              Add Employee
+            </Button>
+          </form>
+        </Paper>
+      </>
     );
   }
 }
 
-export default AddEmployeeForm;
+export default withStyles(styles)(AddEmployeeForm);
 
 // export const mapStateToProps = state => ({
 //   role: state.user.role,
