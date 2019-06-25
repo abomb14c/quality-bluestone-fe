@@ -37,7 +37,7 @@ const styles = theme => ({
   },
   container: {
     position: 'relative',
-    width: '100%',
+    marginLeft: 'auto',
     height: '100%',
   },
   fab: {
