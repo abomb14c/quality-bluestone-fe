@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  Card,
+  Button,
   Checkbox,
-  withStyles,
+  Dialog,
+  DialogTitle,
+  DialogContent,
   Paper,
   Typography,
   Table,
@@ -11,6 +13,7 @@ import {
   TableRow,
   TableCell,
   TableBody,
+  withStyles,
 } from '@material-ui/core';
 import { compose } from 'recompose';
 import PropTypes from 'prop-types';
@@ -21,6 +24,14 @@ const styles = theme => ({
     padding: theme.spacing(2),
     height: '100%',
     overflow: 'scroll',
+  },
+  button: {
+    marginBottom: theme.spacing(),
+  },
+  dialog: {},
+  dialogContent: {
+    display: 'flex',
+    justifyContent: 'space-around',
   },
 });
 
@@ -34,6 +45,10 @@ class EmployeeWidget extends Component {
     };
   }
 
+  handleDialog = open => e => {
+    this.setState({ open });
+  };
+
   generateTableRow = () => {
     return this.props.employees.map((employee, ind) => {
       const { address, email, first_name, last_name, phone_number } = employee;
@@ -45,7 +60,11 @@ class EmployeeWidget extends Component {
           <TableCell>{phone_number || '-'}</TableCell>
           <TableCell>{address || '-'}</TableCell>
           <TableCell>
-            <Checkbox checked={this.state.checked} color="primary" />
+            <Checkbox
+              checked={this.state.checked}
+              color="primary"
+              onClick={this.handleDialog(true)}
+            />
           </TableCell>
         </TableRow>
       );
@@ -58,23 +77,52 @@ class EmployeeWidget extends Component {
 
   render() {
     const { classes } = this.props;
+    const { open } = this.state;
 
     return (
-      <Paper className={classes.root}>
-        <Table>
-          <TableHead className={classes.tableHead}>
-            <TableRow>
-              <TableCell>Name</TableCell>
-              <TableCell>Email</TableCell>
-              <TableCell>Phone</TableCell>
-              <TableCell>Address</TableCell>
-              <TableCell>Status</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>{this.generateTableRow()}</TableBody>
-          {/* <div className="employee-button" onClick={this.openEmployees} /> */}
-        </Table>
-      </Paper>
+      <>
+        <Paper className={classes.root}>
+          <Table>
+            <TableHead className={classes.tableHead}>
+              <TableRow>
+                <TableCell>Name</TableCell>
+                <TableCell>Email</TableCell>
+                <TableCell>Phone</TableCell>
+                <TableCell>Address</TableCell>
+                <TableCell>Status</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>{this.generateTableRow()}</TableBody>
+            {/* <div className="employee-button" onClick={this.openEmployees} /> */}
+          </Table>
+        </Paper>
+        <Dialog
+          className={classes.dialog}
+          open={open}
+          onClose={this.handleDialog(false)}
+        >
+          <DialogTitle>
+            Are you sure you want to deactivate this employee?
+          </DialogTitle>
+          <DialogContent className={classes.dialogContent}>
+            <Button
+              color="primary"
+              variant="contained"
+              className={classes.button}
+            >
+              Confirm
+            </Button>
+            <Button
+              color="secondary"
+              variant="contained"
+              className={classes.button}
+              onClick={this.handleDialog(false)}
+            >
+              Cancel
+            </Button>
+          </DialogContent>
+        </Dialog>
+      </>
     );
   }
 }
