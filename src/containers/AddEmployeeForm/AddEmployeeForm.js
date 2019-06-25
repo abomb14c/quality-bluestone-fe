@@ -55,14 +55,29 @@ class AddEmployeeForm extends Component {
       phone: '',
       email: '',
       role: 'worker',
+      disabled: true,
     };
   }
 
-  handleChange = event => {
+  handleChange = async event => {
     const { name, value } = event.target;
-    this.setState({
+    await this.setState({
       [name]: value,
     });
+    this.toggleButton();
+  };
+
+  toggleButton = () => {
+    const stateValues = Object.values(this.state);
+    if (stateValues.includes('')) {
+      this.setState({
+        disabled: true,
+      });
+    } else {
+      this.setState({
+        disabled: false,
+      });
+    }
   };
 
   handleSubmit = async event => {
@@ -216,6 +231,7 @@ class AddEmployeeForm extends Component {
               color="secondary"
               type="submit"
               className={classes.button}
+              disabled={this.state.disabled}
             >
               Add Employee
             </Button>
