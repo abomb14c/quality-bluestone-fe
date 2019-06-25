@@ -7,6 +7,7 @@ import {
   DialogTitle,
   DialogContent,
   Paper,
+  Switch,
   Typography,
   Table,
   TableHead,
@@ -60,10 +61,10 @@ class EmployeeWidget extends Component {
           <TableCell>{phone_number || '-'}</TableCell>
           <TableCell>{address || '-'}</TableCell>
           <TableCell>
-            <Checkbox
+            <Switch
               checked={this.state.checked}
               color="primary"
-              onClick={this.handleDialog(true)}
+              // onClick={this.handleDialog(true)}
             />
           </TableCell>
         </TableRow>

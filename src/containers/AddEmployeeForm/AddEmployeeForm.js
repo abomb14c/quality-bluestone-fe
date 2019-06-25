@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { apiUrl } from '../../apiCalls/apiCalls';
 import axios from 'axios';
 import {
   Button,
+  Divider,
   MenuItem,
+  FormControl,
+  InputLabel,
   OutlinedInput,
   Paper,
   Select,
@@ -11,6 +13,8 @@ import {
   Typography,
   withStyles,
 } from '@material-ui/core';
+import { stateAbbreviations } from '../../util/component-helpers/componentHelpers';
+import { apiUrl } from '../../apiCalls/apiCalls';
 
 const styles = theme => ({
   root: {
@@ -18,7 +22,17 @@ const styles = theme => ({
     padding: theme.spacing(2),
   },
   button: {
-    margin: theme.spacing(),
+    margin: `${theme.spacing(2)}px ${theme.spacing()}px`,
+    transition: '0.5s',
+  },
+  buttonText: {
+    color: theme.palette.primary.contrastText,
+    letterSpacing: 0.5,
+    fontWeight: 700,
+  },
+  divider: {
+    // margin: `${theme.spacing(2)}px 0`,
+    margin: theme.spacing(2),
   },
   form: {
     display: 'flex',
@@ -36,8 +50,12 @@ const styles = theme => ({
   select: {
     margin: `0 ${theme.spacing()}px`,
   },
+  subTitle: {
+    marginTop: theme.spacing(2),
+  },
   textField: {
     margin: `0 ${theme.spacing()}px`,
+    minWidth: 120,
   },
 });
 
@@ -54,7 +72,7 @@ class AddEmployeeForm extends Component {
       zip: '',
       phone: '',
       email: '',
-      role: 'worker',
+      role: '',
       disabled: true,
     };
   }
@@ -110,7 +128,11 @@ class AddEmployeeForm extends Component {
       });
   };
 
-  cancelForm = () => {};
+  createStateOptions = () => {
+    return stateAbbreviations.map(state => {
+      return <MenuItem value={state}>{state}</MenuItem>;
+    });
+  };
 
   render() {
     const {
@@ -133,7 +155,8 @@ class AddEmployeeForm extends Component {
         </Typography>
         <Paper className={classes.root}>
           <form className={classes.form} onSubmit={this.handleSubmit}>
-            <Typography className={classes.subTitle}>Name</Typography>
+            <Typography className={classes.subTitle}>1 - name</Typography>
+            <Divider className={classes.divider} />
             <div className={classes.inputContainer}>
               <TextField
                 variant="outlined"
@@ -154,7 +177,8 @@ class AddEmployeeForm extends Component {
                 onChange={this.handleChange}
               />
             </div>
-            <Typography className={classes.subTitle}>Address</Typography>
+            <Typography className={classes.subTitle}>2 - address</Typography>
+            <Divider className={classes.divider} />
             <div className={classes.inputContainer}>
               <TextField
                 variant="outlined"
@@ -176,13 +200,16 @@ class AddEmployeeForm extends Component {
               />
               <TextField
                 variant="outlined"
+                select
                 className={classes.textField}
                 type="text"
                 name="state"
                 value={state}
                 label="State"
                 onChange={this.handleChange}
-              />
+              >
+                {this.createStateOptions()}
+              </TextField>
               <TextField
                 variant="outlined"
                 className={classes.textField}
@@ -193,7 +220,10 @@ class AddEmployeeForm extends Component {
                 onChange={this.handleChange}
               />
             </div>
-            <Typography className={classes.subTitle}>Contact Info</Typography>
+            <Typography className={classes.subTitle}>
+              3 - contact info
+            </Typography>
+            <Divider className={classes.divider} />
             <div className={classes.inputContainer}>
               <TextField
                 variant="outlined"
@@ -213,18 +243,21 @@ class AddEmployeeForm extends Component {
                 label="Email"
                 onChange={this.handleChange}
               />
-              <Select
-                className={classes.select}
+              <TextField
+                select
+                className={classes.textField}
                 onChange={this.handleChange}
                 name="role"
                 value={role}
+                variant="outlined"
                 input={<OutlinedInput name="role" />}
+                label="Role"
               >
                 <MenuItem value="worker">Worker</MenuItem>
                 <MenuItem value="driver">Driver</MenuItem>
                 <MenuItem value="accountant">Accountant</MenuItem>
                 <MenuItem value="admin">Admin</MenuItem>
-              </Select>
+              </TextField>
             </div>
             <Button
               variant="contained"
@@ -233,7 +266,9 @@ class AddEmployeeForm extends Component {
               className={classes.button}
               disabled={this.state.disabled}
             >
-              Add Employee
+              <Typography className={classes.buttonText} variant="subtitle1">
+                Add Employee
+              </Typography>
             </Button>
           </form>
         </Paper>
