@@ -42,7 +42,7 @@ class OpenFolder extends Component {
       display = files.map((file, index) => {
         return (
           <Typography className={classes.files} key={`file-${index}`}>
-            {file.name}
+            {file.file_link}
             <DownloadIcon />
           </Typography>
         );
@@ -60,7 +60,6 @@ class OpenFolder extends Component {
 
     return (
       <div className={classes.root}>
-        {/* <UploadFiles /> */}
         <>{this.displayFiles()}</>
         <UploadFiles folder={folder} />
       </div>
