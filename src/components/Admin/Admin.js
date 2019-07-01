@@ -21,7 +21,7 @@ const styles = theme => ({
   container: {
     padding: theme.spacing.unit * 5,
     width: '100%',
-    overflow: 'scroll',
+    // overflow: 'scroll',
   },
 });
 
