@@ -38,7 +38,6 @@ class FolderWidget extends Component {
     super(props);
 
     this.state = {
-      active: false,
       expanded: false,
       files: [],
     };
@@ -48,8 +47,8 @@ class FolderWidget extends Component {
     if (!this.state.files.length) {
       const folderData = { folder_name: this.props.folder };
       const files = await getData(folderData, apiEndpoints.get.files);
-      console.log(files);
-      this.setState({ files });
+      console.log(files, this.props.folder);
+      this.setState({ files: files.file_info });
     }
   }
 
