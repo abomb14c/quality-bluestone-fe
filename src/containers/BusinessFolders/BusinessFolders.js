@@ -9,6 +9,7 @@ import { Typography, withStyles } from '@material-ui/core';
 import { compose } from 'recompose';
 import { getData, apiEndpoints } from '../../apiCalls/apiCalls';
 import { retrieveSessionStorage } from '../../util/component-helpers/componentHelpers';
+import AddFolderIcon from '@material-ui/icons/CreateNewFolder';
 // import { mapStateToProps } from '../../components/app/App';
 
 const styles = theme => ({
@@ -29,54 +30,37 @@ class BusinessFolders extends Component {
     };
   }
 
-  handleClick = () => {
-    this.setState({
-      active: !this.state.active,
-    });
-  };
-
   async componentDidMount() {
     await retrieveSessionStorage('folders', this.setState.bind(this));
 
     if (!this.state.folders.length) {
-      const folderData = await getData('', apiEndpoints.get.folders);
-      const folders = folderData.map(folder => folder.name);
-      this.setState({ folders });
-      sessionStorage.setItem('folders', JSON.stringify(folders));
+      await this.addFolderToState();
     }
   }
 
+  addFolderToState = async () => {
+    const folderData = await getData('', apiEndpoints.get.folders);
+    const folders = folderData.map(folder => folder.name);
+    this.setState({ folders });
+    sessionStorage.setItem('folders', JSON.stringify(folders));
+  };
+
+  updateFolders = async () => {
+    await retrieveSessionStorage('folders', this.setState.bind(this));
+  };
+
   render() {
-    const { folders } = this.state;
+    const { folders, open } = this.state;
     const { folder, classes } = this.props;
     return (
       <div className={classes.root}>
-        {folder.active === true && <Redirect to="/open-folder" />}
-        {/* {active === false && (
-          <div className="add-employee">
-            <h5 className="add-folder-title">Add Folder</h5>
-            <div className="business-button" onClick={this.handleClick} />
-          </div>
-        )}
-        {active === true && (
-          <div className="add-employee">
-            <div className="folder-cancel-button-container">
-              <button
-                className="folder-form-cancel-button"
-                onClick={this.handleClick}
-              >
-                X
-              </button>
-            </div>
-            <AddFolders />
-          </div>
-        )} */}
         <Typography variant="h6" className={classes.label}>
           documents
         </Typography>
         <div className="existing-folders">
           <FolderContainer folders={folders} />
         </div>
+        <AddFolders updateFolders={this.updateFolders} />
       </div>
     );
   }
