@@ -11,10 +11,13 @@ import {
   ExpansionPanel,
   ExpansionPanelSummary,
   ExpansionPanelDetails,
+  Fab,
   Button,
   Typography,
   withStyles,
 } from '@material-ui/core';
+import DeleteIcon from '@material-ui/icons/Delete';
+import { DeleteFolder } from '..';
 import { getData, apiEndpoints } from '../../apiCalls/apiCalls';
 import { OpenFolder } from '../../containers';
 import { updateFolder } from '../../actions';
@@ -23,6 +26,13 @@ const styles = theme => ({
   root: {
     width: '100%',
   },
+  deleteIcon: {
+    fontSize: 20,
+  },
+  expansionActions: {
+    display: 'flex',
+    alignItems: 'center',
+  },
   summary: {
     // margin: theme.spacing(2),
     width: '100%',
@@ -30,6 +40,12 @@ const styles = theme => ({
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: theme.spacing(2),
+  },
+  fab: {
+    height: 35,
+    width: 35,
+    marginRight: theme.spacing(2),
+    transistion: '4s',
   },
 });
 
@@ -57,7 +73,7 @@ class FolderWidget extends Component {
   };
 
   render() {
-    const { classes, folder, openFolder } = this.props;
+    const { classes, folder, updateFolders } = this.props;
     const { expanded, files } = this.state;
 
     return (
@@ -69,7 +85,12 @@ class FolderWidget extends Component {
         <ExpansionPanelSummary>
           <div className={classes.summary}>
             <Typography>{folder}</Typography>
-            {expanded ? <ExpandLess /> : <ExpandMore />}
+            <div className={classes.expansionActions}>
+              {expanded && (
+                <DeleteFolder folder={folder} updateFolders={updateFolders} />
+              )}
+              {expanded ? <ExpandLess /> : <ExpandMore />}
+            </div>
           </div>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
@@ -86,7 +107,7 @@ export const mapDispatchToProps = dispatch => ({
 
 FolderWidget.propTypes = {
   classes: PropTypes.object,
-  openFolder: PropTypes.func,
+  updateFolder: PropTypes.func,
   folder: PropTypes.string,
 };
 
