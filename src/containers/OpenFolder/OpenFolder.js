@@ -47,7 +47,7 @@ class OpenFolder extends Component {
     const { classes, files } = this.props;
     let display;
 
-    if (files.length) {
+    if (files && files.length) {
       display = files.map((file, index) => {
         return (
           <Typography className={classes.files} key={`file-${index}`}>
