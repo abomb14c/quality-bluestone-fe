@@ -199,10 +199,13 @@ export const getData = async (formData, endpoint) => {
 // delete requests
 export const deleteItem = async (formData, endpoint) => {
   try {
-    const response = await Axios.post(apiUrl + endpoint, {
-      params: { data: formData },
-      headers: headerInfoWithAuth(),
-    });
+    const response = await Axios.post(
+      apiUrl + endpoint,
+      {
+        params: { data: formData },
+      },
+      { headers: headerInfoWithAuth() }
+    );
     const data = response.data;
     return data;
   } catch (error) {
