@@ -10,9 +10,7 @@ import {
   withStyles,
 } from '@material-ui/core';
 import { connect } from 'react-redux';
-import HomeIcon from '@material-ui/icons/Home';
 import DocumentIcon from '@material-ui/icons/FileCopy';
-import AddFolderIcon from '@material-ui/icons/CreateNewFolder';
 import AddEmployeeIcon from '@material-ui/icons/GroupAdd';
 import EmployeeIcon from '@material-ui/icons/SupervisedUserCircle';
 import { compose } from 'recompose';
@@ -60,14 +58,11 @@ const styles = theme => ({
 const LeftDrawer = ({
   classes,
   handleAddEmployee,
-  handleAddFolder,
-  handleClose,
   handleEmployees,
   handleFiles,
 }) => {
   const createNavOptions = () => {
     const navOptions = [
-      { text: 'Home', method: handleClose, icon: <HomeIcon key="icon" /> },
       {
         text: 'Documents',
         method: handleFiles,
@@ -83,11 +78,6 @@ const LeftDrawer = ({
         method: handleAddEmployee,
         icon: <AddEmployeeIcon key="icon" />,
       },
-      {
-        text: 'Add Folder',
-        method: handleAddFolder,
-        icon: <AddFolderIcon key="icon" />,
-      },
     ];
 
     return navOptions.map((option, index) => {
@@ -98,7 +88,7 @@ const LeftDrawer = ({
             <ListItemIcon>{icon}</ListItemIcon>
             <ListItemText primary={text} className={classes.listItemText} />
           </ListItem>
-          {index === 2 && <Divider />}
+          {index === 1 && <Divider />}
         </>
       );
     });

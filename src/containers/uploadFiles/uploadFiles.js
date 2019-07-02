@@ -24,6 +24,10 @@ const styles = theme => ({
     // width: 400,
     position: 'relative',
   },
+  actions: {
+    display: 'flex',
+    background: 'blue',
+  },
   button: {
     margin: `${theme.spacing.unit * 2}px 0`,
     display: 'flex',
@@ -36,14 +40,16 @@ const styles = theme => ({
     fontWeight: 700,
   },
   container: {
-    position: 'relative',
-    marginLeft: 'auto',
-    height: '100%',
+    // position: 'relative',
+    // marginLeft: 'auto',
+    // height: '100%',
   },
   fab: {
-    position: 'absolute',
-    bottom: theme.spacing(2),
-    right: theme.spacing(2),
+    // position: 'absolute',
+    // bottom: theme.spacing(2),
+    // right: theme.spacing(2),
+    height: 40,
+    width: 40,
   },
   fileInput: {
     margin: `${theme.spacing.unit * 2}px 0`,
@@ -125,7 +131,7 @@ class UploadFiles extends Component {
     const { file, fileName, open } = this.state;
 
     return (
-      <div className={classes.container}>
+      <>
         <Fab
           className={classes.fab}
           color="primary"
@@ -184,7 +190,7 @@ class UploadFiles extends Component {
             </DialogActions>
           </form>
         </Dialog>
-      </div>
+      </>
     );
   }
 }

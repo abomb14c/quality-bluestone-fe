@@ -2,17 +2,23 @@ import React, { Component } from 'react';
 import './open-folder.css';
 import { UploadFiles } from '..';
 import DownloadIcon from '@material-ui/icons/VerticalAlignBottom';
-import AddIcon from '@material-ui/icons/Add';
-import { withStyles, Fab, Typography } from '@material-ui/core';
+import DeleteIcon from '@material-ui/icons/Delete';
+
+import { withStyles, Fab, Divider, Typography } from '@material-ui/core';
 
 const styles = theme => ({
   root: {
-    display: 'flex',
+    // display: 'flex',
     // justifyContent: 'space-between',
     width: '100%',
     alignItems: 'center',
-    position: 'relative',
+    // position: 'relative',
     minHeight: 100,
+  },
+  actionsContainer: {
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'flex-end',
   },
   files: {
     height: 280,
@@ -21,9 +27,12 @@ const styles = theme => ({
     marginLeft: theme.spacing(3),
   },
   fab: {
-    position: 'absolute',
-    bottom: theme.spacing(2),
-    right: theme.spacing(2),
+    // position: 'absolute',
+    // bottom: theme.spacing(2),
+    // right: theme.spacing(2),
+    marginRight: theme.spacing(2),
+    height: 40,
+    width: 40,
   },
 });
 
@@ -49,7 +58,9 @@ class OpenFolder extends Component {
       });
     } else {
       display = (
-        <Typography>This Folder currently contains no files</Typography>
+        <Typography>
+          Click the plus on the right hand side to add files
+        </Typography>
       );
     }
     return display;
@@ -60,8 +71,18 @@ class OpenFolder extends Component {
 
     return (
       <div className={classes.root}>
-        <>{this.displayFiles()}</>
-        <UploadFiles folder={folder} />
+        {/* <Divider /> */}
+        {this.displayFiles()}
+        <div className={classes.actionsContainer}>
+          {/* <Fab
+            className={classes.fab}
+            color="secondary"
+            // onClick={this.handleDialog(true)}
+          >
+            <DeleteIcon />
+          </Fab> */}
+          <UploadFiles folder={folder} />
+        </div>
       </div>
     );
   }

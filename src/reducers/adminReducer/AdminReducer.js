@@ -1,4 +1,4 @@
-const intitialState = '';
+const intitialState = 'files';
 
 const AdminReducer = (state = intitialState, action) => {
   switch (action.type) {
