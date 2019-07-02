@@ -58,7 +58,10 @@ class BusinessFolders extends Component {
           documents
         </Typography>
         <div className="existing-folders">
-          <FolderContainer folders={folders} />
+          <FolderContainer
+            folders={folders}
+            updateFolders={this.updateFolders}
+          />
         </div>
         <AddFolders updateFolders={this.updateFolders} />
       </div>
