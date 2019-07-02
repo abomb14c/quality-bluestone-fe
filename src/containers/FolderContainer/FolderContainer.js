@@ -14,11 +14,17 @@ const styles = () => ({
   },
 });
 
-export const FolderContainer = ({ classes, folders }) => {
+export const FolderContainer = ({ classes, folders, updateFolders }) => {
   // console.log(folders)
 
   const displayFolders = folders.map((folder, ind) => {
-    return <FolderWidget folder={folder} key={`folder-${ind}`} />;
+    return (
+      <FolderWidget
+        folder={folder}
+        key={`folder-${ind}`}
+        updateFolders={updateFolders}
+      />
+    );
   });
 
   return <div className={classes.root}>{displayFolders}</div>;
@@ -27,6 +33,7 @@ export const FolderContainer = ({ classes, folders }) => {
 FolderContainer.propTypes = {
   classes: PropTypes.object.isRequired,
   folders: PropTypes.array,
+  updateFolder: PropTypes.func,
 };
 
 export default withStyles(styles)(FolderContainer);
