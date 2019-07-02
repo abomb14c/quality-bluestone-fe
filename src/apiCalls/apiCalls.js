@@ -201,9 +201,7 @@ export const deleteItem = async (formData, endpoint) => {
   try {
     const response = await Axios.post(
       apiUrl + endpoint,
-      {
-        params: { data: formData },
-      },
+      { data: formData },
       { headers: headerInfoWithAuth() }
     );
     const data = response.data;
