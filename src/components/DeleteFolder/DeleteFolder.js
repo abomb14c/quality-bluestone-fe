@@ -60,6 +60,9 @@ const styles = theme => ({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  title: {
+    marginTop: theme.spacing(),
+  },
 });
 
 class DeleteFolder extends Component {
@@ -114,7 +117,9 @@ class DeleteFolder extends Component {
           onClose={this.handleDialog(false)}
           onClick={this.stopPropagation}
         >
-          <DialogTitle>Are you sure you want to delete {folder}</DialogTitle>
+          <DialogTitle className={classes.title}>
+            Are you sure you want to delete {folder}
+          </DialogTitle>
           <DialogActions className={classes.actions}>
             <Button
               color="primary"
