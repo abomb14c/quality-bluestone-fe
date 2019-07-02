@@ -195,3 +195,17 @@ export const getData = async (formData, endpoint) => {
 //post requests
 
 // patch requests
+
+// delete requests
+export const deleteItem = async (formData, endpoint) => {
+  try {
+    const response = await Axios.post(apiUrl + endpoint, {
+      params: { data: formData },
+      headers: headerInfoWithAuth(),
+    });
+    const data = response.data;
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
