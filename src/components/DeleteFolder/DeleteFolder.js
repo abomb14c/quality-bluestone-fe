@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 // import { Render } from 'react-dom';
 import axios from 'axios';
 import DeleteIcon from '@material-ui/icons/Delete';
+import MoreIcon from '@material-ui/icons/MoreVert';
 import {
   Button,
   Fab,
   TextField,
   Typography,
+  IconButton,
   withStyles,
   Dialog,
   DialogTitle,
@@ -60,6 +62,9 @@ const styles = theme => ({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  moreIcon: {
+    // marginRight: theme.spacing(),
+  },
   title: {
     marginTop: theme.spacing(),
   },
@@ -104,13 +109,12 @@ class DeleteFolder extends Component {
 
     return (
       <>
-        <Fab
-          className={classes.fab}
-          color="secondary"
-          onClick={this.handleDialog(true)}
-        >
-          <DeleteIcon />
-        </Fab>
+        <IconButton className={classes.fab} onClick={this.handleDialog(true)}>
+          <MoreIcon
+            className={classes.moreIcon}
+            // onClick={this.handleDialog(true)}
+          />
+        </IconButton>
         <Dialog
           className={classes.root}
           open={open}
@@ -118,7 +122,7 @@ class DeleteFolder extends Component {
           onClick={this.stopPropagation}
         >
           <DialogTitle className={classes.title}>
-            Are you sure you want to delete {folder}
+            Would you like to delete {folder}?
           </DialogTitle>
           <DialogActions className={classes.actions}>
             <Button
