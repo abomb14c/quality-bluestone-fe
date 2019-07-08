@@ -14,13 +14,19 @@ import {
 import { closeEmployees } from '../../actions';
 
 const styles = theme => ({
+  root: {
+    height: '100%',
+  },
   content: {
     display: 'flex',
     width: '100%',
+    height: '100%',
   },
   container: {
     padding: theme.spacing.unit * 5,
     width: '100%',
+    height: '100%',
+    // background: 'black',
     // overflow: 'scroll',
   },
 });
@@ -35,7 +41,7 @@ class Admin extends Component {
   render() {
     const { active, classes } = this.props;
     return (
-      <div>
+      <div className={classes.root}>
         <AppHeader />
         <div className={classes.content}>
           <LeftDrawer />
