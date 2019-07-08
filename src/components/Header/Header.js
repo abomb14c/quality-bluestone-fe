@@ -1,12 +1,24 @@
 import React from 'react';
-import './header.css';
+import logoGif from '../../assets/qualitybluestone.gif';
+import { withStyles } from '@material-ui/core';
 
-const Header = () => {
-  return(
-    <div className="header-container">
-      <div className="header-image"></div>
+const styles = theme => ({
+  root: {
+    height: 80,
+    margin: `${theme.spacing(2)}px 0`,
+  },
+  logo: {
+    height: '100%',
+    width: '240px',
+  },
+});
+
+const Header = ({ classes }) => {
+  return (
+    <div className={classes.root}>
+      <img className={classes.logo} src={logoGif} />
     </div>
-  )
+  );
 };
 
-export default Header; 
+export default withStyles(styles)(Header);

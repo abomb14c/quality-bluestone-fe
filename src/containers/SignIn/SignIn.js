@@ -11,6 +11,7 @@ import {
   TextField,
   Typography,
   withStyles,
+  CircularProgress,
 } from '@material-ui/core';
 import { compose } from 'recompose';
 
@@ -25,6 +26,9 @@ const styles = theme => ({
     padding: theme.spacing.unit * 4,
     width: '100%',
     justifyContent: 'center',
+  },
+  loading: {
+    marginLeft: theme.spacing(2),
   },
   textField: {
     margin: `${theme.spacing.unit * 2}px 0`,
@@ -52,6 +56,8 @@ export class SignIn extends Component {
       username: '',
       password: '',
       loggedIn: false,
+      loading: false,
+      failed: false,
     };
   }
 
@@ -64,6 +70,7 @@ export class SignIn extends Component {
 
   handleSubmit = async event => {
     event.preventDefault();
+    this.setState({ loading: true });
     const formData = {
       email: this.state.username,
       password: this.state.password,
@@ -76,10 +83,12 @@ export class SignIn extends Component {
       .post(`${apiUrl}authenticate`, formData, { headers: header_info })
       .then(response => {
         // this.props.handleLogin({userId: this.state.username, apiKey: response.data.auth_token, role: response.data.role})
+        this.setState({ loading: false });
         this.handleSuccess(response);
       })
       .catch(error => {
         this.handleFailure(error);
+        this.setState({ failed: true, loading: false });
       });
   };
 
@@ -140,7 +149,19 @@ export class SignIn extends Component {
             <Typography className={classes.buttonText} variant="subtitle1">
               Login
             </Typography>
+            {this.state.loading && (
+              <CircularProgress className={classes.loading} size="25px" />
+            )}
           </Button>
+          {this.state.failed && (
+            <Typography
+              className={classes.status}
+              variant="subtitle2"
+              color="secondary"
+            >
+              Username or password is incorrect
+            </Typography>
+          )}
         </form>
       </Card>
     );

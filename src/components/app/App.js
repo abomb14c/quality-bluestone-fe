@@ -12,6 +12,9 @@ const styles = theme => ({
   app: {
     minHeight: '100vh',
     background: theme.palette.background.default,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 

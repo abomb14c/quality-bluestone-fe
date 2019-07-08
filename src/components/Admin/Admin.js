@@ -16,6 +16,7 @@ import { closeEmployees } from '../../actions';
 const styles = theme => ({
   root: {
     height: '100%',
+    width: '100%',
   },
   content: {
     display: 'flex',
