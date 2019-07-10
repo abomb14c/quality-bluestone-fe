@@ -62,8 +62,12 @@ const styles = theme => ({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  moreIcon: {
-    // marginRight: theme.spacing(),
+  menuIcon: {
+    marginRight: theme.spacing(),
+  },
+  menuOption: {
+    display: 'flex',
+    alignItems: 'center',
   },
   title: {
     marginTop: theme.spacing(),
@@ -80,6 +84,7 @@ class DeleteFolder extends Component {
 
   handleDialog = open => e => {
     e && e.stopPropagation();
+    this.props.handleClose(e);
     this.setState({ open });
   };
 
@@ -108,13 +113,11 @@ class DeleteFolder extends Component {
     const { open } = this.state;
 
     return (
-      <>
-        <IconButton className={classes.fab} onClick={this.handleDialog(true)}>
-          <MoreIcon
-            className={classes.moreIcon}
-            // onClick={this.handleDialog(true)}
-          />
-        </IconButton>
+      <div onClick={this.handleDialog(true)}>
+        <div className={classes.menuOption}>
+          <DeleteIcon className={classes.menuIcon} />
+          <Typography variant="subtitle1">Delete Folder</Typography>
+        </div>
         <Dialog
           className={classes.root}
           open={open}
@@ -122,7 +125,7 @@ class DeleteFolder extends Component {
           onClick={this.stopPropagation}
         >
           <DialogTitle className={classes.title}>
-            Would you like to delete {folder}?
+            Are you sure you want to delete {folder}?
           </DialogTitle>
           <DialogActions className={classes.actions}>
             <Button
@@ -147,7 +150,7 @@ class DeleteFolder extends Component {
             </Button>
           </DialogActions>
         </Dialog>
-      </>
+      </div>
     );
   }
 }

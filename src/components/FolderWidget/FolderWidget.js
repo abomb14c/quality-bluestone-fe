@@ -11,13 +11,10 @@ import {
   ExpansionPanel,
   ExpansionPanelSummary,
   ExpansionPanelDetails,
-  Fab,
-  Button,
   Typography,
   withStyles,
 } from '@material-ui/core';
-import DeleteIcon from '@material-ui/icons/Delete';
-import { DeleteFolder } from '..';
+import { FolderMenu } from '..';
 import { getData, apiEndpoints } from '../../apiCalls/apiCalls';
 import { OpenFolder } from '../../containers';
 import { updateFolder } from '../../actions';
@@ -86,9 +83,7 @@ class FolderWidget extends Component {
           <div className={classes.summary}>
             <Typography>{folder}</Typography>
             <div className={classes.expansionActions}>
-              {expanded && (
-                <DeleteFolder folder={folder} updateFolders={updateFolders} />
-              )}
+              {expanded && <FolderMenu folder={folder} />}
               {expanded ? <ExpandLess /> : <ExpandMore />}
             </div>
           </div>
